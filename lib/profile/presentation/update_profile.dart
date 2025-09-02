@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/profile/widgets/bottom_profile.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:movie_app/profile/widgets/modal_bottom_sheet.dart';
 
 import 'package:movie_app/profile/widgets/shared_button.dart';
@@ -24,9 +25,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
     return Scaffold(
       appBar: AppBar(title: Text('Pick Avatar', style: textStyle.titleMedium)),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 37),
+        padding:  EdgeInsets.symmetric(horizontal: 16.w, vertical: 37.h),
         child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               InkWell(
                 onTap: () {
@@ -48,39 +50,39 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 },
                 child: Image.asset(
                   'assets/images/avatar$profile.png',
-                  width: 150,
-                  height: 150,
+                  width: 150.w,
+                  height: 150.h,
                   fit: BoxFit.fill,
                   alignment: Alignment.center,
                 ),
               ),
-              SizedBox(height: 35),
+              SizedBox(height: 35.h),
               TextField(
                 controller: userName,
-                style: TextStyle(fontSize: 20, color: AppTheme.white),
+                style: TextStyle(fontSize: 20.sp, color: AppTheme.white),
                 decoration: InputDecoration(
                   prefixIcon: Image.asset(
                     'assets/images/user.png',
-                    width: 30,
-                    height: 30,
+                    width: 30.w,
+                    height: 30.h,
                     fit: BoxFit.scaleDown,
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 20.h),
               TextField(
-                style: TextStyle(fontSize: 20, color: AppTheme.white),
+                style: TextStyle(fontSize: 20.sp, color: AppTheme.white),
                 controller: userPhone,
                 decoration: InputDecoration(
                   prefixIcon: Image.asset(
                     'assets/images/phone.png',
-                    width: 30,
-                    height: 30,
+                    width: 30.w,
+                    height: 30.h,
                     fit: BoxFit.scaleDown,
                   ),
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 30.h),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -89,14 +91,14 @@ class _UpdateProfileState extends State<UpdateProfile> {
                   style: textStyle.titleSmall?.copyWith(color: AppTheme.white),
                 ),
               ),
-              SizedBox(height: MediaQuery.sizeOf(context).height * 0.2),
+              SizedBox(height: MediaQuery.sizeOf(context).height * 0.25.h),
               SharedButton(
                 text: 'Delete Account',
                 color: AppTheme.red,
                 onPressed: () {},
                 textColor: AppTheme.white,
               ),
-              SizedBox(height: 19),
+              SizedBox(height: 19.h),
               SharedButton(
                 text: 'Update Data',
                 color: AppTheme.primary,

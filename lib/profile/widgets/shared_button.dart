@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SharedButton extends StatelessWidget {
   Color color;
@@ -18,7 +19,7 @@ class SharedButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           
           backgroundColor: color,
-          shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(15))
+          shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(15.r))
         ),
         onPressed: onPressed,
         child: Text(text, style: textStyle.titleSmall?.copyWith(color: textColor)),

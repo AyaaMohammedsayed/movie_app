@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTheme {
   static const Color primary = Color(0xffF6BD00);
@@ -16,27 +17,27 @@ class AppTheme {
       fillColor: grey,
       filled: true,
       hintStyle: TextStyle(
-        fontSize: 16,
+        fontSize: 16.sp,
         color: white,
       ),
      
       enabledBorder: OutlineInputBorder(
       
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
       ),
       focusedBorder: OutlineInputBorder(
       
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
       ),
     ),
     scaffoldBackgroundColor: blackSecondary,
     textTheme: TextTheme(
       titleMedium: TextStyle(
-        fontSize: 16,
+        fontSize: 16.sp,
         color: primary,
       ),
       titleSmall: TextStyle(
-        fontSize: 20,
+        fontSize: 20.sp,
         fontWeight: FontWeight.normal,
         color: blackSecondary,
       )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/profile/widgets/bottom_profile.dart';
 import 'package:movie_app/shared/widgets/app_theme.dart';
 
@@ -28,13 +29,13 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 16, right: 16, bottom: 17),
-      padding: const EdgeInsets.all(19),
+      margin:  EdgeInsets.only(left: 16.w, right: 16.w, bottom: 17.h),
+      padding:  EdgeInsets.all(19.r),
       decoration: BoxDecoration(
         color: AppTheme.grey,
         borderRadius: BorderRadius.circular(20),
       ),
-      height: MediaQuery.of(context).size.height * 0.4,
+      height: MediaQuery.of(context).size.height * 0.4.h,
       child: GridView.builder(
         itemCount: 9,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
