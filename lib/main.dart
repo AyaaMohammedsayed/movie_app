@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/onboarding/view/onboarding.dart';
+import 'package:movie_app/profile/presentation/update_profile.dart';
+import 'package:movie_app/shared/widgets/app_theme.dart';
 
 void main() {
   runApp(MovieApp());
@@ -10,17 +13,23 @@ class MovieApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ScreenUtilInit(
+      designSize: Size(430,932),
+      minTextAdapt: true,
+      builder: (context,child){
+        return 
+    MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        Onboarding.routeName:(_)=> Onboarding()
+        Onboarding.routeName: (_) => Onboarding(),
+        UpdateProfile.routeName: (_) => UpdateProfile(),
       },
-      initialRoute: Onboarding.routeName,
-      darkTheme: ThemeData.dark(),
-      themeMode:ThemeMode.dark,
-
-
-
+      initialRoute: UpdateProfile.routeName,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark,
     );
+      },
+    );
+
   }
 }
