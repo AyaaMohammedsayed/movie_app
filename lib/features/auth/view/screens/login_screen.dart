@@ -49,17 +49,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: screenHeight * 0.07,
-                    ),
-                    child: Image.asset(
-                      AppImages.logoImage,
-                      color: AppTheme.primary,
-                      width: screenWidth * 0.30,
-                      height: screenHeight * 0.14,
-                      fit: BoxFit.fill,
-                    ),
+                  Image.asset(
+                    AppImages.logoImage,
+                    color: AppTheme.primary,
+                    width: screenWidth * 0.6,
+                    height: screenHeight * 0.27,
+                    fit: BoxFit.fill,
                   ),
                   CustomTextFormField(
                     hintText: AppTexts.mailName,
