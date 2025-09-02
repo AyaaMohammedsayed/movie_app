@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:movie_app/profile/widgets/modal_bottom_sheet.dart';
-
 import 'package:movie_app/profile/widgets/shared_button.dart';
 import 'package:movie_app/shared/widgets/app_theme.dart';
 
@@ -101,7 +99,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
               SizedBox(height: 19.h),
               SharedButton(
                 text: 'Update Data',
-                color: AppTheme.primary,
+                color: AppTheme.yellow,
 
                 textColor: AppTheme.blackPrimary,
                 onPressed: () {

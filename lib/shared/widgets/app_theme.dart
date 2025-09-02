@@ -1,52 +1,66 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTheme {
-  static const Color primary = Color(0xffF6BD00);
-  static const Color white = Color(0xffFFFFFF);
-  static const Color blackSecondary = Color(0xff121312);
-  static const Color blackPrimary = Color(0xff000000);
-  static const Color grey = Color(0xff282A28);
-  static const Color red = Color(0xffE82626);
+  static const Color black = Color(0xFF121312);
+  static const Color blackPrimary = Color(0xFF000000);
+  static const Color gray = Color(0xFF282A28);
+  static const Color yellow = Color(0xFFF6BD00);
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color green = Color(0xFF57AA53);
+  static const Color red = Color(0xFFE82626);
+
   static ThemeData darkTheme = ThemeData(
+    scaffoldBackgroundColor: black,
+
+    appBarTheme: AppBarTheme(
+      backgroundColor: black,
+      foregroundColor: yellow,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: yellow,
+      ),
+    ),
+
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: yellow,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      ),
+    ),
     inputDecorationTheme: InputDecorationTheme(
-    
-      
-      fillColor: grey,
       filled: true,
+      fillColor: gray,
       hintStyle: TextStyle(
-        fontSize: 16.sp,
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
         color: white,
       ),
-     
       enabledBorder: OutlineInputBorder(
-      
-        borderRadius: BorderRadius.circular(16.r),
+        borderSide: BorderSide(color: gray),
+        borderRadius: BorderRadius.circular(16),
       ),
       focusedBorder: OutlineInputBorder(
-      
-        borderRadius: BorderRadius.circular(16.r),
+        borderSide: BorderSide(color: gray),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: red),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: red),
+        borderRadius: BorderRadius.circular(16),
       ),
     ),
-    scaffoldBackgroundColor: blackSecondary,
+
     textTheme: TextTheme(
       titleMedium: TextStyle(
-        fontSize: 16.sp,
-        color: primary,
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+        color: white,
       ),
-      titleSmall: TextStyle(
-        fontSize: 20.sp,
-        fontWeight: FontWeight.normal,
-        color: blackSecondary,
-      )
-
     ),
-    appBarTheme: AppBarTheme(
-      color: blackSecondary,
-      centerTitle: true,
-      foregroundColor: primary,
-    )
   );
 }

@@ -22,10 +22,10 @@ class BottomProfile extends StatelessWidget {
         margin: EdgeInsets.all(10.r),
         padding: EdgeInsets.all(10.r),
         decoration: BoxDecoration(
-          border: Border.all(color: AppTheme.primary),
+          border: Border.all(color: AppTheme.yellow),
           borderRadius: BorderRadius.circular(20.r),
          
-          color: isSelected ? AppTheme.primary : AppTheme.grey,
+          color: isSelected ? AppTheme.yellow : AppTheme.gray,
         ),
         child: Image.asset(
           'assets/images/avatar$imageName.png',

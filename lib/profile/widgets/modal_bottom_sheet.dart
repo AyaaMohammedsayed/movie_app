@@ -32,7 +32,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
       margin:  EdgeInsets.only(left: 16.w, right: 16.w, bottom: 17.h),
       padding:  EdgeInsets.all(19.r),
       decoration: BoxDecoration(
-        color: AppTheme.grey,
+        color: AppTheme.gray,
         borderRadius: BorderRadius.circular(20),
       ),
       height: MediaQuery.of(context).size.height * 0.4.h,
