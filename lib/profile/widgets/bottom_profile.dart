@@ -22,7 +22,7 @@ class BottomProfile extends StatelessWidget {
         margin: EdgeInsets.all(10.r),
         padding: EdgeInsets.all(10.r),
         decoration: BoxDecoration(
-          border: Border.all(color: AppTheme.yellow),
+          border: Border.all(color: AppTheme.primary),
           borderRadius: BorderRadius.circular(20.r),
          
           color: isSelected ? AppTheme.yellow : AppTheme.gray,
