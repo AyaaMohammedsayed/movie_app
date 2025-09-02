@@ -11,20 +11,23 @@ class AppTheme {
   static const Color red = Color(0xffE82626);
   static ThemeData darkTheme = ThemeData(
     inputDecorationTheme: InputDecorationTheme(
+    
+      
       fillColor: grey,
       filled: true,
       hintStyle: TextStyle(
         fontSize: 16,
         color: white,
       ),
-      labelStyle: TextStyle(
-        fontSize: 20,
-        color: white,
-      ),
+     
       enabledBorder: OutlineInputBorder(
       
         borderRadius: BorderRadius.circular(16),
-      )
+      ),
+      focusedBorder: OutlineInputBorder(
+      
+        borderRadius: BorderRadius.circular(16),
+      ),
     ),
     scaffoldBackgroundColor: blackSecondary,
     textTheme: TextTheme(
