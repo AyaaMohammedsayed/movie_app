@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/onboarding/view/onboarding.dart';
+import 'package:movie_app/profile/update_profile.dart';
+import 'package:movie_app/shared/widgets/app_theme.dart';
 
 void main() {
   runApp(MovieApp());
@@ -13,10 +15,11 @@ class MovieApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        Onboarding.routeName:(_)=> Onboarding()
+        Onboarding.routeName:(_)=> Onboarding(),
+        UpdateProfile.routeName:(_)=>UpdateProfile()
       },
-      initialRoute: Onboarding.routeName,
-      darkTheme: ThemeData.dark(),
+      initialRoute: UpdateProfile.routeName,
+      darkTheme: AppTheme.darkTheme,
       themeMode:ThemeMode.dark,
 
 
