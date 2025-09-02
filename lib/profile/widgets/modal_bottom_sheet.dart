@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/profile/widgets/bottom_profile.dart';
-import 'package:movie_app/shared/widgets/app_theme.dart';
+import 'package:movie_app/core/app_theme.dart';
 
 class ModalBottomSheet extends StatefulWidget {
   final int selectedItem;
@@ -23,14 +23,14 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
   @override
   void initState() {
     super.initState();
-    currentSelected = widget.selectedItem; 
+    currentSelected = widget.selectedItem;
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:  EdgeInsets.only(left: 16.w, right: 16.w, bottom: 17.h),
-      padding:  EdgeInsets.all(19.r),
+      margin: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 17.h),
+      padding: EdgeInsets.all(19.r),
       decoration: BoxDecoration(
         color: AppTheme.grey,
         borderRadius: BorderRadius.circular(20),
@@ -50,7 +50,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
               setState(() {
                 currentSelected = index;
               });
-              widget.onSelect(currentImage, index); 
+              widget.onSelect(currentImage, index);
             },
           );
         },

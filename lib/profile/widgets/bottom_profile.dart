@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movie_app/shared/widgets/app_theme.dart';
+import 'package:movie_app/core/app_theme.dart';
 
 class BottomProfile extends StatelessWidget {
   int imageName;
@@ -15,7 +15,6 @@ class BottomProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -24,7 +23,7 @@ class BottomProfile extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(color: AppTheme.primary),
           borderRadius: BorderRadius.circular(20.r),
-         
+
           color: isSelected ? AppTheme.primary : AppTheme.grey,
         ),
         child: Image.asset(

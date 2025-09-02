@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/profile/widgets/modal_bottom_sheet.dart';
 
 import 'package:movie_app/profile/widgets/shared_button.dart';
-import 'package:movie_app/shared/widgets/app_theme.dart';
+import 'package:movie_app/core/app_theme.dart';
 
 class UpdateProfile extends StatefulWidget {
   static const String routeName = '/update_profile';
@@ -25,7 +25,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
     return Scaffold(
       appBar: AppBar(title: Text('Pick Avatar', style: textStyle.titleMedium)),
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 16.w, vertical: 37.h),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 37.h),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -103,10 +103,8 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 text: 'Update Data',
                 color: AppTheme.primary,
 
-                textColor: AppTheme.blackPrimary,
-                onPressed: () {
-                
-                },
+                textColor: AppTheme.black,
+                onPressed: () {},
               ),
             ],
           ),
