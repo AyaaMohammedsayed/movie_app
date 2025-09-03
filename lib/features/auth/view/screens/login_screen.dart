@@ -81,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {},
                       child: Text(
                         AppTexts.forgetPass,
-                        style: textTheme.titleSmall,
+                        style: textTheme.labelSmall,
                       ),
                     ),
                   ),
