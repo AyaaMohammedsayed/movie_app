@@ -9,7 +9,7 @@ import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/app_theme.dart';
 
 class LoginScreen extends StatefulWidget {
-  static const String routName = '/login_screen';
+  static const String routeName = '/login_screen';
 
   const LoginScreen({super.key});
   @override
@@ -143,7 +143,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         SvgPicture.asset(AppImages.googleIcon),
                         SizedBox(width: 5),
-                        Text(AppTexts.googleLogin, style: textTheme.labelSmall),
+                        Text(AppTexts.googleLogin, style: textTheme.labelSmall!.copyWith(
+                          color: AppTheme.black)),
                       ],
                     ),
                     onTap: () {},

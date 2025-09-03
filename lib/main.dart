@@ -22,10 +22,10 @@ class MovieApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           routes: {
             Onboarding.routeName: (_) => Onboarding(),
-            LoginScreen.routName: (_) => LoginScreen(),
+            LoginScreen.routeName: (_) => LoginScreen(),
             UpdateProfile.routeName: (_) => UpdateProfile(),
           },
-          initialRoute: LoginScreen.routName,
+          initialRoute: LoginScreen.routeName,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.dark,
