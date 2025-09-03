@@ -9,6 +9,10 @@ class AppTexts {
   static const createOne = 'Create One';
   static const or = 'Or';
   static const googleLogin = 'Login With Google';
+  static const deleteAccount = 'Delete Account';
+  static const updataAccount = 'Updata Data';
+  static const verifyEmail = 'Verify Email';
+  
 }
 
 class AppImages {

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:movie_app/core/constants/constants.dart';
+import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/profile/widgets/modal_bottom_sheet.dart';
-
-import 'package:movie_app/profile/widgets/shared_button.dart';
 import 'package:movie_app/core/app_theme.dart';
 
 class UpdateProfile extends StatefulWidget {
@@ -88,24 +87,14 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 child: Text(
                   'Reset Password',
 
-                  style: textStyle.titleSmall?.copyWith(color: AppTheme.white),
+                  style: textStyle.titleLarge,
                 ),
               ),
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.25.h),
-              SharedButton(
-                text: 'Delete Account',
-                color: AppTheme.red,
-                onPressed: () {},
-                textColor: AppTheme.white,
-              ),
-              SizedBox(height: 19.h),
-              SharedButton(
-                text: 'Update Data',
-                color: AppTheme.primary,
+              CustomElevatedButton(child: Text(AppTexts.deleteAccount),foregroundColor: AppTheme.white,onTap: (){},color: AppTheme.red,),
 
-                textColor: AppTheme.black,
-                onPressed: () {},
-              ),
+              SizedBox(height: 19.h),
+               CustomElevatedButton(child: Text(AppTexts.updataAccount),onTap: (){},),
             ],
           ),
         ),
