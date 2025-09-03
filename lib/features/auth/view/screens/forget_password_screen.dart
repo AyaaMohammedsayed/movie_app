@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/features/auth/view/widgets/default_elevated_buttom.dart';
+import 'package:movie_app/core/app_theme.dart';
+import 'package:movie_app/core/constants/constants.dart';
+import 'package:movie_app/core/utils/validator.dart';
+import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/features/auth/view/widgets/default_text_from_field.dart';
 
 class ForgetpasswordScreen extends StatelessWidget {
@@ -30,20 +33,15 @@ class ForgetpasswordScreen extends StatelessWidget {
                 controller: emailController,
                 prefixIconImageName: 'mail_icon',
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Email is required';
-                  }
-                  final emailRegex = RegExp(
-                    r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-                  );
-                  if (!emailRegex.hasMatch(value)) {
-                    return 'Enter a valid email';
-                  }
-                  return null;
+                  return Validator.emailValidator(value);
                 },
               ),
               SizedBox(height: 16),
-              DefaultElevatedButton(lable: 'Verify Email', onPressed: () {}),
+              CustomElevatedButton(
+                child: Text(AppTexts.verifyEmail),
+                onTap: () {},
+                
+              ),
             ],
           ),
         ),
