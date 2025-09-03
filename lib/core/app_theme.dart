@@ -71,11 +71,17 @@ class AppTheme {
         decorationColor: primary,
         decorationThickness: 2,
         fontStyle: FontStyle.italic,
+        fontSize: 16,
       ),
-      titleMedium: TextStyle(
+      titleLarge: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w400,
         color: white,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: primary,
       ),
     ),
   );
