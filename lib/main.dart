@@ -25,7 +25,7 @@ class MovieApp extends StatelessWidget {
             LoginScreen.routeName: (_) => LoginScreen(),
             UpdateProfile.routeName: (_) => UpdateProfile(),
           },
-          initialRoute: LoginScreen.routeName,
+          initialRoute: UpdateProfile.routeName,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.dark,
