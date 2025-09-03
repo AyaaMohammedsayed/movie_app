@@ -19,6 +19,16 @@ class AppTheme {
       foregroundColor: primary,
     ),
     scaffoldBackgroundColor: black,
+    appBarTheme: AppBarTheme(
+      backgroundColor: black,
+      foregroundColor: primary,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: primary,
+      ),
+    ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: grey,
@@ -52,6 +62,7 @@ class AppTheme {
         backgroundColor: AppTheme.primary,
         foregroundColor: AppTheme.grey,
         textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
     ),
     textTheme: TextTheme(
@@ -67,6 +78,17 @@ class AppTheme {
         decorationColor: primary,
         decorationThickness: 2,
         fontStyle: FontStyle.italic,
+        fontSize: 16,
+      ),
+      titleLarge: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+        color: white,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: primary,
       ),
     ),
   );
