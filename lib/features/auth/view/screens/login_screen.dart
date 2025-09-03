@@ -9,7 +9,7 @@ import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/app_theme.dart';
 
 class LoginScreen extends StatefulWidget {
-  static const String routName = '/login_screen';
+  static const String routeName = '/login_screen';
 
   const LoginScreen({super.key});
   @override
