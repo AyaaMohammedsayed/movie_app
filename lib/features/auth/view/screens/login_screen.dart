@@ -81,7 +81,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {},
                       child: Text(
                         AppTexts.forgetPass,
-                        style: textTheme.labelSmall,
+                        style: textTheme.titleMedium!.copyWith(
+                          decoration: TextDecoration.underline,
+                          decorationColor: AppTheme.primary,
+                          decorationThickness: 2,
+                          fontStyle: FontStyle.italic,
+                        ),
                       ),
                     ),
                   ),
@@ -143,8 +148,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         SvgPicture.asset(AppImages.googleIcon),
                         SizedBox(width: 5),
-                        Text(AppTexts.googleLogin, style: textTheme.labelSmall!.copyWith(
-                          color: AppTheme.black)),
+                        Text(
+                          AppTexts.googleLogin,
+                          style: textTheme.labelSmall!.copyWith(
+                            color: AppTheme.black,
+                          ),
+                        ),
                       ],
                     ),
                     onTap: () {},

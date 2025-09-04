@@ -65,14 +65,6 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         color: white,
       ),
-      labelSmall: TextStyle(
-        color: primary,
-        decoration: TextDecoration.underline,
-        decorationColor: primary,
-        decorationThickness: 2,
-        fontStyle: FontStyle.italic,
-        fontSize: 16,
-      ),
       titleLarge: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w400,
