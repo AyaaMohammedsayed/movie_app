@@ -12,7 +12,7 @@ class AppTexts {
   static const deleteAccount = 'Delete Account';
   static const updataAccount = 'Updata Data';
   static const verifyEmail = 'Verify Email';
-  
+  static const name = 'Name';
 }
 
 class AppImages {
@@ -20,6 +20,8 @@ class AppImages {
   static const _iconFolder = 'assets/icons';
 
   static const logoImage = '$_imgFolder/icon_app.png';
+  static const nameIage = '$_imgFolder/icon_app.png';
+
   static const mailIcon = '$_iconFolder/mail_icon.svg';
   static const passIcon = '$_iconFolder/password_icon.svg';
   static const googleIcon = '$_iconFolder/google_icon.svg';
