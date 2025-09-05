@@ -22,6 +22,13 @@ class AppTheme {
         color: primary,
       ),
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: grey,
+      type: BottomNavigationBarType.fixed,
+      showUnselectedLabels: false,
+      showSelectedLabels: false,
+      selectedItemColor: primary,
+    ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: grey,

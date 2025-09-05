@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
-import 'package:movie_app/features/profile/widgets/modal_bottom_sheet.dart';
+import 'package:movie_app/features/tabs/profile_tab/widgets/modal_bottom_sheet.dart';
 import 'package:movie_app/core/app_theme.dart';
 
 class UpdateProfile extends StatefulWidget {

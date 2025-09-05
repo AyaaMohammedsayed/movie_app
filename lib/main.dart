@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/features/auth/view/screens/forget_password_screen.dart';
 import 'package:movie_app/features/auth/view/screens/login_screen.dart';
+import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/onboarding/view/onboarding.dart';
-import 'package:movie_app/features/profile/presentation/update_profile.dart';
+import 'package:movie_app/features/tabs/profile_tab/presentation/update_profile.dart';
 import 'package:movie_app/core/app_theme.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.immersiveSticky,
+    overlays: [],
+  );
   runApp(MovieApp());
 }
 
@@ -26,8 +34,9 @@ class MovieApp extends StatelessWidget {
             LoginScreen.routeName: (_) => LoginScreen(),
             UpdateProfile.routeName: (_) => UpdateProfile(),
             ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
+            HomeScreen.routeName: (_) => HomeScreen(),
           },
-          initialRoute: LoginScreen.routeName,
+          initialRoute: HomeScreen.routeName,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.dark,
