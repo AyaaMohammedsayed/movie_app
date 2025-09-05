@@ -22,6 +22,13 @@ class AppTheme {
         color: primary,
       ),
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: grey,
+      type: BottomNavigationBarType.fixed,
+      showUnselectedLabels: false,
+      showSelectedLabels: false,
+      selectedItemColor: primary,
+    ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: grey,
@@ -64,14 +71,6 @@ class AppTheme {
         fontSize: 14,
         fontWeight: FontWeight.w400,
         color: white,
-      ),
-      labelSmall: TextStyle(
-        color: primary,
-        decoration: TextDecoration.underline,
-        decorationColor: primary,
-        decorationThickness: 2,
-        fontStyle: FontStyle.italic,
-        fontSize: 16,
       ),
       titleLarge: TextStyle(
         fontSize: 20,

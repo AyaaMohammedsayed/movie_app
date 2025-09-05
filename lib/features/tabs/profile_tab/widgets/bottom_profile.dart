@@ -3,11 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/app_theme.dart';
 
 class BottomProfile extends StatelessWidget {
-  int imageName;
-  bool isSelected;
-  void Function() onTap;
+  final int imageName;
+  final bool isSelected;
+  final void Function() onTap;
 
-  BottomProfile({
+  const BottomProfile({
+    super.key,
     required this.imageName,
     required this.isSelected,
     required this.onTap,

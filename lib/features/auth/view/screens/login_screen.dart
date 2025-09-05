@@ -7,6 +7,7 @@ import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
 import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/app_theme.dart';
+import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/login_screen';
@@ -26,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void onTap() {
     if (formKey.currentState!.validate()) {
       UiUtils.showSuccessMessage(AppTexts.loginSuccess);
-      // Navigator.of(context).pushNamed(HomeScreen.routName);
+      Navigator.of(context).pushNamed(HomeScreen.routeName);
     } else {
       UiUtils.showErrorMessage(AppTexts.loginFailed);
     }
@@ -81,7 +82,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {},
                       child: Text(
                         AppTexts.forgetPass,
-                        style: textTheme.labelSmall,
+                        style: textTheme.titleMedium!.copyWith(
+                          decoration: TextDecoration.underline,
+                          decorationColor: AppTheme.primary,
+                          decorationThickness: 2,
+                          fontStyle: FontStyle.italic,
+                        ),
                       ),
                     ),
                   ),
@@ -143,8 +149,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         SvgPicture.asset(AppImages.googleIcon),
                         SizedBox(width: 5),
-                        Text(AppTexts.googleLogin, style: textTheme.labelSmall!.copyWith(
-                          color: AppTheme.black)),
+                        Text(
+                          AppTexts.googleLogin,
+                          style: textTheme.labelSmall!.copyWith(
+                            color: AppTheme.black,
+                          ),
+                        ),
                       ],
                     ),
                     onTap: () {},
