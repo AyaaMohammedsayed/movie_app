@@ -14,6 +14,8 @@ class AppTexts {
   static const verifyEmail = 'Verify Email';
   static const pickAvatar = 'Pick Avatar';
   static const restPass = 'Reset Password';
+  static const action = 'Action';
+  static const seeMore = 'See More';
 }
 
 class AppImages {
@@ -26,6 +28,14 @@ class AppImages {
   static const forgetPassImg = '$_iconFolder/forgetPassword.png';
   static const userImage = '$_imgFolder/user.png';
   static const phoneImage = '$_imgFolder/phone.png';
+
+  static const availableNow = '$_imgFolder/available_now.png';
+  static const watchNow = '$_imgFolder/watch_now_text.png';
+
+  static List<String> movieImages = List.generate(
+    4,
+    (index) => '$_imgFolder/movie_${index + 1}.png',
+  );
 
   static const mailIcon = '$_iconFolder/mail_icon.svg';
   static const passIcon = '$_iconFolder/password_icon.svg';
