@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/core/constants/constants.dart';
+<<<<<<< HEAD
 import 'package:movie_app/core/widgets/movie_item.dart';
+=======
+import 'package:movie_app/features/tabs/home_tab/movie_item.dart';
+>>>>>>> 82000109266827ed480ee81a019e1879b1529ec9
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
