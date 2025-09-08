@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/widgets/movie_item.dart';
+import 'package:movie_app/l10n/app_localizations.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -18,6 +19,7 @@ class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
+    final appLocalizations = AppLocalizations.of(context)!;
     return Column(
       children: [
         Stack(
@@ -107,10 +109,10 @@ class _HomeTabState extends State<HomeTab> {
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Row(
                   children: [
-                    Text(AppTexts.action, style: textTheme.titleLarge),
+                    Text(appLocalizations.action, style: textTheme.titleLarge),
                     Spacer(),
                     Text(
-                      AppTexts.seeMore,
+                      appLocalizations.seeMore,
                       style: textTheme.titleMedium!.copyWith(
                         decoration: TextDecoration.underline,
                         decorationColor: AppTheme.primary,

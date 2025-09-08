@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/core/constants/constants.dart';
+import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
 import 'package:movie_app/core/utils/validator.dart';
-import 'package:movie_app/features/auth/view/widgets/custom_circle_avatar.dart';
+import 'package:movie_app/core/languages/view/change_language.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
 import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
+import 'package:movie_app/l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/login_screen';
@@ -18,19 +21,24 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool eg = true;
-  bool en = false;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  late AppLocalizations appLocalizations;
 
   void onTap() {
     if (formKey.currentState!.validate()) {
-      UiUtils.showSuccessMessage(AppTexts.loginSuccess);
+      UiUtils.showSuccessMessage(appLocalizations.loginSuccess);
       Navigator.of(context).pushNamed(HomeScreen.routeName);
     } else {
-      UiUtils.showErrorMessage(AppTexts.loginFailed);
+      UiUtils.showErrorMessage(appLocalizations.loginFailed);
     }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    appLocalizations = AppLocalizations.of(context)!;
   }
 
   @override
@@ -58,19 +66,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     fit: BoxFit.fill,
                   ),
                   CustomTextFormField(
-                    hintText: AppTexts.mailName,
+                    hintText: appLocalizations.mailName,
                     controller: emailController,
                     validator: (value) {
-                      return Validator.emailValidator(value);
+                      return Validator.validateEmail(value);
                     },
                     prefixIconName: AppImages.mailIcon,
                   ),
                   SizedBox(height: screenHeight * 0.04),
                   CustomTextFormField(
-                    hintText: AppTexts.passName,
+                    hintText: appLocalizations.passName,
                     controller: passwordController,
                     validator: (value) {
-                      return Validator.passwordValidator(value);
+                      return Validator.validatePassword(value);
                     },
                     prefixIconName: AppImages.passIcon,
                     isPassword: true,
@@ -81,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: TextButton(
                       onPressed: () {},
                       child: Text(
-                        AppTexts.forgetPass,
+                        appLocalizations.forgetPass,
                         style: textTheme.titleMedium!.copyWith(
                           decoration: TextDecoration.underline,
                           decorationColor: AppTheme.primary,
@@ -94,20 +102,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: screenHeight * 0.015),
                   CustomElevatedButton(
                     onTap: onTap,
-                    child: Text(AppTexts.login),
+                    child: Text(AppLocalizations.of(context)!.login),
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        AppTexts.dntHaveAccount,
+                        appLocalizations.dntHaveAccount,
                         style: textTheme.labelLarge,
                       ),
                       InkWell(
                         onTap: () {},
                         child: Text(
-                          AppTexts.createOne,
+                          appLocalizations.createOne,
                           style: textTheme.labelLarge!.copyWith(
                             color: AppTheme.primary,
                           ),
@@ -127,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       Text(
-                        AppTexts.or,
+                        appLocalizations.or,
                         style: textTheme.labelLarge!.copyWith(
                           color: AppTheme.primary,
                         ),
@@ -150,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SvgPicture.asset(AppImages.googleIcon),
                         SizedBox(width: 5),
                         Text(
-                          AppTexts.googleLogin,
+                          appLocalizations.googleLogin,
                           style: textTheme.labelSmall!.copyWith(
                             color: AppTheme.black,
                           ),
@@ -160,30 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onTap: () {},
                   ),
                   SizedBox(height: screenHeight * 0.02),
-                  Container(
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppTheme.primary),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CustomCircleAvatar(
-                          iconName: AppImages.enIcon,
-                          tappedValue: en,
-                          onTap: changeLanguage,
-                        ),
-                        SizedBox(width: 20),
-                        CustomCircleAvatar(
-                          iconName: AppImages.egIcon,
-                          tappedValue: eg,
-                          onTap: changeLanguage,
-                        ),
-                      ],
-                    ),
-                  ),
+                  ChangeLanguageWidget(context.watch<LanguagesViewModel>()),
                 ],
               ),
             ),
@@ -191,16 +176,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  }
-
-  void changeLanguage() {
-    if (eg) {
-      eg = false;
-      en = true;
-    } else if (en) {
-      en = false;
-      eg = true;
-    }
-    setState(() {});
   }
 }
