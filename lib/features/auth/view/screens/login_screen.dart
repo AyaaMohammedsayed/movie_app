@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/core/constants/constants.dart';
+<<<<<<< HEAD
 import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
+=======
+import 'package:movie_app/core/languages/view_model/settings_provider.dart';
+>>>>>>> 88daba2a7eca5ca477dad6c69e67ffc69aff99d1
 import 'package:movie_app/core/utils/validator.dart';
 import 'package:movie_app/core/languages/view/change_language.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
