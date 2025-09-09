@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/features/auth/view/screens/forget_password_screen.dart';
 import 'package:movie_app/features/auth/view/screens/login_screen.dart';
+import 'package:movie_app/features/auth/view/screens/register_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/onboarding/view/onboarding.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/update_profile.dart';
@@ -35,8 +36,9 @@ class MovieApp extends StatelessWidget {
             UpdateProfile.routeName: (_) => UpdateProfile(),
             ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
             HomeScreen.routeName: (_) => HomeScreen(),
+            RegisterScreen.routeName:(_)=>RegisterScreen(),
           },
-          initialRoute: HomeScreen.routeName,
+          initialRoute: RegisterScreen.routeName,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.dark,

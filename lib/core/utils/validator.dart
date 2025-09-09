@@ -19,4 +19,22 @@ class Validator {
     }
     return null;
   }
+
+  static String? nameValidator(String? text) {
+    if (text!.trim().isEmpty) return 'This Field is required';
+
+    if (text.length < 5) {
+      return 'Name must be greater than 5';
+    }
+    return null;
+  }  
+
+  static String? phoneValidator(String? text) {
+    if (text!.trim().isEmpty) return 'This Field is required';
+
+    if (text.length < 11) {
+      return 'phone Number must be 11 digits';
+    }
+    return null;
+  }  
 }

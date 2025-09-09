@@ -3,9 +3,13 @@ class AppTexts {
   static const loginFailed = 'Invalid Email or Password';
   static const mailName = 'E-mail';
   static const passName = 'Password';
+  static const nameName = 'Name';
+  static const confirmPassName = 'Confirm Password';
+  static const phoneName = 'Phone Number';
   static const forgetPass = 'Forget Password?';
   static const login = 'Login';
   static const dntHaveAccount = "Don't Have Account ?";
+  static const alreadyHaveAccount = "Already Have Account ?";
   static const createOne = 'Create One';
   static const or = 'Or';
   static const googleLogin = 'Login With Google';
@@ -14,6 +18,11 @@ class AppTexts {
   static const verifyEmail = 'Verify Email';
   static const pickAvatar = 'Pick Avatar';
   static const restPass = 'Reset Password';
+  static const registerSuccess = 'Create Account Successfully';
+  static const registerFailed = 'Create Account Failed';
+  static const register = 'Register';
+  static const createAccount = 'Create Account';
+
 }
 
 class AppImages {
@@ -30,6 +39,10 @@ class AppImages {
   static const mailIcon = '$_iconFolder/mail_icon.svg';
   static const passIcon = '$_iconFolder/password_icon.svg';
   static const googleIcon = '$_iconFolder/google_icon.svg';
+  static const nameIcon = '$_iconFolder/name_icon.svg';
+  static const phoneIcon = '$_iconFolder/phone.svg';
+  
+
 
   static List<String> selectedNavBarIcons = List.generate(
     4,
