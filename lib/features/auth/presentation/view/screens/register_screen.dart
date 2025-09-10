@@ -10,6 +10,8 @@ import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
 import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/app_theme.dart';
+import 'package:movie_app/features/auth/data/models/register_reguest.dart';
+import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:movie_app/features/auth/presentation/view/screens/login_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/tabs/profile_tab/widgets/modal_bottom_sheet.dart';
@@ -36,10 +38,18 @@ class _LoginScreenState extends State<RegisterScreen> {
 
   void onTap() {
     if (formKey.currentState!.validate()) {
-      UiUtils.showSuccessMessage(appLocalizations.requiredField);
+      BlocProvider.of<AuthCubit>(context).register(
+        RegisterReguest(
+          name: nameController.text,
+          email: emailController.text,
+          password: passwordController.text,
+          phone: phoneController.text,
+        ),
+      );
+      UiUtils.showSuccessMessage(appLocalizations.registerSuccess);
       Navigator.of(context).pushNamed(HomeScreen.routeName);
     } else {
-      UiUtils.showErrorMessage(appLocalizations.requiredField);
+      UiUtils.showErrorMessage(appLocalizations.registerFailed);
     }
   }
 

@@ -8,6 +8,8 @@ import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
 import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/app_theme.dart';
+import 'package:movie_app/features/auth/data/models/login_requeest.dart';
+import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:movie_app/features/auth/presentation/view/screens/register_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
@@ -29,6 +31,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void onTap() {
     if (formKey.currentState!.validate()) {
+      context.read<AuthCubit>().login(
+        LoginRequeest(
+          email: emailController.text,
+          password: passwordController.text,
+        ),
+      );
       UiUtils.showSuccessMessage(appLocalizations.loginSuccess);
       Navigator.of(context).pushNamed(HomeScreen.routeName);
     } else {
