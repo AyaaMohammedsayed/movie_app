@@ -10,7 +10,7 @@ import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
 import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/app_theme.dart';
-import 'package:movie_app/features/auth/view/screens/login_screen.dart';
+import 'package:movie_app/features/auth/presentation/view/screens/login_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/tabs/profile_tab/widgets/modal_bottom_sheet.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
