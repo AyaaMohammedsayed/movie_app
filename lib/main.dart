@@ -38,7 +38,7 @@ class MovieApp extends StatelessWidget {
             HomeScreen.routeName: (_) => HomeScreen(),
             RegisterScreen.routeName:(_)=>RegisterScreen(),
           },
-          initialRoute: RegisterScreen.routeName,
+          initialRoute: LoginScreen.routeName,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.dark,

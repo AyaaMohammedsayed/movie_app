@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:movie_app/core/constants/api_service.dart';
 import 'package:movie_app/core/constants/constants.dart';
+import 'package:movie_app/core/models/login_response.dart';
 import 'package:movie_app/core/utils/validator.dart';
+import 'package:movie_app/features/auth/view/screens/register_screen.dart';
 import 'package:movie_app/features/auth/view/widgets/custom_circle_avatar.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
@@ -23,15 +26,6 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  void onTap() {
-    if (formKey.currentState!.validate()) {
-      UiUtils.showSuccessMessage(AppTexts.loginSuccess);
-      Navigator.of(context).pushNamed(HomeScreen.routeName);
-    } else {
-      UiUtils.showErrorMessage(AppTexts.loginFailed);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +99,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: textTheme.labelLarge,
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(
+                            context,
+                          ).pushNamed(RegisterScreen.routeName);
+                        },
                         child: Text(
                           AppTexts.createOne,
                           style: textTheme.labelLarge!.copyWith(
@@ -193,14 +191,32 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void changeLanguage() {
-    if (eg) {
-      eg = false;
-      en = true;
-    } else if (en) {
-      en = false;
-      eg = true;
+  void onTap() async {
+    if (formKey.currentState!.validate()) {
+      LoginResponse loginResponse = await ApiService.login(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      if (loginResponse.data != null) {
+        UiUtils.showSuccessMessage(AppTexts.loginSuccess);
+        Navigator.of(context).pushNamed(HomeScreen.routeName);
+      } else {
+        UiUtils.showErrorMessage(loginResponse.message);
+      }
     }
-    setState(() {});
+  }
+
+  void loginWithGoogle() async {}
+
+  void changeLanguage() {
+    setState(() {
+      if (eg) {
+        eg = false;
+        en = true;
+      } else {
+        en = false;
+        eg = true;
+      }
+    });
   }
 }
