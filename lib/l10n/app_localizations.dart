@@ -229,6 +229,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'See More'**
   String get seeMore;
+
+  /// No description provided for @nameName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get nameName;
+
+  /// No description provided for @confirmPassName.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm password'**
+  String get confirmPassName;
+
+  /// No description provided for @phoneName.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phoneName;
+
+  /// No description provided for @createAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get createAccount;
+
+  /// No description provided for @alreadyHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already Have Account ?'**
+  String get alreadyHaveAccount;
+
+  /// No description provided for @register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register;
+
+  /// No description provided for @registerSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Register Success'**
+  String get registerSuccess;
+
+  /// No description provided for @registerFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Register Failed'**
+  String get registerFailed;
 }
 
 class _AppLocalizationsDelegate

@@ -20,5 +20,13 @@
     "pickAvatar":"التقط رمز تعبيرى",
     "restPass":"اعادة  تعيين كلمة المرور",
     "action":"أكشن",
-    "seeMore":"انظر للمزيد"
+    "seeMore":"انظر للمزيد",
+    "nameName":"الاسم",
+    "confirmPassName":"تأكيد كلمة المرور",
+    "phoneName":"رقم التلفون",
+    "createAccount":"إنشاء حساب",
+    "alreadyHaveAccount":"بالتأكيد لديك حساب ؟ ",
+    "register":"التسجيل",
+    "registerSuccess":" تم إنشاء الحساب بنجاح ",
+    "registerFailed":"فشل إنشاء الحساب"
 }

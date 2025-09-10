@@ -1,30 +1,3 @@
-class AppTexts {
-  static const loginSuccess = 'Login Successfully';
-  static const loginFailed = 'Invalid Email or Password';
-  static const mailName = 'E-mail';
-  static const passName = 'Password';
-  static const nameName = 'Name';
-  static const confirmPassName = 'Confirm Password';
-  static const phoneName = 'Phone Number';
-  static const forgetPass = 'Forget Password?';
-  static const login = 'Login';
-  static const dntHaveAccount = "Don't Have Account ?";
-  static const alreadyHaveAccount = "Already Have Account ?";
-  static const createOne = 'Create One';
-  static const or = 'Or';
-  static const googleLogin = 'Login With Google';
-  static const deleteAccount = 'Delete Account';
-  static const updataAccount = 'Updata Data';
-  static const verifyEmail = 'Verify Email';
-  static const pickAvatar = 'Pick Avatar';
-  static const restPass = 'Reset Password';
-  static const registerSuccess = 'Create Account Successfully';
-  static const registerFailed = 'Create Account Failed';
-  static const register = 'Register';
-  static const createAccount = 'Create Account';
-
-}
-
 class AppImages {
   static const _imgFolder = 'assets/images';
   static const _iconFolder = 'assets/icons';

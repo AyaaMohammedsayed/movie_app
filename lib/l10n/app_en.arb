@@ -20,5 +20,13 @@
     "pickAvatar":"Pick Avatar",
     "restPass":"Reset Password",
     "action":"Action",
-    "seeMore":"See More"
+    "seeMore":"See More",
+    "nameName":"Name",
+    "confirmPassName":"Confirm password",
+    "phoneName":"Phone Number",
+    "createAccount":"Create Account",
+    "alreadyHaveAccount":"Already Have Account ?",
+    "register":"Register",
+    "registerSuccess":"Register Success",
+    "registerFailed":"Register Failed"
 }

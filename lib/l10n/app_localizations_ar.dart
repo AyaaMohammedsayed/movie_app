@@ -73,4 +73,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get seeMore => 'انظر للمزيد';
+
+  @override
+  String get nameName => 'الاسم';
+
+  @override
+  String get confirmPassName => 'تأكيد كلمة المرور';
+
+  @override
+  String get phoneName => 'رقم التلفون';
+
+  @override
+  String get createAccount => 'إنشاء حساب';
+
+  @override
+  String get alreadyHaveAccount => 'بالتأكيد لديك حساب ؟ ';
+
+  @override
+  String get register => 'التسجيل';
+
+  @override
+  String get registerSuccess => ' تم إنشاء الحساب بنجاح ';
+
+  @override
+  String get registerFailed => 'فشل إنشاء الحساب';
 }
