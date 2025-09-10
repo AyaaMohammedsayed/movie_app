@@ -3,11 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/languages/view_model/language_state.dart';
-<<<<<<< HEAD
-import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
-=======
 import 'package:movie_app/core/languages/view_model/settings_provider.dart';
->>>>>>> 88daba2a7eca5ca477dad6c69e67ffc69aff99d1
 import 'package:movie_app/core/utils/localize_app_localization.dart';
 import 'package:movie_app/features/auth/view/screens/forget_password_screen.dart';
 import 'package:movie_app/features/auth/view/screens/login_screen.dart';
@@ -70,6 +66,7 @@ class _MovieAppState extends State<MovieApp> {
                   UpdateProfile.routeName: (_) => UpdateProfile(),
                   ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
                   HomeScreen.routeName: (_) => HomeScreen(),
+                  RegisterScreen.routeName: (_)=> RegisterScreen(),
                 },
                 initialRoute: LoginScreen.routeName,
                 theme: AppTheme.lightTheme,

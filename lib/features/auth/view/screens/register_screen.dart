@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/core/constants/constants.dart';
+import 'package:movie_app/core/languages/view/change_language.dart';
+import 'package:movie_app/core/languages/view_model/language_state.dart';
+import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
 import 'package:movie_app/core/utils/validator.dart';
-import 'package:movie_app/features/auth/view/widgets/custom_circle_avatar.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
 import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/app_theme.dart';
+import 'package:movie_app/features/auth/view/screens/login_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/tabs/profile_tab/widgets/modal_bottom_sheet.dart';
+import 'package:movie_app/l10n/app_localizations.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String routeName = '/register_screen';
+  const RegisterScreen({super.key});
 
   @override
   State<RegisterScreen> createState() => _LoginScreenState();
@@ -27,15 +32,23 @@ class _LoginScreenState extends State<RegisterScreen> {
   TextEditingController comfirmPasswordController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  late AppLocalizations appLocalizations;
 
   void onTap() {
     if (formKey.currentState!.validate()) {
-      UiUtils.showSuccessMessage(AppTexts.registerSuccess);
+      UiUtils.showSuccessMessage(appLocalizations.requiredField);
       Navigator.of(context).pushNamed(HomeScreen.routeName);
     } else {
-      UiUtils.showErrorMessage(AppTexts.registerFailed);
+      UiUtils.showErrorMessage(appLocalizations.requiredField);
     }
   }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    appLocalizations = AppLocalizations.of(context)!;
+  }
+
   int profile = 1;
   int selectedItem = -1;
 
@@ -46,7 +59,7 @@ class _LoginScreenState extends State<RegisterScreen> {
     TextTheme textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      appBar: AppBar(title: Text(AppTexts.register)),
+      appBar: AppBar(title: Text(appLocalizations.register)),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -57,35 +70,35 @@ class _LoginScreenState extends State<RegisterScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                 InkWell(
-                onTap: () {
-                  showModalBottomSheet(
-                    context: context,
-                    backgroundColor: Colors.transparent,
-                    builder: (context) {
-                      return ModalBottomSheet(
-                        selectedItem: selectedItem,
-                        onSelect: (newProfile, newIndex) {
-                          setState(() {
-                            profile = newProfile;
-                            selectedItem = newIndex;
-                          });
+                  InkWell(
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        backgroundColor: Colors.transparent,
+                        builder: (context) {
+                          return ModalBottomSheet(
+                            selectedItem: selectedItem,
+                            onSelect: (newProfile, newIndex) {
+                              setState(() {
+                                profile = newProfile;
+                                selectedItem = newIndex;
+                              });
+                            },
+                          );
                         },
                       );
                     },
-                  );
-                },
-                child: Image.asset(
-                  'assets/images/avatar$profile.png',
-                  width: 150.w,
-                  height: 150.h,
-                  fit: BoxFit.fill,
-                  alignment: Alignment.center,
-                ),
-              ),
-              SizedBox(height: 16,),
+                    child: Image.asset(
+                      'assets/images/avatar$profile.png',
+                      width: 150.w,
+                      height: 150.h,
+                      fit: BoxFit.fill,
+                      alignment: Alignment.center,
+                    ),
+                  ),
+                  SizedBox(height: 16),
                   CustomTextFormField(
-                    hintText: AppTexts.nameName,
+                    hintText: appLocalizations.nameName,
                     controller: nameController,
                     validator: (value) {
                       return Validator.nameValidator(value);
@@ -94,36 +107,39 @@ class _LoginScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   CustomTextFormField(
-                    hintText: AppTexts.mailName,
+                    hintText: appLocalizations.mailName,
                     controller: emailController,
                     validator: (value) {
-                      return Validator.emailValidator(value);
+                      return Validator.validateEmail(value);
                     },
                     prefixIconName: AppImages.mailIcon,
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   CustomTextFormField(
-                    hintText: AppTexts.passName,
+                    hintText: appLocalizations.passName,
                     controller: passwordController,
                     validator: (value) {
-                      return Validator.passwordValidator(value);
-                    },
-                    prefixIconName: AppImages.passIcon,
-                    isPassword: true,
-                  ),
-                  SizedBox(height: screenHeight * 0.03),
-                   CustomTextFormField(
-                    hintText: AppTexts.confirmPassName,
-                    controller: comfirmPasswordController,
-                    validator: (value) {
-                      return Validator.passwordValidator(value);
+                      return Validator.validatePassword(value);
                     },
                     prefixIconName: AppImages.passIcon,
                     isPassword: true,
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   CustomTextFormField(
-                    hintText: AppTexts.phoneName,
+                    hintText: appLocalizations.confirmPassName,
+                    controller: comfirmPasswordController,
+                    validator: (value) {
+                      return Validator.validateConfirmPassword(
+                        value,
+                        passwordController.text,
+                      );
+                    },
+                    prefixIconName: AppImages.passIcon,
+                    isPassword: true,
+                  ),
+                  SizedBox(height: screenHeight * 0.03),
+                  CustomTextFormField(
+                    hintText: appLocalizations.phoneName,
                     controller: phoneController,
                     validator: (value) {
                       return Validator.phoneValidator(value);
@@ -133,20 +149,24 @@ class _LoginScreenState extends State<RegisterScreen> {
                   SizedBox(height: screenHeight * 0.03),
                   CustomElevatedButton(
                     onTap: onTap,
-                    child: Text(AppTexts.createAccount),
+                    child: Text(appLocalizations.createAccount),
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        AppTexts.alreadyHaveAccount,
+                        appLocalizations.alreadyHaveAccount,
                         style: textTheme.labelLarge,
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(
+                            context,
+                          ).pushNamed(LoginScreen.routeName);
+                        },
                         child: Text(
-                          AppTexts.login,
+                          appLocalizations.login,
                           style: textTheme.labelLarge!.copyWith(
                             color: AppTheme.primary,
                           ),
@@ -155,30 +175,7 @@ class _LoginScreenState extends State<RegisterScreen> {
                     ],
                   ),
                   SizedBox(height: screenHeight * 0.02),
-                  Container(
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppTheme.primary),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CustomCircleAvatar(
-                          iconName: AppImages.enIcon,
-                          tappedValue: en,
-                          onTap: changeLanguage,
-                        ),
-                        SizedBox(width: 20),
-                        CustomCircleAvatar(
-                          iconName: AppImages.egIcon,
-                          tappedValue: eg,
-                          onTap: changeLanguage,
-                        ),
-                      ],
-                    ),
-                  ),
+                  ChangeLanguageWidget(context.watch()),
                 ],
               ),
             ),
