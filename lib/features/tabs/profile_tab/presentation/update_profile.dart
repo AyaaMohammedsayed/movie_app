@@ -4,6 +4,7 @@ import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/features/tabs/profile_tab/widgets/modal_bottom_sheet.dart';
 import 'package:movie_app/core/app_theme.dart';
+import 'package:movie_app/l10n/app_localizations.dart';
 
 class UpdateProfile extends StatefulWidget {
   static const String routeName = '/update_profile';
@@ -21,9 +22,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
   @override
   Widget build(BuildContext context) {
     TextTheme textStyle = Theme.of(context).textTheme;
+    final appLocalizations = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppTexts.pickAvatar, style: textStyle.titleMedium),
+        title: Text(appLocalizations.pickAvatar, style: textStyle.titleMedium),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 37.h),
@@ -86,18 +89,21 @@ class _UpdateProfileState extends State<UpdateProfile> {
               SizedBox(height: 30.h),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(AppTexts.restPass, style: textStyle.titleLarge),
+                child: Text(
+                  appLocalizations.restPass,
+                  style: textStyle.titleLarge,
+                ),
               ),
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.25.h),
               CustomElevatedButton(
                 foregroundColor: AppTheme.white,
                 onTap: () {},
                 color: AppTheme.red,
-                child: Text(AppTexts.deleteAccount),
+                child: Text(appLocalizations.deleteAccount),
               ),
               SizedBox(height: 19.h),
               CustomElevatedButton(
-                child: Text(AppTexts.updataAccount),
+                child: Text(appLocalizations.updataAccount),
                 onTap: () {},
               ),
             ],

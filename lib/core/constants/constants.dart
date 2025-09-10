@@ -32,9 +32,17 @@ class AppImages {
   static const logoImage = '$_imgFolder/icon_app.png';
   static const enIcon = '$_iconFolder/en_icon.png';
   static const egIcon = '$_iconFolder/eg_icon.png';
-  static const forgetPassImg = '$_iconFolder/forgetPassword.png';
+  static const forgetPassImg = '$_imgFolder/forgetPassword.png';
   static const userImage = '$_imgFolder/user.png';
   static const phoneImage = '$_imgFolder/phone.png';
+
+  static const availableNow = '$_imgFolder/available_now.png';
+  static const watchNow = '$_imgFolder/watch_now_text.png';
+
+  static List<String> movieImages = List.generate(
+    4,
+    (index) => '$_imgFolder/movie_${index + 1}.png',
+  );
 
   static const mailIcon = '$_iconFolder/mail_icon.svg';
   static const passIcon = '$_iconFolder/password_icon.svg';
