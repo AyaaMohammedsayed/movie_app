@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/languages/view_model/language_state.dart';
 import 'package:movie_app/core/languages/view_model/settings_provider.dart';
 import 'package:movie_app/core/utils/localize_app_localization.dart';
+import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:movie_app/features/auth/presentation/view/screens/forget_password_screen.dart';
 import 'package:movie_app/features/auth/presentation/view/screens/login_screen.dart';
 import 'package:movie_app/features/auth/presentation/view/screens/register_screen.dart';
@@ -58,28 +59,33 @@ class _MovieAppState extends State<MovieApp> {
             designSize: Size(430, 932),
             minTextAdapt: true,
             builder: (context, child) {
-              return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                routes: {
-                  Onboarding.routeName: (_) => Onboarding(),
-                  LoginScreen.routeName: (_) => LoginScreen(),
-                  UpdateProfile.routeName: (_) => UpdateProfile(),
-                  ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
-                  HomeScreen.routeName: (_) => HomeScreen(),
-                  RegisterScreen.routeName: (_)=> RegisterScreen(),
-                },
-                initialRoute: LoginScreen.routeName,
-                theme: AppTheme.lightTheme,
-                darkTheme: AppTheme.darkTheme,
-                themeMode: ThemeMode.dark,
-                onGenerateTitle: (context) {
-                  AppDependencies().localizations =
-                      AppLocalizations.of(context)!;
-                  return AppDependencies().localizations.login;
-                },
-                localizationsDelegates: AppLocalizations.localizationsDelegates,
-                supportedLocales: AppLocalizations.supportedLocales,
-                locale: Locale(state.languageCode),
+              return BlocProvider(
+                create: (context) => AuthCubit(),
+                child: MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  routes: {
+                    Onboarding.routeName: (_) => Onboarding(),
+                    LoginScreen.routeName: (_) => LoginScreen(),
+                    UpdateProfile.routeName: (_) => UpdateProfile(),
+                    ForgetPasswordScreen.routeName:
+                        (_) => ForgetPasswordScreen(),
+                    HomeScreen.routeName: (_) => HomeScreen(),
+                    RegisterScreen.routeName: (_) => RegisterScreen(),
+                  },
+                  initialRoute: LoginScreen.routeName,
+                  theme: AppTheme.lightTheme,
+                  darkTheme: AppTheme.darkTheme,
+                  themeMode: ThemeMode.dark,
+                  onGenerateTitle: (context) {
+                    AppDependencies().localizations =
+                        AppLocalizations.of(context)!;
+                    return AppDependencies().localizations.login;
+                  },
+                  localizationsDelegates:
+                      AppLocalizations.localizationsDelegates,
+                  supportedLocales: AppLocalizations.supportedLocales,
+                  locale: Locale(state.languageCode),
+                ),
               );
             },
           );
