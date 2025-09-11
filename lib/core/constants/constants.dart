@@ -1,3 +1,6 @@
+
+
+
 class AppImages {
   static const _imgFolder = 'assets/images';
   static const _iconFolder = 'assets/icons';
@@ -20,6 +23,10 @@ class AppImages {
   static const mailIcon = '$_iconFolder/mail_icon.svg';
   static const passIcon = '$_iconFolder/password_icon.svg';
   static const googleIcon = '$_iconFolder/google_icon.svg';
+  static const nameIcon = '$_iconFolder/name_icon.svg';
+  static const phoneIcon = '$_iconFolder/phone.svg';
+  
+
 
   static List<String> selectedNavBarIcons = List.generate(
     4,
