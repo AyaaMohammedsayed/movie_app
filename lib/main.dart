@@ -3,11 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/languages/view_model/language_state.dart';
-<<<<<<< HEAD
 import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
-=======
-import 'package:movie_app/core/languages/view_model/settings_provider.dart';
->>>>>>> 88daba2a7eca5ca477dad6c69e67ffc69aff99d1
 import 'package:movie_app/core/utils/localize_app_localization.dart';
 import 'package:movie_app/features/auth/view/screens/forget_password_screen.dart';
 import 'package:movie_app/features/auth/view/screens/login_screen.dart';
@@ -46,10 +42,8 @@ class _MovieAppState extends State<MovieApp> {
       builder: (_, state) {
         if (state is LanguageLoading) {
           return const Directionality(
-            textDirection: TextDirection.ltr, // Provide a directionality
-            child: Center(
-              child: CircularProgressIndicator(),
-            ), // Wrap in a center widget
+            textDirection: TextDirection.ltr,
+            child: Center(child: CircularProgressIndicator()),
           );
         } else if (state is LanguageError) {
           return Directionality(
@@ -88,7 +82,7 @@ class _MovieAppState extends State<MovieApp> {
         } else {
           return const Directionality(
             textDirection: TextDirection.ltr,
-            child: Text('Initial State'), // Fallback widget with directionality
+            child: Text('Initial State'),
           );
         }
       },

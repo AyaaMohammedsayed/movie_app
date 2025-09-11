@@ -8,10 +8,10 @@ class ModalBottomSheet extends StatefulWidget {
   final Function(int profile, int index) onSelect;
 
   const ModalBottomSheet({
-    Key? key,
+    super.key,
     required this.selectedItem,
     required this.onSelect,
-  }) : super(key: key);
+  });
 
   @override
   State<ModalBottomSheet> createState() => _ModalBottomSheetState();

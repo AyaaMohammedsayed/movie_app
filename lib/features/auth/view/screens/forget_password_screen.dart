@@ -8,6 +8,8 @@ import 'package:movie_app/l10n/app_localizations.dart';
 class ForgetPasswordScreen extends StatelessWidget {
   static const String routeName = '/forgetPassword';
 
+  const ForgetPasswordScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();

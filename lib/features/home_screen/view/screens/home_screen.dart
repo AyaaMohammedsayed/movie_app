@@ -10,6 +10,8 @@ import 'package:movie_app/features/tabs/search_tab/search_tab.dart';
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home_screen';
 
+  const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
