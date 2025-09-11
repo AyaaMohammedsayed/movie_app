@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/widgets/nav_bar_icon.dart';
 import 'package:movie_app/features/tabs/browse_tab/browse_tab.dart';
@@ -39,10 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
+      extendBodyBehindAppBar: true,
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(
-          8.0,
-        ).copyWith(bottom: MediaQuery.sizeOf(context).height * 0.05),
+        padding: const EdgeInsets.all(8.0).copyWith(bottom: 19.h),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30),
           child: Theme(
@@ -52,20 +52,21 @@ class _HomeScreenState extends State<HomeScreen> {
             child: BottomNavigationBar(
               currentIndex: _selectedIndex,
               onTap: _onIconTapped,
-              items: [
-                ...AppImages.selectedNavBarIcons.map(
-                  (item) => BottomNavigationBarItem(
-                    icon: NavBarIcon(
-                      imageName:
-                          AppImages.unSelectedNavBarIcons[AppImages
-                              .selectedNavBarIcons
-                              .indexOf(item)],
-                    ),
-                    activeIcon: NavBarIcon(imageName: item),
-                    label: '',
-                  ),
-                ),
-              ],
+              items:
+                  AppImages.selectedNavBarIcons
+                      .map(
+                        (item) => BottomNavigationBarItem(
+                          icon: NavBarIcon(
+                            imageName:
+                                AppImages.unSelectedNavBarIcons[AppImages
+                                    .selectedNavBarIcons
+                                    .indexOf(item)],
+                          ),
+                          activeIcon: NavBarIcon(imageName: item),
+                          label: '',
+                        ),
+                      )
+                      .toList(),
             ),
           ),
         ),

@@ -3,6 +3,7 @@ import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/utils/validator.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
+import 'package:movie_app/l10n/app_localizations.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   static const String routeName = '/forgetPassword';
@@ -10,10 +11,11 @@ class ForgetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
+    final appLocalizations = AppLocalizations.of(context)!;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(title: Text(AppTexts.forgetPass)),
+      appBar: AppBar(title: Text(appLocalizations.forgetPass)),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
@@ -28,16 +30,16 @@ class ForgetPasswordScreen extends StatelessWidget {
               ),
               SizedBox(height: 16),
               CustomTextFormField(
-                hintText: AppTexts.mailName,
+                hintText: appLocalizations.mailName,
                 controller: emailController,
                 prefixIconName: AppImages.mailIcon,
                 validator: (value) {
-                  return Validator.emailValidator(value);
+                  return Validator.validateEmail(value);
                 },
               ),
               SizedBox(height: 16),
               CustomElevatedButton(
-                child: Text(AppTexts.verifyEmail),
+                child: Text(appLocalizations.verifyEmail),
                 onTap: () {},
               ),
             ],
