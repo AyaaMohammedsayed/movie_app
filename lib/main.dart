@@ -3,13 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/languages/view_model/language_state.dart';
-<<<<<<< HEAD
-
 import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
-
-=======
-import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
->>>>>>> origin/feature/details-screen
 import 'package:movie_app/core/utils/localize_app_localization.dart';
 import 'package:movie_app/features/auth/view/screens/forget_password_screen.dart';
 import 'package:movie_app/features/auth/view/screens/login_screen.dart';
@@ -45,7 +39,6 @@ class MovieApp extends StatefulWidget {
 class _MovieAppState extends State<MovieApp> {
   @override
   Widget build(BuildContext context) {
-
     return BlocBuilder<LanguagesViewModel, LanguageState>(
       builder: (_, state) {
         if (state is LanguageLoading) {
@@ -68,6 +61,7 @@ class _MovieAppState extends State<MovieApp> {
                 routes: {
                   Onboarding.routeName: (_) => Onboarding(),
                   LoginScreen.routeName: (_) => LoginScreen(),
+                  RegisterScreen.routeName: (_) => RegisterScreen(),
                   UpdateProfile.routeName: (_) => UpdateProfile(),
                   ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
                   HomeScreen.routeName: (_) => HomeScreen(),
@@ -93,7 +87,6 @@ class _MovieAppState extends State<MovieApp> {
             child: Text('Initial State'),
           );
         }
-
       },
     );
   }
