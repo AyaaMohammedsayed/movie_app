@@ -12,10 +12,25 @@ class AppLocalizationsAr extends AppLocalizations {
   String get login => 'تسجيل الدخول';
 
   @override
+  String get register => 'إنشاء حساب';
+
+  @override
+  String get userName => 'الاسم';
+
+  @override
+  String get phoneName => 'رقم التليفون';
+
+  @override
   String get loginSuccess => 'تم تسجيل الدخول بنجاح';
 
   @override
+  String get registerSuccess => 'تم إنشاء حساب بنجاح';
+
+  @override
   String get loginFailed => 'بريد الكترونى أو كلمة مرور غير صحيحة';
+
+  @override
+  String get registerFailed => 'تسجيل دخول غير صحيح';
 
   @override
   String get enterValidEmail => 'ادخل بريد الكترونى صحيح';
@@ -43,6 +58,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get dntHaveAccount => 'ليس لديك حساب ؟';
+
+  @override
+  String get alreadyHaveOne => 'بالفعل لديك حساب ؟';
 
   @override
   String get createOne => 'إنشاء حساب';
