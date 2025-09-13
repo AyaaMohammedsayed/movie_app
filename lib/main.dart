@@ -5,9 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/languages/view_model/language_state.dart';
 import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
 import 'package:movie_app/core/utils/localize_app_localization.dart';
-import 'package:movie_app/features/auth/view/screens/forget_password_screen.dart';
-import 'package:movie_app/features/auth/view/screens/login_screen.dart';
-import 'package:movie_app/features/auth/view/screens/register_screen.dart';
+import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:movie_app/features/auth/presentation/screens/forget_password_screen.dart';
+import 'package:movie_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:movie_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/onboarding/view/onboarding.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/update_profile.dart';
@@ -22,8 +23,11 @@ void main() {
     overlays: [],
   );
   runApp(
-    BlocProvider(
-      create: (_) => LanguagesViewModel()..changeLanguage("en"),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => LanguagesViewModel()..changeLanguage("en")),
+        BlocProvider(create: (_) => AuthCubit()),
+      ],
       child: MovieApp(),
     ),
   );
