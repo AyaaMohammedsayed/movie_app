@@ -10,12 +10,17 @@ import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
 import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/app_theme.dart';
-import 'package:movie_app/features/auth/view/screens/login_screen.dart';
+import 'package:movie_app/features/auth/data/model/register_request.dart';
+import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:movie_app/features/auth/presentation/cubit/states.dart';
+import 'package:movie_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String routeName = '/register_screen';
+
+  const RegisterScreen({super.key});
 
   @override
   State<RegisterScreen> createState() => _LoginScreenState();
@@ -30,15 +35,6 @@ class _LoginScreenState extends State<RegisterScreen> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late AppLocalizations appLocalizations;
   int currentIndex = 0;
-
-  void onTap() {
-    if (formKey.currentState!.validate()) {
-      UiUtils.showSuccessMessage(appLocalizations.registerSuccess);
-      Navigator.of(context).pushNamed(HomeScreen.routeName);
-    } else {
-      UiUtils.showErrorMessage(appLocalizations.requiredField);
-    }
-  }
 
   @override
   void didChangeDependencies() {
@@ -80,7 +76,6 @@ class _LoginScreenState extends State<RegisterScreen> {
                     itemBuilder: (_, index, _) {
                       return Image.asset(
                         AppImages.avatarList[index],
-
                         fit: BoxFit.fill,
                       );
                     },
@@ -142,9 +137,38 @@ class _LoginScreenState extends State<RegisterScreen> {
                     prefixIconName: AppImages.phoneIcon,
                   ),
                   SizedBox(height: 20.h),
-                  CustomElevatedButton(
-                    onTap: onTap,
-                    child: Text(appLocalizations.register),
+                  BlocListener<AuthCubit, AuthState>(
+                    listener: (context, state) {
+                      if (state is RegisterLoading) {
+                        UiUtils.showLoading(context);
+                      } else if (state is RegisterSuccess) {
+                        UiUtils.hideLoading(context);
+                        UiUtils.showSuccessMessage(
+                          state.registerResponse.message,
+                        );
+                        Navigator.of(context).pushNamed(HomeScreen.routeName);
+                      } else if (state is RegisterError) {
+                        UiUtils.hideLoading(context);
+                        UiUtils.showErrorMessage(state.message);
+                      }
+                    },
+                    child: CustomElevatedButton(
+                      onTap: () {
+                        if (formKey.currentState!.validate()) {
+                          context.read<AuthCubit>().register(
+                            RegisterRequest(
+                              name: nameController.text,
+                              email: emailController.text,
+                              password: passwordController.text,
+                              confirmPass: confirmPasswordController.text,
+                              phone: phoneController.text,
+                              avatarId: currentIndex,
+                            ),
+                          );
+                        }
+                      },
+                      child: Text(appLocalizations.register),
+                    ),
                   ),
                   SizedBox(height: 20.h),
                   Row(
