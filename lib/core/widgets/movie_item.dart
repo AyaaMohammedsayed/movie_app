@@ -5,24 +5,22 @@ import 'package:movie_app/core/app_theme.dart';
 class MovieItem extends StatelessWidget {
   final String imgName;
   final double rating;
-  final bool isCategories;
+  final double width;
+  final double height;
+
   const MovieItem({
     super.key,
     required this.imgName,
     required this.rating,
-    this.isCategories = false,
+    required this.height,
+    required this.width,
   });
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(
-          imgName,
-          width: isCategories ? 146.w : 234.w,
-          height: isCategories ? 220.h : 351.h,
-          fit: BoxFit.fill,
-        ),
+        Image.asset(imgName, width: width, height: height, fit: BoxFit.fill),
         Container(
           margin: EdgeInsets.all(10),
           padding: EdgeInsets.symmetric(horizontal: 4),
