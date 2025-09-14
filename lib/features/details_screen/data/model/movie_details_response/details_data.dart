@@ -1,7 +1,7 @@
-import 'movie.dart';
+import 'movie_details.dart';
 
 class DetailsData {
-  Movie? movie;
+  MovieDetailsList? movie;
 
   DetailsData({this.movie});
 
@@ -9,6 +9,6 @@ class DetailsData {
     movie:
         json['movie'] == null
             ? null
-            : Movie.fromJson(json['movie'] as Map<String, dynamic>),
+            : MovieDetailsList.fromJson(json['movie'] as Map<String, dynamic>),
   );
 }
