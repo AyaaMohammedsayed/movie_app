@@ -1,3 +1,6 @@
+
+
+
 class AppImages {
   static const _imgFolder = 'assets/images';
   static const _iconFolder = 'assets/icons';

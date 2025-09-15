@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/languages/view_model/language_state.dart';
-import 'package:movie_app/core/languages/view_model/settings_provider.dart';
+
+import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
+
 import 'package:movie_app/core/utils/localize_app_localization.dart';
 import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:movie_app/features/auth/presentation/view/screens/forget_password_screen.dart';
@@ -40,6 +42,7 @@ class MovieApp extends StatefulWidget {
 class _MovieAppState extends State<MovieApp> {
   @override
   Widget build(BuildContext context) {
+
     return BlocBuilder<LanguagesViewModel, LanguageState>(
       builder: (_, state) {
         if (state is LanguageLoading) {
@@ -95,6 +98,7 @@ class _MovieAppState extends State<MovieApp> {
             child: Text('Initial State'), // Fallback widget with directionality
           );
         }
+
       },
     );
   }
