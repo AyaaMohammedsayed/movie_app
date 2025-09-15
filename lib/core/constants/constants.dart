@@ -36,4 +36,7 @@ class AppImages {
     4,
     (index) => '$_iconFolder/un_selected_${index + 1}.svg',
   );
+
+  static const String placeholderErrorImage =
+      "https://www.centerforempathy.org/wp-content/uploads/2019/11/placeholder.png";
 }
