@@ -9,7 +9,6 @@ class SearchLoading extends SearchState {}
 class SearchSuccess extends SearchState {
   final List<Movie>? movies;
   SearchSuccess(this.movies);
-  @override
   List<Object?> get props => [movies];
 }
 
