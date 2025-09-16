@@ -13,11 +13,7 @@ class AppTheme {
 
   //app theme
   static ThemeData darkTheme = ThemeData(
-        appBarTheme: AppBarTheme(
-      color: blackSecondary,
-      centerTitle: true,
-      foregroundColor: primary,
-    ),
+
     scaffoldBackgroundColor: black,
     appBarTheme: AppBarTheme(
       backgroundColor: black,
