@@ -9,6 +9,8 @@ import 'package:movie_app/l10n/app_localizations.dart';
 class UpdateProfile extends StatefulWidget {
   static const String routeName = '/update_profile';
 
+  const UpdateProfile({super.key});
+
   @override
   State<UpdateProfile> createState() => _UpdateProfileState();
 }

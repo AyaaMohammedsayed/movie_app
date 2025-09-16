@@ -3,13 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/languages/view_model/language_state.dart';
-
 import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
-
 import 'package:movie_app/core/utils/localize_app_localization.dart';
-import 'package:movie_app/features/auth/view/screens/forget_password_screen.dart';
-import 'package:movie_app/features/auth/view/screens/login_screen.dart';
-import 'package:movie_app/features/auth/view/screens/register_screen.dart';
+import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:movie_app/features/auth/presentation/screens/forget_password_screen.dart';
+import 'package:movie_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:movie_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/onboarding/view/onboarding.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/update_profile.dart';
@@ -24,8 +23,11 @@ void main() {
     overlays: [],
   );
   runApp(
-    BlocProvider(
-      create: (_) => LanguagesViewModel()..changeLanguage("en"),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => LanguagesViewModel()..changeLanguage("en")),
+        BlocProvider(create: (_) => AuthCubit()),
+      ],
       child: MovieApp(),
     ),
   );
@@ -41,15 +43,12 @@ class MovieApp extends StatefulWidget {
 class _MovieAppState extends State<MovieApp> {
   @override
   Widget build(BuildContext context) {
-
     return BlocBuilder<LanguagesViewModel, LanguageState>(
       builder: (_, state) {
         if (state is LanguageLoading) {
           return const Directionality(
-            textDirection: TextDirection.ltr, // Provide a directionality
-            child: Center(
-              child: CircularProgressIndicator(),
-            ), // Wrap in a center widget
+            textDirection: TextDirection.ltr,
+            child: Center(child: CircularProgressIndicator()),
           );
         } else if (state is LanguageError) {
           return Directionality(
@@ -66,6 +65,7 @@ class _MovieAppState extends State<MovieApp> {
                 routes: {
                   Onboarding.routeName: (_) => Onboarding(),
                   LoginScreen.routeName: (_) => LoginScreen(),
+                  RegisterScreen.routeName: (_) => RegisterScreen(),
                   UpdateProfile.routeName: (_) => UpdateProfile(),
                   ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
                   HomeScreen.routeName: (_) => HomeScreen(),
@@ -88,10 +88,9 @@ class _MovieAppState extends State<MovieApp> {
         } else {
           return const Directionality(
             textDirection: TextDirection.ltr,
-            child: Text('Initial State'), // Fallback widget with directionality
+            child: Text('Initial State'),
           );
         }
-
       },
     );
   }
