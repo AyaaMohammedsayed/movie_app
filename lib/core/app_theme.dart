@@ -77,6 +77,16 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         color: white,
       ),
+      labelSmall: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w700,
+        color: white,
+      ),
+      titleSmall: TextStyle(
+        fontSize: 36,
+        fontWeight: FontWeight.w700,
+        color: white,
+      ),
       titleMedium: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w400,

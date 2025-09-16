@@ -103,4 +103,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get alreadyHaveAccount => 'Already Have Account ?';
+
+  @override
+  String get editProfile => 'Edit Profile';
+
+  @override
+  String get exit => 'Exit';
 }

@@ -30,5 +30,7 @@
     "nameName":"الاسم",
     "confirmPassName":"تأكيد كلمة المرور",
     "createAccount":"إنشاء حساب",
-    "alreadyHaveAccount":"بالتأكيد لديك حساب ؟ "
+    "alreadyHaveAccount":"بالتأكيد لديك حساب ؟ ",
+    "editProfile":"تعديل الحساب ",
+    "exit":"مغادرة"
 }

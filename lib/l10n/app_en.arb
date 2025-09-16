@@ -30,5 +30,7 @@
     "nameName":"Name",
     "confirmPassName":"Confirm password",
     "createAccount":"Create Account",
-    "alreadyHaveAccount":"Already Have Account ?"
+    "alreadyHaveAccount":"Already Have Account ?",
+    "editProfile":"Edit Profile",
+    "exit":"Exit"
 }

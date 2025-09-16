@@ -103,4 +103,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get alreadyHaveAccount => 'بالتأكيد لديك حساب ؟ ';
+
+  @override
+  String get editProfile => 'تعديل الحساب ';
+
+  @override
+  String get exit => 'مغادرة';
 }
