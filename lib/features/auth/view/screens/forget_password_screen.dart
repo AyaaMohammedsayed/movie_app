@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/utils/validator.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
-import 'package:movie_app/features/auth/view/widgets/default_text_from_field.dart';
+import 'package:movie_app/core/widgets/custom_text_form_field.dart';
+import 'package:movie_app/l10n/app_localizations.dart';
 
-class ForgetpasswordScreen extends StatelessWidget {
+class ForgetPasswordScreen extends StatelessWidget {
   static const String routeName = '/forgetPassword';
 
   @override
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
+    final appLocalizations = AppLocalizations.of(context)!;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(title: Text('Forget Password')),
+      appBar: AppBar(title: Text(appLocalizations.forgetPass)),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
@@ -22,25 +23,24 @@ class ForgetpasswordScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
-                'assets/images/forgetPassword.png',
+                AppImages.forgetPassImg,
                 height: MediaQuery.sizeOf(context).height * 0.42,
                 width: double.infinity,
                 fit: BoxFit.fill,
               ),
               SizedBox(height: 16),
-              DefaultTextFormField(
-                hintText: 'Email',
+              CustomTextFormField(
+                hintText: appLocalizations.mailName,
                 controller: emailController,
-                prefixIconImageName: 'mail_icon',
+                prefixIconName: AppImages.mailIcon,
                 validator: (value) {
-                  return Validator.emailValidator(value);
+                  return Validator.validateEmail(value);
                 },
               ),
               SizedBox(height: 16),
               CustomElevatedButton(
-                child: Text(AppTexts.verifyEmail),
+                child: Text(appLocalizations.verifyEmail),
                 onTap: () {},
-                
               ),
             ],
           ),

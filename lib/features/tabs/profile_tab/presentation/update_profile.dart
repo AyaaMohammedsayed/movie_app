@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
-import 'package:movie_app/profile/widgets/modal_bottom_sheet.dart';
+import 'package:movie_app/features/tabs/profile_tab/widgets/modal_bottom_sheet.dart';
 import 'package:movie_app/core/app_theme.dart';
+import 'package:movie_app/l10n/app_localizations.dart';
 
 class UpdateProfile extends StatefulWidget {
   static const String routeName = '/update_profile';
@@ -21,8 +22,12 @@ class _UpdateProfileState extends State<UpdateProfile> {
   @override
   Widget build(BuildContext context) {
     TextTheme textStyle = Theme.of(context).textTheme;
+    final appLocalizations = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: Text('Pick Avatar', style: textStyle.titleMedium)),
+      appBar: AppBar(
+        title: Text(appLocalizations.pickAvatar, style: textStyle.titleMedium),
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 37.h),
         child: SingleChildScrollView(
@@ -61,7 +66,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 style: TextStyle(fontSize: 20.sp, color: AppTheme.white),
                 decoration: InputDecoration(
                   prefixIcon: Image.asset(
-                    'assets/images/user.png',
+                    AppImages.userImage,
                     width: 30.w,
                     height: 30.h,
                     fit: BoxFit.scaleDown,
@@ -74,7 +79,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 controller: userPhone,
                 decoration: InputDecoration(
                   prefixIcon: Image.asset(
-                    'assets/images/phone.png',
+                    AppImages.phoneImage,
                     width: 30.w,
                     height: 30.h,
                     fit: BoxFit.scaleDown,
@@ -85,16 +90,22 @@ class _UpdateProfileState extends State<UpdateProfile> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Reset Password',
-
+                  appLocalizations.restPass,
                   style: textStyle.titleLarge,
                 ),
               ),
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.25.h),
-              CustomElevatedButton(child: Text(AppTexts.deleteAccount),foregroundColor: AppTheme.white,onTap: (){},color: AppTheme.red,),
-
+              CustomElevatedButton(
+                foregroundColor: AppTheme.white,
+                onTap: () {},
+                color: AppTheme.red,
+                child: Text(appLocalizations.deleteAccount),
+              ),
               SizedBox(height: 19.h),
-               CustomElevatedButton(child: Text(AppTexts.updataAccount),onTap: (){},),
+              CustomElevatedButton(
+                child: Text(appLocalizations.updataAccount),
+                onTap: () {},
+              ),
             ],
           ),
         ),
