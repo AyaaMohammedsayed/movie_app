@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/core/constants/constants.dart';
-<<<<<<< HEAD
 import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
-=======
-import 'package:movie_app/core/languages/view_model/settings_provider.dart';
->>>>>>> 88daba2a7eca5ca477dad6c69e67ffc69aff99d1
 import 'package:movie_app/core/utils/validator.dart';
 import 'package:movie_app/core/languages/view/change_language.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
 import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/app_theme.dart';
+import 'package:movie_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/login_screen';
@@ -117,7 +114,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: textTheme.labelLarge,
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                            context,
+                            RegisterScreen.routeName,
+                          );
+                        },
                         child: Text(
                           appLocalizations.createOne,
                           style: textTheme.labelLarge!.copyWith(
