@@ -2,24 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/core/constants/constants.dart';
-<<<<<<<< HEAD:lib/features/auth/presentation/view/screens/login_screen.dart
 import 'package:movie_app/core/languages/view_model/settings_provider.dart';
-========
 import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
->>>>>>>> a08532d4aa0669f0743881976678f437080f4be0:lib/features/auth/presentation/screens/login_screen.dart
+
 import 'package:movie_app/core/utils/validator.dart';
 import 'package:movie_app/core/languages/view/change_language.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
 import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/app_theme.dart';
-<<<<<<<< HEAD:lib/features/auth/presentation/view/screens/login_screen.dart
 import 'package:movie_app/features/auth/data/models/login_requeest.dart';
 import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:movie_app/features/auth/presentation/view/screens/register_screen.dart';
-========
 import 'package:movie_app/features/auth/presentation/screens/register_screen.dart';
->>>>>>>> a08532d4aa0669f0743881976678f437080f4be0:lib/features/auth/presentation/screens/login_screen.dart
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
 
@@ -39,12 +33,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void onTap() {
     if (formKey.currentState!.validate()) {
-      context.read<AuthCubit>().login(
-        LoginRequeest(
-          email: emailController.text,
-          password: passwordController.text,
-        ),
-      );
+      // context.read<AuthCubit>().login(
+      //   LoginRequeest(
+      //     email: emailController.text,
+      //     password: passwordController.text,
+      //   ),
+      // );
       UiUtils.showSuccessMessage(appLocalizations.loginSuccess);
       Navigator.of(context).pushNamed(HomeScreen.routeName);
     } else {
@@ -131,16 +125,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       InkWell(
                         onTap: () {
-<<<<<<<< HEAD:lib/features/auth/presentation/view/screens/login_screen.dart
-                          Navigator.of(
-                            context,
-                          ).pushNamed(RegisterScreen.routeName);
-========
                           Navigator.pushReplacementNamed(
                             context,
                             RegisterScreen.routeName,
                           );
->>>>>>>> a08532d4aa0669f0743881976678f437080f4be0:lib/features/auth/presentation/screens/login_screen.dart
                         },
                         child: Text(
                           appLocalizations.createOne,
@@ -196,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onTap: () {},
                   ),
                   SizedBox(height: screenHeight * 0.02),
-                  ChangeLanguageWidget(context.watch<LanguagesViewModel>()),
+                  ChangeLanguageWidget(context.watch()),
                 ],
               ),
             ),

@@ -8,13 +8,13 @@ import 'package:movie_app/features/auth/data/models/register_response.dart';
 
 class AuthApiRemoteDataSourse implements AuthRemoteDataSourse {
   final Dio _dio = Dio(
-    BaseOptions(baseUrl: ConstantApi.baseURL, receiveDataWhenStatusError: true),
+    BaseOptions(baseUrl: ConstantAPI.baseUrl, receiveDataWhenStatusError: true),
   );
 
   @override
   Future<LoginResponse> login(LoginRequeest request) async {
     final response = await _dio.post(
-      ConstantApi.loginEndPoint,
+      ConstantAPI.loginEndPoint,
       data: request.toJson(),
     );
     return LoginResponse.fromJson(response.data);
@@ -23,7 +23,7 @@ class AuthApiRemoteDataSourse implements AuthRemoteDataSourse {
   @override
   Future<RegisterResponse> register(RegisterReguest request) async {
     final response = await _dio.post(
-      ConstantApi.registerEndPoint,
+      ConstantAPI.registerEndPoint,
       data: request.toJson(),
     );
     return RegisterResponse.fromJson(response.data);

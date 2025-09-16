@@ -7,13 +7,13 @@ class AuthSharedPrefLocalDataSourse implements AuthLocalDataSourse {
   Future<String> getToken() async {
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
-    return sharedPreferences.getString(CachecConstants.tokenKey)!;
+    return sharedPreferences.getString(ConstantAPI.tokenKey)!;
   }
 
   @override
   Future<void> saveToken(String token) async {
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
-    await sharedPreferences.setString(CachecConstants.tokenKey, token);
+    await sharedPreferences.setString(ConstantAPI.tokenKey, token);
   }
 }
