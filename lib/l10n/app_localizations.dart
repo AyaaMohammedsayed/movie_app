@@ -104,17 +104,47 @@ abstract class AppLocalizations {
   /// **'Login'**
   String get login;
 
+  /// No description provided for @register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register;
+
+  /// No description provided for @userName.
+  ///
+  /// In en, this message translates to:
+  /// **'User Name'**
+  String get userName;
+
+  /// No description provided for @phoneName.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phoneName;
+
   /// No description provided for @loginSuccess.
   ///
   /// In en, this message translates to:
   /// **'Login Successfully'**
   String get loginSuccess;
 
+  /// No description provided for @registerSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Register Successfully'**
+  String get registerSuccess;
+
   /// No description provided for @loginFailed.
   ///
   /// In en, this message translates to:
   /// **'Invalid Email or Password'**
   String get loginFailed;
+
+  /// No description provided for @registerFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Register Failed'**
+  String get registerFailed;
 
   /// No description provided for @enterValidEmail.
   ///
@@ -169,6 +199,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Don\'t Have Account ?'**
   String get dntHaveAccount;
+
+  /// No description provided for @alreadyHaveOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Already Have Account?'**
+  String get alreadyHaveOne;
 
   /// No description provided for @createOne.
   ///
@@ -242,12 +278,6 @@ abstract class AppLocalizations {
   /// **'Confirm password'**
   String get confirmPassName;
 
-  /// No description provided for @phoneName.
-  ///
-  /// In en, this message translates to:
-  /// **'Phone Number'**
-  String get phoneName;
-
   /// No description provided for @createAccount.
   ///
   /// In en, this message translates to:
@@ -259,24 +289,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Already Have Account ?'**
   String get alreadyHaveAccount;
-
-  /// No description provided for @register.
-  ///
-  /// In en, this message translates to:
-  /// **'Register'**
-  String get register;
-
-  /// No description provided for @registerSuccess.
-  ///
-  /// In en, this message translates to:
-  /// **'Register Success'**
-  String get registerSuccess;
-
-  /// No description provided for @registerFailed.
-  ///
-  /// In en, this message translates to:
-  /// **'Register Failed'**
-  String get registerFailed;
 }
 
 class _AppLocalizationsDelegate

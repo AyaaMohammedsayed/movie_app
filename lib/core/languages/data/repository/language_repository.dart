@@ -1,4 +1,4 @@
-import 'package:movie_app/core/languages/data/data_source/language_data_source.dart';
+import 'package:movie_app/core/languages/data/data_source/local/language_data_source.dart';
 
 class LanguageRepository {
   final LanguageDataSource languageDataSource;

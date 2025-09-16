@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/core/constants/constants.dart';
-import 'package:movie_app/core/languages/view_model/settings_provider.dart';
+import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
 import 'package:movie_app/core/languages/view/custom_circle_avatar.dart';
 
 class ChangeLanguageWidget extends StatefulWidget {
-  const ChangeLanguageWidget(this.languagesViewModel);
+  const ChangeLanguageWidget(this.languagesViewModel, {super.key});
 
   final LanguagesViewModel languagesViewModel;
 

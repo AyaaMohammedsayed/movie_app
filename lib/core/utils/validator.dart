@@ -66,7 +66,7 @@ class Validator {
       return 'Name must be greater than 5';
     }
     return null;
-  }  
+  }
 
   static String? phoneValidator(String? text) {
     if (text!.trim().isEmpty) return 'This Field is required';
@@ -75,5 +75,5 @@ class Validator {
       return 'phone Number must be 11 digits';
     }
     return null;
-  }  
+  }
 }

@@ -12,10 +12,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get login => 'Login';
 
   @override
+  String get register => 'Register';
+
+  @override
+  String get userName => 'User Name';
+
+  @override
+  String get phoneName => 'Phone';
+
+  @override
   String get loginSuccess => 'Login Successfully';
 
   @override
+  String get registerSuccess => 'Register Successfully';
+
+  @override
   String get loginFailed => 'Invalid Email or Password';
+
+  @override
+  String get registerFailed => 'Register Failed';
 
   @override
   String get enterValidEmail => 'Enter a valid E-mail';
@@ -43,6 +58,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dntHaveAccount => 'Don\'t Have Account ?';
+
+  @override
+  String get alreadyHaveOne => 'Already Have Account?';
 
   @override
   String get createOne => 'Create One';
@@ -81,20 +99,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get confirmPassName => 'Confirm password';
 
   @override
-  String get phoneName => 'Phone Number';
-
-  @override
   String get createAccount => 'Create Account';
 
   @override
   String get alreadyHaveAccount => 'Already Have Account ?';
-
-  @override
-  String get register => 'Register';
-
-  @override
-  String get registerSuccess => 'Register Success';
-
-  @override
-  String get registerFailed => 'Register Failed';
 }

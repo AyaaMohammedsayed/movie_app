@@ -1,33 +1,19 @@
-import 'dart:math';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/features/auth/data/models/login_requeest.dart';
-import 'package:movie_app/features/auth/data/models/register_reguest.dart';
-import 'package:movie_app/features/auth/data/repositories/auth_repositories.dart';
-import 'package:movie_app/features/auth/presentation/cubit/auth_state.dart';
+import 'package:movie_app/features/auth/data/model/register_request.dart';
+import 'package:movie_app/features/auth/data/repository/auth_repository.dart';
+import 'package:movie_app/features/auth/presentation/cubit/states.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit() : super(AuthInitial());
+  AuthCubit() : super(AuthInit());
+  final AuthRepository _repository = AuthRepository();
 
-  final AuthRepositories _repository = AuthRepositories();
-
-  Future<void> register(RegisterReguest request) async {
+  Future<void> register(RegisterRequest request) async {
     emit(RegisterLoading());
-    try {
-      await _repository.register(request);
-      emit(RegisterSuccess());
-    } catch (error) {
-      emit(RegisterError(error.toString()));
-    }
-  }
-
-  Future<void> login(LoginRequeest request) async {
-    emit(LoginLoading());
-    try {
-      await _repository.login(request);
-      emit(LoginSuccess());
-    } catch (error) {
-      emit(LoginError(error.toString()));
-    }
+    final user = await _repository.register(request);
+    user.fold(
+      (exception) => emit(RegisterError(exception.message)),
+      (data) => emit(RegisterSuccess(data)),
+    );
   }
 }
+
