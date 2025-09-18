@@ -10,6 +10,9 @@ import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
 import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/app_theme.dart';
+import 'package:movie_app/features/auth/data/model/login_request.dart';
+import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:movie_app/features/auth/presentation/cubit/states.dart';
 import 'package:movie_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
@@ -28,14 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late AppLocalizations appLocalizations;
 
-  void onTap() {
-    if (formKey.currentState!.validate()) {
-      UiUtils.showSuccessMessage(appLocalizations.loginSuccess);
-      Navigator.of(context).pushNamed(HomeScreen.routeName);
-    } else {
-      UiUtils.showErrorMessage(appLocalizations.loginFailed);
-    }
-  }
+
 
   @override
   void didChangeDependencies() {
@@ -102,10 +98,48 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   SizedBox(height: screenHeight * 0.015),
-                  CustomElevatedButton(
-                    onTap: onTap,
-                    child: Text(AppLocalizations.of(context)!.login),
+                
+                
+
+
+               BlocListener<AuthCubit, AuthState>(
+                    listener: (context, state) {
+                      if (state is LoginLoading) {
+                        UiUtils.showLoading(context);
+                      } else if (state is LoginSuccess) {
+                        UiUtils.hideLoading(context);
+                        UiUtils.showSuccessMessage(
+                          state.loginResponse.message,
+                        );
+                        Navigator.of(
+                          context,
+                        ).pushReplacementNamed(HomeScreen.routeName);
+                      } else if (state is LoginError) {
+                        UiUtils.hideLoading(context);
+                        UiUtils.showErrorMessage(state.message);
+                      }
+                    },
+                    child: CustomElevatedButton(
+                      onTap: () {
+                        if (formKey.currentState!.validate()) {
+                          context.read<AuthCubit>().login(
+                            LoginRequest(
+                           
+                              email: emailController.text,
+                              password: passwordController.text,
+
+                            ),
+                          );
+                        }
+                      },
+                      child: Text(appLocalizations.login),
+                    ),
                   ),
+                  
+                  
+
+
+
                   SizedBox(height: screenHeight * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -158,6 +192,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   SizedBox(height: screenHeight * 0.02),
+                 
+                 
+                 
                   CustomElevatedButton(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -172,8 +209,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      //code
+                    },
                   ),
+                  
+                  
+                  
+                  
+                  
                   SizedBox(height: screenHeight * 0.02),
                   ChangeLanguageWidget(context.watch<LanguagesViewModel>()),
                 ],
