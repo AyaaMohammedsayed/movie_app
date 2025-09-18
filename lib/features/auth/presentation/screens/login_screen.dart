@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       } else if (state is LoginSuccess) {
                         UiUtils.hideLoading(context);
                         UiUtils.showSuccessMessage(
-                          state.loginResponse.message,
+                          state.loginResponse.message!,
                         );
                         Navigator.of(
                           context,
