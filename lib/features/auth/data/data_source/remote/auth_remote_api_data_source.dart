@@ -36,12 +36,14 @@ class AuthRemoteAPIDataSource implements AuthRemoteDataSource {
       throw RegisterException(message ?? "Failed to register");
     }
   }
+  
   Future<LoginResponse> login(LoginRequest request) async {
     try {
       final response = await _dio.post(
         ConstantAPI.loginEndPoint,
         data: request.toJson(),
       );
+      print("LOGIN RESPONSE: ${response.data}");
       return LoginResponse.fromJson(response.data);
     } catch (exception) {
       String? message;
