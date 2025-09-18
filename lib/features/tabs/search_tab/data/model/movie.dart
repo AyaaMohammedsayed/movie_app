@@ -1,4 +1,3 @@
-import 'cast.dart';
 import 'torrent.dart';
 
 class Movie {
@@ -10,12 +9,12 @@ class Movie {
   String? titleLong;
   String? slug;
   int? year;
-  int? rating;
+  double? rating;
   int? runtime;
   List<String>? genres;
-  int? likeCount;
-  String? descriptionIntro;
+  String? summary;
   String? descriptionFull;
+  String? synopsis;
   String? ytTrailerCode;
   String? language;
   String? mpaRating;
@@ -24,13 +23,7 @@ class Movie {
   String? smallCoverImage;
   String? mediumCoverImage;
   String? largeCoverImage;
-  String? mediumScreenshotImage1;
-  String? mediumScreenshotImage2;
-  String? mediumScreenshotImage3;
-  String? largeScreenshotImage1;
-  String? largeScreenshotImage2;
-  String? largeScreenshotImage3;
-  List<Cast>? cast;
+  String? state;
   List<Torrent>? torrents;
   String? dateUploaded;
   int? dateUploadedUnix;
@@ -47,9 +40,9 @@ class Movie {
     this.rating,
     this.runtime,
     this.genres,
-    this.likeCount,
-    this.descriptionIntro,
+    this.summary,
     this.descriptionFull,
+    this.synopsis,
     this.ytTrailerCode,
     this.language,
     this.mpaRating,
@@ -58,13 +51,7 @@ class Movie {
     this.smallCoverImage,
     this.mediumCoverImage,
     this.largeCoverImage,
-    this.mediumScreenshotImage1,
-    this.mediumScreenshotImage2,
-    this.mediumScreenshotImage3,
-    this.largeScreenshotImage1,
-    this.largeScreenshotImage2,
-    this.largeScreenshotImage3,
-    this.cast,
+    this.state,
     this.torrents,
     this.dateUploaded,
     this.dateUploadedUnix,
@@ -79,12 +66,15 @@ class Movie {
     titleLong: json['title_long'] as String?,
     slug: json['slug'] as String?,
     year: json['year'] as int?,
-    rating: json['rating'] as int?,
+    rating: (json['rating'] as num?)?.toDouble(),
     runtime: json['runtime'] as int?,
-    genres: json['genres'] as List<String>?,
-    likeCount: json['like_count'] as int?,
-    descriptionIntro: json['description_intro'] as String?,
+    genres:
+        (json['genres'] as List<dynamic>?)
+            ?.map((ele) => ele as String)
+            .toList(),
+    summary: json['summary'] as String?,
     descriptionFull: json['description_full'] as String?,
+    synopsis: json['synopsis'] as String?,
     ytTrailerCode: json['yt_trailer_code'] as String?,
     language: json['language'] as String?,
     mpaRating: json['mpa_rating'] as String?,
@@ -93,16 +83,7 @@ class Movie {
     smallCoverImage: json['small_cover_image'] as String?,
     mediumCoverImage: json['medium_cover_image'] as String?,
     largeCoverImage: json['large_cover_image'] as String?,
-    mediumScreenshotImage1: json['medium_screenshot_image1'] as String?,
-    mediumScreenshotImage2: json['medium_screenshot_image2'] as String?,
-    mediumScreenshotImage3: json['medium_screenshot_image3'] as String?,
-    largeScreenshotImage1: json['large_screenshot_image1'] as String?,
-    largeScreenshotImage2: json['large_screenshot_image2'] as String?,
-    largeScreenshotImage3: json['large_screenshot_image3'] as String?,
-    cast:
-        (json['cast'] as List<dynamic>?)
-            ?.map((e) => Cast.fromJson(e as Map<String, dynamic>))
-            .toList(),
+    state: json['state'] as String?,
     torrents:
         (json['torrents'] as List<dynamic>?)
             ?.map((e) => Torrent.fromJson(e as Map<String, dynamic>))

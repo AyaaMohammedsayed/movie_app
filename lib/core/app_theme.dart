@@ -25,6 +25,7 @@ class AppTheme {
         color: primary,
       ),
     ),
+    
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: grey,
       type: BottomNavigationBarType.fixed,
