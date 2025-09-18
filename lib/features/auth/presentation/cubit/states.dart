@@ -18,6 +18,7 @@ class RegisterError extends AuthState {
 
   RegisterError(this.message);
 }
+
 class LoginLoading extends AuthState {}
 
 class LoginSuccess extends AuthState {
@@ -25,6 +26,7 @@ class LoginSuccess extends AuthState {
 
   LoginSuccess(this.loginResponse);
 }
+
 
 class LoginError extends AuthState {
   final String message;

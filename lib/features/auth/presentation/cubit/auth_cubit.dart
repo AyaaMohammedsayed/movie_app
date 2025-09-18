@@ -16,6 +16,7 @@ class AuthCubit extends Cubit<AuthState> {
       (data) => emit(RegisterSuccess(data)),
     );
   }
+  
   Future<void> login(LoginRequest request) async {
     emit(LoginLoading());
     final user = await _repository.login(request);
