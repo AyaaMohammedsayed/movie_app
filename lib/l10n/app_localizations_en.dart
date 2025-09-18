@@ -91,4 +91,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get seeMore => 'See More';
+
+  @override
+  String get search => 'Search';
 }

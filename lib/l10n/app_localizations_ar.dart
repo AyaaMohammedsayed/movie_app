@@ -91,4 +91,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get seeMore => 'انظر للمزيد';
+
+  @override
+  String get search => 'البحث';
 }

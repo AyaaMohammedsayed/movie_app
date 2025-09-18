@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app/core/bloc_observer.dart';
 import 'package:movie_app/core/languages/view_model/language_state.dart';
 import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
 import 'package:movie_app/core/utils/localize_app_localization.dart';
@@ -17,7 +18,7 @@ import 'package:movie_app/l10n/app_localizations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
+  Bloc.observer = AppBlocObserver();
   SystemChrome.setEnabledSystemUIMode(
     SystemUiMode.immersiveSticky,
     overlays: [],

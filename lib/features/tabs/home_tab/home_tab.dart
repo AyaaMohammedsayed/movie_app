@@ -84,6 +84,8 @@ class _HomeTabState extends State<HomeTab> {
                     return MovieItem(
                       imgName: AppImages.movieImages[index],
                       rating: 7.7,
+                      width: 234.w,
+                      height: 351.h,
                     );
                   },
                 ),
@@ -137,7 +139,8 @@ class _HomeTabState extends State<HomeTab> {
                       (_, index) => MovieItem(
                         imgName: AppImages.movieImages[index],
                         rating: 7.7,
-                        isCategories: true,
+                        width: 146.w,
+                        height: 220.h,
                       ),
                 ),
               ),
