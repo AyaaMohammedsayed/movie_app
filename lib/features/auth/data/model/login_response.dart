@@ -1,15 +1,16 @@
-import 'user.dart';
-
 class LoginResponse {
-  String message;
-  User data;
+	String? message;
+	String? data;
 
-  LoginResponse({required this.message, required this.data});
+	LoginResponse({this.message, this.data});
 
-  factory LoginResponse.fromJson(Map<String, dynamic> json) {
-    return LoginResponse(
-      message: json['message'],
-      data: User.fromJson(json['data'] as Map<String, dynamic>),
-    );
-  }
+	factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
+				message: json['message'] as String?,
+				data: json['data'] as String?,
+			);
+
+	Map<String, dynamic> toJson() => {
+				'message': message,
+				'data': data,
+			};
 }

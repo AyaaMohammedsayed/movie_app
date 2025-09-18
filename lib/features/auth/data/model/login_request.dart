@@ -10,6 +10,7 @@ class LoginRequest {
     required this.password,
 
   });
+  
 
   Map<String, dynamic> toJson() => {
    
