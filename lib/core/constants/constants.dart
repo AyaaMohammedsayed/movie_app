@@ -16,6 +16,10 @@ class AppImages {
     4,
     (index) => '$_imgFolder/movie_${index + 1}.png',
   );
+  static List<String> movieImagesTest = List.filled(
+    10,
+     '$_imgFolder/movie_4.png',
+  );
 
   static List<String> avatarList = List.generate(
     10,
