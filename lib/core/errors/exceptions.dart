@@ -15,6 +15,11 @@ class MovieSuggestionsException extends AppException {
 class RegisterException extends AppException {
   RegisterException(super.message);
 }
+
 class LoginException extends AppException {
   LoginException(super.message);
+}
+
+class SearchException extends AppException {
+  SearchException(super.message);
 }
