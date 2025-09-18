@@ -70,7 +70,7 @@ class _MovieAppState extends State<MovieApp> {
                   ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
                   HomeScreen.routeName: (_) => HomeScreen(),
                 },
-                initialRoute: HomeScreen.routeName,
+                initialRoute: LoginScreen.routeName,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,
                 themeMode: ThemeMode.dark,
