@@ -10,7 +10,7 @@ import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:movie_app/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:movie_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:movie_app/features/auth/presentation/screens/register_screen.dart';
-import 'package:movie_app/features/details_screen/presentation/screens/view/move_details.dart';
+import 'package:movie_app/features/details_screen/presentation/screens/view/movie_details_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/onboarding/view/onboarding.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/update_profile.dart';
