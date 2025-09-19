@@ -9,7 +9,7 @@ class LanguagesViewModel extends Cubit<LanguageState> {
     languageRepository = LanguageRepository(ServiceLocator.languageRepository);
   }
 
-  String? languageCode;
+  String? languageCode = "en";
 
   void changeLanguage(String language) async {
     emit(LanguageLoading());

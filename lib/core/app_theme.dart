@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppTheme {
   //app colors
   static const Color black = Color(0xff121312);
-    static const Color blackSecondary = Color(0xff121312);
+  static const Color blackSecondary = Color(0xff2A2C30);
 
   static const Color grey = Color(0xff282A28);
   static const Color primary = Color(0xffFFBB3B);
@@ -13,7 +13,6 @@ class AppTheme {
 
   //app theme
   static ThemeData darkTheme = ThemeData(
-
     scaffoldBackgroundColor: black,
     appBarTheme: AppBarTheme(
       backgroundColor: black,
@@ -25,7 +24,7 @@ class AppTheme {
         color: primary,
       ),
     ),
-    
+
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: grey,
       type: BottomNavigationBarType.fixed,

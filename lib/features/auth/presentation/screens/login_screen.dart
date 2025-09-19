@@ -31,8 +31,6 @@ class _LoginScreenState extends State<LoginScreen> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late AppLocalizations appLocalizations;
 
-
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -98,11 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   SizedBox(height: screenHeight * 0.015),
-                
-                
-
-
-               BlocListener<AuthCubit, AuthState>(
+                  BlocListener<AuthCubit, AuthState>(
                     listener: (context, state) {
                       if (state is LoginLoading) {
                         UiUtils.showLoading(context);
@@ -124,10 +118,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (formKey.currentState!.validate()) {
                           context.read<AuthCubit>().login(
                             LoginRequest(
-                           
                               email: emailController.text,
                               password: passwordController.text,
-
                             ),
                           );
                         }
@@ -135,11 +127,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(appLocalizations.login),
                     ),
                   ),
-                  
-                  
-
-
-
                   SizedBox(height: screenHeight * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -192,9 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   SizedBox(height: screenHeight * 0.02),
-                 
-                 
-                 
+
                   CustomElevatedButton(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -213,11 +198,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       //code
                     },
                   ),
-                  
-                  
-                  
-                  
-                  
                   SizedBox(height: screenHeight * 0.02),
                   ChangeLanguageWidget(context.watch<LanguagesViewModel>()),
                 ],
