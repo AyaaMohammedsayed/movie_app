@@ -10,6 +10,7 @@ class MovieItem extends StatelessWidget {
   final double rating;
   final double width;
   final double height;
+  final String year ;
 
   const MovieItem({
     super.key,
@@ -19,6 +20,7 @@ class MovieItem extends StatelessWidget {
     required this.height,
     required this.width,
     this.isImageNetwork = false,
+    this.year= ''
   });
 
   @override
