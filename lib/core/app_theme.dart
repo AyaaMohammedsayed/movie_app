@@ -86,6 +86,11 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         color: primary,
       ),
+      headlineSmall: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w700,
+        color: white,
+      ),
     ),
   );
   static ThemeData lightTheme = ThemeData();
