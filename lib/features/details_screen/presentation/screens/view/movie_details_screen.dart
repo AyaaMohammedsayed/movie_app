@@ -38,13 +38,13 @@ class MoveDetails extends StatelessWidget {
             child: CustomElevatedButton(
               onTap: () {},
               child: Text(appLocalizations.watch),
-              color: AppTheme.red,
+              backgroundColor: AppTheme.red,
               foregroundColor: AppTheme.white,
             ),
           ),
           SizedBox(height: 16.h),
           Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: MovieDetailsReview(),
           ),
           SizedBox(height: 16.h),
