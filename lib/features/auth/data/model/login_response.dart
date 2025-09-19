@@ -1,12 +1,14 @@
+import 'package:movie_app/features/auth/data/model/user.dart';
+
 class LoginResponse {
 	String? message;
-	String? data;
+	User? data;
 
 	LoginResponse({this.message, this.data});
 
 	factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
 				message: json['message'] as String?,
-				data: json['data'] as String?,
+				 data: User.fromJson(json['data'] as Map<String, dynamic>),
 			);
 
 	Map<String, dynamic> toJson() => {
