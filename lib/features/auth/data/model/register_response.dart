@@ -12,7 +12,4 @@ class RegisterResponse {
       data: User.fromJson(json['data'] as Map<String, dynamic>),
     );
   }
-
-
-  
 }
