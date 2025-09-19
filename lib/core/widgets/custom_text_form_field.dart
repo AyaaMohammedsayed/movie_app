@@ -55,7 +55,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                     });
                   },
                   icon: Icon(
-                    isObscure ? Icons.visibility : Icons.visibility_off,
+                    isObscure ? Icons.visibility_off : Icons.visibility,
                     size: 24,
                   ),
                 )

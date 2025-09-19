@@ -27,5 +27,11 @@
     "restPass":"Reset Password",
     "action":"Action",
     "seeMore":"See More",
-    "search":"Search"
+    "search":"Search",
+    "watch":"Watch",
+    "screenShots":"Screen Shots",
+    "similar":"Similar",
+    "cast":"Cast",
+    "summary":"Summary",
+    "genres":"Genres"
 }
