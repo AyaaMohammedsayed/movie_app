@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
-import 'package:movie_app/features/tabs/profile_tab/widgets/modal_bottom_sheet.dart';
 import 'package:movie_app/core/app_theme.dart';
+import 'package:movie_app/features/tabs/profile_tab/data/widgets/modal_bottom_sheet.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
 
 class UpdateProfile extends StatefulWidget {
   static const String routeName = '/update_profile';
+
+  const UpdateProfile({super.key});
 
   @override
   State<UpdateProfile> createState() => _UpdateProfileState();

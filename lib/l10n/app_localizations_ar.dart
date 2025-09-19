@@ -12,10 +12,25 @@ class AppLocalizationsAr extends AppLocalizations {
   String get login => 'تسجيل الدخول';
 
   @override
+  String get register => 'إنشاء حساب';
+
+  @override
+  String get userName => 'الاسم';
+
+  @override
+  String get phoneName => 'رقم التليفون';
+
+  @override
   String get loginSuccess => 'تم تسجيل الدخول بنجاح';
 
   @override
+  String get registerSuccess => 'تم إنشاء حساب بنجاح';
+
+  @override
   String get loginFailed => 'بريد الكترونى أو كلمة مرور غير صحيحة';
+
+  @override
+  String get registerFailed => 'تسجيل دخول غير صحيح';
 
   @override
   String get enterValidEmail => 'ادخل بريد الكترونى صحيح';
@@ -45,6 +60,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dntHaveAccount => 'ليس لديك حساب ؟';
 
   @override
+  String get alreadyHaveOne => 'بالفعل لديك حساب ؟';
+
+  @override
   String get createOne => 'إنشاء حساب';
 
   @override
@@ -63,7 +81,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get verifyEmail => 'تأكيد الحساب';
 
   @override
-  String get pickAvatar => 'التقط رمز تعبيرى';
+  String get pickAvatar => 'اختر رمز تعبيرى';
 
   @override
   String get restPass => 'اعادة  تعيين كلمة المرور';
@@ -73,4 +91,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get seeMore => 'انظر للمزيد';
+
+  @override
+  String get search => 'البحث';
+
+  @override
+  String get watch => 'شاهد';
+
+  @override
+  String get screenShots => 'Screen Shots';
+
+  @override
+  String get similar => 'متشابه';
+
+  @override
+  String get cast => 'الممثلون';
+
+  @override
+  String get summary => 'الملخص';
+
+  @override
+  String get genres => 'التصنيفات';
 }

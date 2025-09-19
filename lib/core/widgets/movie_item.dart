@@ -1,28 +1,68 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/app_theme.dart';
+import 'package:movie_app/core/constants/constants.dart';
 
 class MovieItem extends StatelessWidget {
   final String imgName;
+  final String? movieName;
+  final bool isImageNetwork;
   final double rating;
-  final bool isCategories;
+  final double width;
+  final double height;
+  final String year ;
+
   const MovieItem({
     super.key,
     required this.imgName,
+    this.movieName,
     required this.rating,
-    this.isCategories = false,
+    required this.height,
+    required this.width,
+    this.isImageNetwork = false,
+    this.year= ''
   });
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(
-          imgName,
-          width: isCategories ? 146.w : 234.w,
-          height: isCategories ? 220.h : 351.h,
-          fit: BoxFit.fill,
-        ),
+        isImageNetwork
+            ? CachedNetworkImage(
+              imageUrl: imgName,
+              width: width,
+              height: height,
+              fit: BoxFit.fill,
+              errorWidget:
+                  (_, _, _) => Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      Image.network(
+                        AppImages.placeholderErrorImage,
+                        width: width,
+                        height: height,
+                        fit: BoxFit.fill,
+                      ),
+                      Text(
+                        movieName!,
+                        style: Theme.of(context).textTheme.titleMedium!
+                            .copyWith(fontWeight: FontWeight.w900),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+
+              placeholder:
+                  (context, url) => Center(
+                    child: CircularProgressIndicator(color: AppTheme.primary),
+                  ),
+            )
+            : Image.asset(
+              imgName,
+              width: width,
+              height: height,
+              fit: BoxFit.fill,
+            ),
         Container(
           margin: EdgeInsets.all(10),
           padding: EdgeInsets.symmetric(horizontal: 4),

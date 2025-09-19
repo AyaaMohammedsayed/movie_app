@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/widgets/nav_bar_icon.dart';
-import 'package:movie_app/features/tabs/browse_tab/browse_tab.dart';
+import 'package:movie_app/features/tabs/browse_tab/presentation/browse_tab.dart';
 import 'package:movie_app/features/tabs/home_tab/home_tab.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/profile_tab.dart';
-import 'package:movie_app/features/tabs/search_tab/search_tab.dart';
+import 'package:movie_app/features/tabs/search_tab/presentation/screens/search_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home_screen';
+
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

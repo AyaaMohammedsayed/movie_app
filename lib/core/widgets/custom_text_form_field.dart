@@ -8,6 +8,7 @@ class CustomTextFormField extends StatefulWidget {
   final void Function(String)? onChanged;
   final String prefixIconName;
   final String? Function(String?)? validator;
+  final void Function(String)? onSubmitted;
 
   final bool isPassword;
   const CustomTextFormField({
@@ -18,6 +19,7 @@ class CustomTextFormField extends StatefulWidget {
     this.controller,
     this.onChanged,
     this.validator,
+    this.onSubmitted,
   });
 
   @override
@@ -31,6 +33,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     return TextFormField(
       controller: widget.controller,
       onChanged: widget.onChanged,
+      onFieldSubmitted: widget.onSubmitted,
       style: TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 16,
@@ -52,7 +55,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                     });
                   },
                   icon: Icon(
-                    isObscure ? Icons.visibility : Icons.visibility_off,
+                    isObscure ? Icons.visibility_off : Icons.visibility,
                     size: 24,
                   ),
                 )

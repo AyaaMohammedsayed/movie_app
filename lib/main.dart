@@ -7,9 +7,8 @@ import 'package:movie_app/core/languages/view_model/language_state.dart';
 import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
 
 import 'package:movie_app/core/utils/localize_app_localization.dart';
-import 'package:movie_app/features/auth/view/screens/forget_password_screen.dart';
-import 'package:movie_app/features/auth/view/screens/login_screen.dart';
-import 'package:movie_app/features/auth/view/screens/register_screen.dart';
+import 'package:movie_app/features/auth/presentation/screens/forget_password_screen.dart';
+import 'package:movie_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/onboarding/view/onboarding.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/update_profile.dart';
@@ -41,7 +40,6 @@ class MovieApp extends StatefulWidget {
 class _MovieAppState extends State<MovieApp> {
   @override
   Widget build(BuildContext context) {
-
     return BlocBuilder<LanguagesViewModel, LanguageState>(
       builder: (_, state) {
         if (state is LanguageLoading) {
@@ -91,7 +89,6 @@ class _MovieAppState extends State<MovieApp> {
             child: Text('Initial State'), // Fallback widget with directionality
           );
         }
-
       },
     );
   }

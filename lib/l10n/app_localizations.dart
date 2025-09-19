@@ -104,17 +104,47 @@ abstract class AppLocalizations {
   /// **'Login'**
   String get login;
 
+  /// No description provided for @register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register;
+
+  /// No description provided for @userName.
+  ///
+  /// In en, this message translates to:
+  /// **'User Name'**
+  String get userName;
+
+  /// No description provided for @phoneName.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phoneName;
+
   /// No description provided for @loginSuccess.
   ///
   /// In en, this message translates to:
   /// **'Login Successfully'**
   String get loginSuccess;
 
+  /// No description provided for @registerSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Register Successfully'**
+  String get registerSuccess;
+
   /// No description provided for @loginFailed.
   ///
   /// In en, this message translates to:
   /// **'Invalid Email or Password'**
   String get loginFailed;
+
+  /// No description provided for @registerFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Register Failed'**
+  String get registerFailed;
 
   /// No description provided for @enterValidEmail.
   ///
@@ -169,6 +199,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Don\'t Have Account ?'**
   String get dntHaveAccount;
+
+  /// No description provided for @alreadyHaveOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Already Have Account?'**
+  String get alreadyHaveOne;
 
   /// No description provided for @createOne.
   ///
@@ -229,6 +265,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'See More'**
   String get seeMore;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @watch.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch'**
+  String get watch;
+
+  /// No description provided for @screenShots.
+  ///
+  /// In en, this message translates to:
+  /// **'Screen Shots'**
+  String get screenShots;
+
+  /// No description provided for @similar.
+  ///
+  /// In en, this message translates to:
+  /// **'Similar'**
+  String get similar;
+
+  /// No description provided for @cast.
+  ///
+  /// In en, this message translates to:
+  /// **'Cast'**
+  String get cast;
+
+  /// No description provided for @summary.
+  ///
+  /// In en, this message translates to:
+  /// **'Summary'**
+  String get summary;
+
+  /// No description provided for @genres.
+  ///
+  /// In en, this message translates to:
+  /// **'Genres'**
+  String get genres;
 }
 
 class _AppLocalizationsDelegate
