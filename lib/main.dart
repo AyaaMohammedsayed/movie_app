@@ -73,7 +73,7 @@ class _MovieAppState extends State<MovieApp> {
                   HomeScreen.routeName: (_) => HomeScreen(),
                   MoveDetails.routeName: (_) => MoveDetails(),
                 },
-                initialRoute: MoveDetails.routeName,
+                initialRoute: UpdateProfile.routeName,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,
                 themeMode: ThemeMode.dark,

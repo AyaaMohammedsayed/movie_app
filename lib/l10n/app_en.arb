@@ -33,5 +33,9 @@
     "similar":"Similar",
     "cast":"Cast",
     "summary":"Summary",
-    "genres":"Genres"
+    "genres":"Genres",
+    "resetPassword":"Reset Password",
+    "updateData":"  "updateData"
+
+   
 }
