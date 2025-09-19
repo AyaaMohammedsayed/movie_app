@@ -77,7 +77,11 @@ class _MovieAppState extends State<MovieApp> {
                 },
                 initialRoute:
                     widget.onboardingComplete
+<<<<<<< HEAD
                         ? LoginScreen.routeName
+=======
+                        ? RegisterScreen.routeName
+>>>>>>> dfa1a2cf930ac7fe0d933099c765bbde5b28cd78
                         : OnboardingScreen.routeName,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,

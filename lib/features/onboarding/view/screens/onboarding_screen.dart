@@ -37,3 +37,58 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 }
+<<<<<<< HEAD
+=======
+
+
+/*
+ Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      if (pageIndex >= 1) {
+                        _controller.animateToPage(
+                          pageIndex - 1,
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.easeIn,
+                        );
+                        print(pageIndex);
+                      }
+                    },
+                    icon: Icon(Icons.arrow_back_outlined, size: 24),
+                  ),
+                  Spacer(),
+                  Row(
+                    children: [
+                      DotIndicator(isActive: pageIndex == 0),
+                      DotIndicator(isActive: pageIndex == 1),
+                      DotIndicator(isActive: pageIndex == 2),
+                    ],
+                  ),
+                  Spacer(),
+                  IconButton(
+                    onPressed: () {
+                      if (pageIndex <= 1) {
+                        _controller.animateToPage(
+                          pageIndex + 1,
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.linear,
+                        );
+                        print(pageIndex);
+                      }
+                      if (pageIndex == 2) {
+                        Navigator.pushNamed(context, LoginScreen.routName);
+                        OnboardingService.onboardingComplete();
+                      }
+                    },
+                    icon: Icon(Icons.arrow_forward_outlined, size: 24),
+                  ),
+                ],
+              ),
+            ),
+        
+
+ */
+>>>>>>> dfa1a2cf930ac7fe0d933099c765bbde5b28cd78
