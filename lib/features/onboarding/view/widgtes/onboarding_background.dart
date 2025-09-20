@@ -15,6 +15,7 @@ class OnboardingBackground extends StatelessWidget {
 
     return MovieItem(
       imgName: 'assets/images/onBoarding_${itemsList[index].imgName}.png',
+      onTap: () {},
       width: 1.sw,
       height: 1.sh,
       withGradient: true,

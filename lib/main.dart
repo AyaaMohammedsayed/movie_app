@@ -10,6 +10,7 @@ import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:movie_app/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:movie_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:movie_app/features/auth/presentation/screens/register_screen.dart';
+import 'package:movie_app/features/details_screen/presentation/screens/view/movie_details_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/onboarding/view/screens/onboarding_screen.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/update_profile.dart';
@@ -74,10 +75,11 @@ class _MovieAppState extends State<MovieApp> {
                   UpdateProfile.routeName: (_) => UpdateProfile(),
                   ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
                   HomeScreen.routeName: (_) => HomeScreen(),
+                  MoveDetails.routeName: (_) => const MoveDetails(),
                 },
                 initialRoute:
                     widget.onboardingComplete
-                        ? LoginScreen.routeName
+                        ? HomeScreen.routeName
                         : OnboardingScreen.routeName,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,

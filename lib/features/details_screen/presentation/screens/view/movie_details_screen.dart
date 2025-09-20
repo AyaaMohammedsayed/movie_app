@@ -78,6 +78,9 @@ class MoveDetails extends StatelessWidget {
                 itemBuilder:
                     (_, index) => MovieItem(
                       imgName: AppImages.movieImagesTest[index],
+                      onTap: () {
+                        Navigator.pushNamed(context, MoveDetails.routeName);
+                      },
                       rating: 7.7,
                       height: 279.h,
                       width: 189.w,
