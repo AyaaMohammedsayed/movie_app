@@ -6,14 +6,8 @@ import 'package:movie_app/features/onboarding/data/data_source/local/onboarding_
 
 class OnboardingItem extends StatefulWidget {
   final int index;
-  final VoidCallback onIncrement;
-  final VoidCallback onDecrement;
-  const OnboardingItem({
-    super.key,
-    required this.index,
-    required this.onIncrement,
-    required this.onDecrement,
-  });
+
+  const OnboardingItem({super.key, required this.index});
 
   @override
   State<OnboardingItem> createState() => _OnboardingItemState();
