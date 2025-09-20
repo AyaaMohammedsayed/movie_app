@@ -20,19 +20,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView.builder(
+        physics: const NeverScrollableScrollPhysics(),
         controller: _controller,
         itemCount: OnboardingService.onboardingList.length,
-        itemBuilder:
-            (_, int index) => OnboardingItem(
-              index: index,
-              onDecrement: () => pageIndex--,
-              onIncrement: () => pageIndex++,
-            ),
-        onPageChanged: (index) {
-          setState(() {
-            pageIndex = index;
-          });
-        },
+        itemBuilder: (_, int index) => OnboardingItem(index: index),
       ),
     );
   }

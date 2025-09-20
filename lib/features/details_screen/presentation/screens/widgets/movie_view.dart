@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/core/constants/constants.dart';
-import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
 
 class MovieView extends StatelessWidget {
@@ -41,7 +40,43 @@ class MovieView extends StatelessWidget {
         Stack(
           alignment: Alignment.center,
           children: [
-         isImageNetwork ? CachedNetworkImage( imageUrl: imgName, width: width, height: height, fit: BoxFit.fill, errorWidget: (_, __, ___) => Stack( alignment: Alignment.bottomCenter, children: [ Image.network( AppImages.placeholderErrorImage, width: width, height: height, fit: BoxFit.fill, ), Text( movieName ?? '', style: Theme.of(context).textTheme.headlineSmall! .copyWith(fontSize: 30, color: AppTheme.white), textAlign: TextAlign.center, ), ], ), placeholder: (context, url) => Center( child: CircularProgressIndicator( color: AppTheme.primary, ), ), ) : Image.asset( imgName, width: width, height: height, fit: BoxFit.cover, ),
+            isImageNetwork
+                ? CachedNetworkImage(
+                  imageUrl: imgName,
+                  width: width,
+                  height: height,
+                  fit: BoxFit.fill,
+                  errorWidget:
+                      (_, __, ___) => Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          Image.network(
+                            AppImages.placeholderErrorImage,
+                            width: width,
+                            height: height,
+                            fit: BoxFit.fill,
+                          ),
+                          Text(
+                            movieName ?? '',
+                            style: Theme.of(context).textTheme.headlineSmall!
+                                .copyWith(fontSize: 30, color: AppTheme.white),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                  placeholder:
+                      (context, url) => Center(
+                        child: CircularProgressIndicator(
+                          color: AppTheme.primary,
+                        ),
+                      ),
+                )
+                : Image.asset(
+                  imgName,
+                  width: width,
+                  height: height,
+                  fit: BoxFit.cover,
+                ),
 
             Positioned(
               top: 16.h,
@@ -61,7 +96,7 @@ class MovieView extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: (){},
+              onTap: () {},
               child: Image.asset(
                 'assets/images/button_play.png',
                 width: 97.w,
@@ -103,25 +138,15 @@ class MovieView extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 8.h),
-
                   ],
                 ),
               ),
             ),
           ],
         ),
-        
-
-        
-        
-
-
-
-
       ],
     );
   }
-
 
   Widget _buildStat({required IconData icon, required String value}) {
     return Row(

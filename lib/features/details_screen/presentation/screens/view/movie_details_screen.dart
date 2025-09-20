@@ -15,6 +15,8 @@ import 'package:movie_app/l10n/app_localizations.dart';
 class MoveDetails extends StatelessWidget {
   static const String routeName = '/movie_details_screen';
 
+  const MoveDetails({super.key});
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -37,9 +39,9 @@ class MoveDetails extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: CustomElevatedButton(
               onTap: () {},
-              child: Text(appLocalizations.watch),
               backgroundColor: AppTheme.red,
               foregroundColor: AppTheme.white,
+              child: Text(appLocalizations.watch),
             ),
           ),
           SizedBox(height: 16.h),

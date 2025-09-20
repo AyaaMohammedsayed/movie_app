@@ -67,11 +67,11 @@ class _OnboardingForegroundState extends State<OnboardingForeground> {
             isFirst || itemsList[widget.index] == itemsList[1]
                 ? Container()
                 : CustomElevatedButton(
-                  child: Text('Back'),
                   onTap: () => widget.onDecrement(),
                   foregroundColor: AppTheme.primary,
                   backgroundColor: AppTheme.black,
                   hasBorder: true,
+                  child: Text('Back'),
                 ),
             SizedBox(height: 16.h),
           ],
