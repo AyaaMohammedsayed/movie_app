@@ -69,9 +69,7 @@ class _HomeTabState extends State<HomeTab> {
                   itemBuilder: (_, index, _) {
                     return MovieItem(
                       imgName: AppImages.movieImages[index],
-                      onTap: () {
-                        Navigator.pushNamed(context, MoveDetails.routeName);
-                      },
+                      onTap: () {},
                       rating: 7.7,
                       width: 234.w,
                       height: 351.h,

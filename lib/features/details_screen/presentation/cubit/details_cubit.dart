@@ -4,24 +4,38 @@ import 'package:movie_app/features/details_screen/data/repository/movie_details_
 import 'package:movie_app/features/details_screen/presentation/cubit/movie_datails_states.dart';
 
 class DetailsCubit extends Cubit<MovieDetailsState> {
-  DetailsCubit() : super(MovieDetailsInit());
+  DetailsCubit(this.movieId) : super(MovieDetailsInit()) {
+    getMovieDetails();
+    getMovieSuggestions();
+  }
 
   final MovieDetailsRepository _repository = MovieDetailsRepository();
 
-  Future<void> getMovieDetails(MovieDetailsRequest request) async {
+  String movieId;
+  Future<void> getMovieDetails() async {
     emit(MovieDetailsLoading());
-    final result = await _repository.getMovieDetails(request);
+    final result = await _repository.getMovieDetails(
+      MovieDetailsRequest(
+        movieId: movieId,
+        withImages: "true",
+        withCast: "true",
+      ),
+    );
     result.fold(
       (failure) => emit(MovieDetailsError(failure.message)),
-      (data) => emit(MovieDetailsSuccess(data)),
+      (data) => emit(MovieDetailsSuccess(dData: data)),
     );
   }
 
-  Future<void> getMovieSuggestions(String movieID) async {
-    final result = await _repository.getSuggestion(movieID);
-    result.fold(
-      (failure) => emit(MovieSuggestionsError(failure.message)),
-      (data) => emit(MovieSuggestionsSuccess(data)),
-    );
+  Future<void> getMovieSuggestions() async {
+    final result = await _repository.getSuggestion(movieId);
+    result.fold((failure) => emit(MovieDetailsError(failure.message)), (
+      suggestion,
+    ) {
+      final currentState = state;
+      if (currentState is MovieDetailsSuccess) {
+        emit(currentState.copyWith(suggestions: suggestion.movies));
+      }
+    });
   }
 }

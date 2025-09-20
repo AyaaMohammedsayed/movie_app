@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app/core/bloc_observer.dart';
 import 'package:movie_app/core/constants/constant_api.dart';
 import 'package:movie_app/core/languages/view_model/language_state.dart';
 import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
@@ -25,6 +26,7 @@ Future<void> main() async {
     SystemUiMode.immersiveSticky,
     overlays: [],
   );
+  AppBlocObserver();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool onboardingComplete = prefs.getBool(CacheKey.onBoarding) ?? false;
   runApp(
@@ -79,7 +81,7 @@ class _MovieAppState extends State<MovieApp> {
                 },
                 initialRoute:
                     widget.onboardingComplete
-                        ? HomeScreen.routeName
+                        ? LoginScreen.routeName
                         : OnboardingScreen.routeName,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,

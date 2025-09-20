@@ -7,39 +7,48 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit() : super(SearchInit());
 
   final SearchTabRepository _repository = SearchTabRepository();
-  int pageNum = 1;
+  final List<Movie> _moviesList = [];
+  int _pageNum = 1;
   bool hasMore = true;
-  List<Movie>? moviesList = [];
-  bool isLoading = false;
 
-  Future<void> search(String? query, {bool loadMore = false}) async {
-    isLoading = true;
-    if (loadMore) {
-      if (!hasMore) return;
-    } else {
-      pageNum = 1;
-      hasMore = true;
-      moviesList = [];
-      emit(SearchLoading());
-    }
-    final response = await _repository.search(query, pageNum);
+  Future<void> search(String? query) async {
+    _moviesList.clear();
+    _pageNum = 1;
+    hasMore = true;
+    emit(SearchLoading());
+
+    final response = await _repository.search(query, _pageNum);
 
     response.fold(
       (exception) {
         emit(SearchError(exception.message));
       },
       (data) {
-        final newMovies = data.data?.movies;
-        if (newMovies == null || newMovies.isEmpty) {
-          hasMore = false;
-        } else {
-          moviesList?.addAll(newMovies);
-          pageNum++;
-        }
-
-        emit(SearchSuccess(moviesList));
+        final newMovies = data.data?.movies ?? [];
+        _moviesList.addAll(newMovies);
+        if (newMovies.length < 20) hasMore = false;
+        _pageNum++;
+        emit(SearchSuccess(moviesList: _moviesList, isPaginating: false));
       },
     );
-    isLoading = false;
+  }
+
+  Future<void> loadMoreMovies(String? query) async {
+    if (!hasMore) return;
+    emit(SearchSuccess(moviesList: _moviesList, isPaginating: true));
+
+    final response = await _repository.search(query, _pageNum);
+    response.fold(
+      (exception) {
+        emit(SearchError(exception.message));
+      },
+      (data) {
+        final newMovies = data.data?.movies ?? [];
+        _moviesList.addAll(newMovies);
+        if (newMovies.length < 20) hasMore = false;
+        _pageNum++;
+        emit(SearchSuccess(moviesList: _moviesList, isPaginating: false));
+      },
+    );
   }
 }

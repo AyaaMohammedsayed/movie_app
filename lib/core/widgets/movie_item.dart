@@ -39,7 +39,7 @@ class MovieItem extends StatelessWidget {
         children: [
           isImageNetwork
               ? CachedNetworkImage(
-                imageUrl: imgName,
+                imageUrl: imgName ?? AppImages.placeholderErrorImage,
                 width: width,
                 height: height,
                 fit: BoxFit.fill,

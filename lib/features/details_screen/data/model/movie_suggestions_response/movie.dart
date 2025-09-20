@@ -66,7 +66,8 @@ class Movie {
     year: json['year'] as int?,
     rating: (json['rating'] as num?)?.toDouble(),
     runtime: json['runtime'] as int?,
-    genres: json['genres'] as List<String>?,
+    genres:
+        (json['genres'] as List<dynamic>?)!.map((e) => e.toString()).toList(),
     summary: json['summary'] as String?,
     descriptionFull: json['description_full'] as String?,
     synopsis: json['synopsis'] as String?,
@@ -85,32 +86,4 @@ class Movie {
     dateUploaded: json['date_uploaded'] as String?,
     dateUploadedUnix: json['date_uploaded_unix'] as int?,
   );
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'url': url,
-    'imdb_code': imdbCode,
-    'title': title,
-    'title_english': titleEnglish,
-    'title_long': titleLong,
-    'slug': slug,
-    'year': year,
-    'rating': rating,
-    'runtime': runtime,
-    'genres': genres,
-    'summary': summary,
-    'description_full': descriptionFull,
-    'synopsis': synopsis,
-    'yt_trailer_code': ytTrailerCode,
-    'language': language,
-    'mpa_rating': mpaRating,
-    'background_image': backgroundImage,
-    'background_image_original': backgroundImageOriginal,
-    'small_cover_image': smallCoverImage,
-    'medium_cover_image': mediumCoverImage,
-    'state': state,
-    'torrents': torrents?.map((e) => e.toJson()).toList(),
-    'date_uploaded': dateUploaded,
-    'date_uploaded_unix': dateUploadedUnix,
-  };
 }
