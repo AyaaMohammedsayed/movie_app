@@ -109,4 +109,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get exit => 'مغادرة';
+
+  @override
+  String get wishList => 'قائمة الرغبات';
+
+  @override
+  String get history => 'السجل';
+
+  @override
+  String get watchList => 'قائمة المشاهدة';
 }

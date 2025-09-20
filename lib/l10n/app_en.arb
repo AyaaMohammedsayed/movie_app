@@ -32,5 +32,8 @@
     "createAccount":"Create Account",
     "alreadyHaveAccount":"Already Have Account ?",
     "editProfile":"Edit Profile",
-    "exit":"Exit"
+    "exit":"Exit",
+    "wishList":"Wish List",
+    "history":"History",
+    "watchList":"Watch List"
 }

@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
+import 'package:movie_app/l10n/app_localizations.dart';
 
 class ProfileTab extends StatefulWidget {
   ProfileTab({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class ProfileTab extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileTab>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  late AppLocalizations appLocalizations;
   int profile = 1;
   int selectedItem = -1;
 
@@ -25,6 +27,12 @@ class _ProfileScreenState extends State<ProfileTab>
     "assets/images/movie_3.png",
     "assets/images/movie_4.png",
   ];
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    appLocalizations = AppLocalizations.of(context)!;
+  }
 
   @override
   void initState() {
@@ -64,7 +72,10 @@ class _ProfileScreenState extends State<ProfileTab>
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text('12', style: textTheme.titleSmall),
-                          Text('Wish List', style: textTheme.labelSmall),
+                          Text(
+                            appLocalizations.wishList,
+                            style: textTheme.labelSmall,
+                          ),
                         ],
                       ),
                       SizedBox(width: screenWidth * 0.05),
@@ -73,7 +84,7 @@ class _ProfileScreenState extends State<ProfileTab>
                         children: [
                           Text('10', style: textTheme.titleSmall),
                           Text(
-                            'History',
+                            appLocalizations.history,
                             style: textTheme.labelSmall!.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
@@ -93,7 +104,7 @@ class _ProfileScreenState extends State<ProfileTab>
                         child: CustomElevatedButton(
                           onTap: () {},
                           child: Text(
-                            "Edit Profile",
+                            appLocalizations.editProfile,
                             style: textTheme.titleLarge!.copyWith(
                               color: AppTheme.black,
                             ),
@@ -108,7 +119,10 @@ class _ProfileScreenState extends State<ProfileTab>
                           onTap: () {},
                           child: Row(
                             children: [
-                              Text("Exit", style: textTheme.titleLarge),
+                              Text(
+                                appLocalizations.exit,
+                                style: textTheme.titleLarge,
+                              ),
                               SizedBox(width: 1),
                               Icon(
                                 Icons.exit_to_app,
@@ -139,7 +153,10 @@ class _ProfileScreenState extends State<ProfileTab>
                               width: 12,
                             ),
                             SizedBox(height: 2),
-                            Text('Watch List', style: textTheme.titleLarge),
+                            Text(
+                              appLocalizations.watchList,
+                              style: textTheme.titleLarge,
+                            ),
                           ],
                         ),
                       ),
@@ -152,7 +169,10 @@ class _ProfileScreenState extends State<ProfileTab>
                               height: 18,
                               width: 15,
                             ),
-                            Text('History', style: textTheme.titleLarge),
+                            Text(
+                              appLocalizations.history,
+                              style: textTheme.titleLarge,
+                            ),
                           ],
                         ),
                       ),

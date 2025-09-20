@@ -109,4 +109,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get exit => 'Exit';
+
+  @override
+  String get wishList => 'Wish List';
+
+  @override
+  String get history => 'History';
+
+  @override
+  String get watchList => 'Watch List';
 }

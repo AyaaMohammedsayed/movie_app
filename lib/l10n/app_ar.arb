@@ -32,5 +32,8 @@
     "createAccount":"إنشاء حساب",
     "alreadyHaveAccount":"بالتأكيد لديك حساب ؟ ",
     "editProfile":"تعديل الحساب ",
-    "exit":"مغادرة"
+    "exit":"مغادرة",
+    "wishList":"قائمة الرغبات",
+    "history":"السجل",
+    "watchList":"قائمة المشاهدة"
 }
