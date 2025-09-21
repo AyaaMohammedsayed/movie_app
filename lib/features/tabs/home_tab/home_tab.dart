@@ -24,27 +24,11 @@ class _HomeTabState extends State<HomeTab> {
       children: [
         Stack(
           children: [
-            Image.asset(
-              AppImages.movieImages[currentIndex],
+            MovieItem(
+              imgName: AppImages.movieImages[currentIndex],
               height: 645.h,
-              width: double.infinity,
-              fit: BoxFit.fill,
-            ),
-            Container(
-              width: double.infinity,
-              height: 645.h,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  stops: [0.0, 0.47, 1],
-                  colors: [
-                    AppTheme.black.withValues(alpha: 1),
-                    AppTheme.black.withValues(alpha: 0.6),
-                    AppTheme.black.withValues(alpha: 0.8),
-                  ],
-                ),
-              ),
+              width: 1.sw,
+              withGradient: true,
             ),
             Column(
               children: [

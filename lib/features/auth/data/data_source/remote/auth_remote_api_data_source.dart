@@ -36,7 +36,8 @@ class AuthRemoteAPIDataSource implements AuthRemoteDataSource {
       throw RegisterException(message ?? "Failed to register");
     }
   }
-  
+
+  @override
   Future<LoginResponse> login(LoginRequest request) async {
     try {
       final response = await _dio.post(
@@ -58,6 +59,4 @@ class AuthRemoteAPIDataSource implements AuthRemoteDataSource {
       throw LoginException(message ?? "Failed to login");
     }
   }
-
-
 }
