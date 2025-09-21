@@ -16,16 +16,18 @@ class MovieDetailsRemoteAPIDataSource implements MovieDetailsRemoteDataSource {
     MovieDetailsRequest request,
   ) async {
     try {
-      final response = await _dio.post(
+      final response = await _dio.get(
         ConstantAPI.movieDetailsEndPoint,
-        data: request.toJson(),
+        queryParameters: request.toJson(),
       );
       return MovieDetailsResponse.fromJson(response.data);
     } catch (exception) {
       String? message;
       if (exception is DioException) {
         message = exception.response?.data["status_message"];
+        print(exception);
       }
+      print(exception);
       throw MovieDetailsException(message ?? 'Failed to get movie details');
     }
   }
@@ -33,9 +35,9 @@ class MovieDetailsRemoteAPIDataSource implements MovieDetailsRemoteDataSource {
   @override
   Future<MovieSuggestionsResponse> getMovieSuggestions(String movieID) async {
     try {
-      final response = await _dio.post(
+      final response = await _dio.get(
         ConstantAPI.movieSuggestionsEndPoint,
-        data: movieID,
+        queryParameters: {"movie_id": movieID},
       );
       return MovieSuggestionsResponse.fromJson(response.data);
     } catch (exception) {
@@ -43,6 +45,7 @@ class MovieDetailsRemoteAPIDataSource implements MovieDetailsRemoteDataSource {
       if (exception is DioException) {
         message = exception.response?.data['status_message'];
       }
+      print(exception);
       throw MovieSuggestionsException(
         message ?? 'Failed to get movie suggestions',
       );

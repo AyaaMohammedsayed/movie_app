@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/app_theme.dart';
+import 'package:movie_app/core/widgets/movie_item.dart';
 
 class CastingDetails extends StatelessWidget {
   final String name;
   final String character;
+  final String imageURL;
 
   const CastingDetails({
     required this.character,
     required this.name,
+    required this.imageURL,
     super.key,
   });
 
@@ -23,21 +26,23 @@ class CastingDetails extends StatelessWidget {
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Row(
-        crossAxisAlignment:
-            CrossAxisAlignment.start, 
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ClipRRect(
-            //  borderRadius: BorderRadius.circular(35.r),
-            child: Image.asset(
-              "lib/features/details_screen/presentation/screens/widgets/cast.png",
-              height: 70.h,
-              width: 70.h,
-              fit: BoxFit.cover,
+          CircleAvatar(
+            radius: 40,
+            child: ClipRRect(
+              borderRadius: BorderRadiusGeometry.circular(40),
+              child: MovieItem(
+                imgName: imageURL,
+                isImageNetwork: true,
+                onTap: () {},
+                height: 90.h,
+                width: 100.w,
+              ),
             ),
           ),
           SizedBox(width: 10.w),
-
-          
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,14 +51,16 @@ class CastingDetails extends StatelessWidget {
                   'Name : $name',
                   style: textTheme.titleLarge,
                   softWrap: true,
-                  maxLines: null, 
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: 6.h),
                 Text(
                   'Character : $character',
                   style: textTheme.titleLarge,
                   softWrap: true,
-                  maxLines: null,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),

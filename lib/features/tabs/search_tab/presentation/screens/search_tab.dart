@@ -6,6 +6,7 @@ import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
 import 'package:movie_app/core/widgets/loading_indicator.dart';
 import 'package:movie_app/core/widgets/movie_item.dart';
+import 'package:movie_app/features/details_screen/presentation/screens/view/movie_details_screen.dart';
 import 'package:movie_app/features/tabs/search_tab/presentation/cubit/search_cubit.dart';
 import 'package:movie_app/features/tabs/search_tab/presentation/cubit/search_state.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
@@ -46,7 +47,7 @@ class _SearchTabState extends State<SearchTab> {
         BlocBuilder<SearchCubit, SearchState>(
           builder: (context, state) {
             if (state is SearchLoading) {
-              return Expanded(child: LoadingIndicator());
+              return const Expanded(child: LoadingIndicator());
             } else if (state is SearchError) {
               return Expanded(
                 child: Column(
@@ -64,54 +65,67 @@ class _SearchTabState extends State<SearchTab> {
                 ),
               );
             } else if (state is SearchSuccess) {
-              return Expanded(
-                child:
-                    state.movies == null || state.movies!.isEmpty
-                        ? Center(child: Image.asset(AppImages.emptyImage))
-                        : NotificationListener<ScrollNotification>(
-                          onNotification: (ScrollNotification scrollInfo) {
-                            if (scrollInfo.metrics.pixels ==
-                                    scrollInfo.metrics.maxScrollExtent &&
-                                !context.read<SearchCubit>().isLoading) {
-                              context.read<SearchCubit>().search(
-                                controller.text,
-                                loadMore: true,
-                              );
-                            }
-                            return true;
-                          },
+              if (state.moviesList.isEmpty) {
+                return Expanded(
+                  child: Center(child: Image.asset(AppImages.emptyImage)),
+                );
+              }
 
-                          child: GridView.builder(
-                            padding: EdgeInsets.symmetric(horizontal: 16.h),
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisSpacing: 16.w,
-                                  mainAxisSpacing: 8.h,
-                                  childAspectRatio: 191 / 279,
-                                  crossAxisCount: 2,
-                                ),
-                            itemCount: state.movies!.length,
-                            itemBuilder: (_, index) {
-                              return MovieItem(
-                                imgName: state.movies![index].largeCoverImage!,
-                                rating: state.movies![index].rating!,
-                                movieName: state.movies![index].title,
-                                width: 191.h,
-                                height: 279.h,
-                                isImageNetwork: true,
-                              );
-                            },
+              return Expanded(
+                child: NotificationListener<ScrollNotification>(
+                  onNotification: (ScrollNotification scrollInfo) {
+                    if (scrollInfo.metrics.pixels >=
+                        scrollInfo.metrics.maxScrollExtent - 200) {
+                      context.read<SearchCubit>().loadMoreMovies(
+                        controller.text,
+                      );
+                    }
+                    return true;
+                  },
+                  child: GridView.builder(
+                    padding: EdgeInsets.symmetric(horizontal: 16.h),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisSpacing: 16.w,
+                      mainAxisSpacing: 8.h,
+                      childAspectRatio: 191 / 279,
+                      crossAxisCount: 2,
+                    ),
+                    itemCount:
+                        state.moviesList.length +
+                        (context.read<SearchCubit>().hasMore ? 1 : 0),
+                    itemBuilder: (_, index) {
+                      if (index == state.moviesList.length) {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            color: AppTheme.primary,
                           ),
-                        ),
+                        );
+                      }
+                      return MovieItem(
+                        imgName: state.moviesList[index].largeCoverImage!,
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            MoveDetails.routeName,
+                            arguments: state.moviesList[index].id,
+                          );
+                          print(state.moviesList[index].id);
+                        },
+                        rating: state.moviesList[index].rating!,
+                        movieName: state.moviesList[index].title,
+                        width: 191.h,
+                        height: 279.h,
+                        isImageNetwork: true,
+                      );
+                    },
+                  ),
+                ),
               );
             } else {
-              return Expanded(child: SizedBox());
+              return const Expanded(child: SizedBox());
             }
           },
         ),
-        context.read<SearchCubit>().isLoading
-            ? Center(child: CircularProgressIndicator(color: AppTheme.primary))
-            : SizedBox(),
       ],
     );
   }

@@ -44,20 +44,4 @@ class Torrent {
     dateUploaded: json['date_uploaded'] as String?,
     dateUploadedUnix: json['date_uploaded_unix'] as int?,
   );
-
-  Map<String, dynamic> toJson() => {
-    'url': url,
-    'hash': hash,
-    'quality': quality,
-    'is_repack': isRepack,
-    'video_codec': videoCodec,
-    'bit_depth': bitDepth,
-    'audio_channels': audioChannels,
-    'seeds': seeds,
-    'peers': peers,
-    'size': size,
-    'size_bytes': sizeBytes,
-    'date_uploaded': dateUploaded,
-    'date_uploaded_unix': dateUploadedUnix,
-  };
 }

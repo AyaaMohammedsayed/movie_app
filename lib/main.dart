@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app/core/bloc_observer.dart';
 import 'package:movie_app/core/constants/constant_api.dart';
 import 'package:movie_app/core/languages/view_model/language_state.dart';
 import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
@@ -10,6 +11,7 @@ import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:movie_app/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:movie_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:movie_app/features/auth/presentation/screens/register_screen.dart';
+import 'package:movie_app/features/details_screen/presentation/screens/view/movie_details_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/onboarding/view/screens/onboarding_screen.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/update_profile.dart';
@@ -24,6 +26,7 @@ Future<void> main() async {
     SystemUiMode.immersiveSticky,
     overlays: [],
   );
+  AppBlocObserver();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool onboardingComplete = prefs.getBool(CacheKey.onBoarding) ?? false;
   runApp(
@@ -74,6 +77,7 @@ class _MovieAppState extends State<MovieApp> {
                   UpdateProfile.routeName: (_) => UpdateProfile(),
                   ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
                   HomeScreen.routeName: (_) => HomeScreen(),
+                  MoveDetails.routeName: (_) => const MoveDetails(),
                 },
                 initialRoute:
                     widget.onboardingComplete

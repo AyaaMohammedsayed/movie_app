@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/widgets/movie_item.dart';
+import 'package:movie_app/features/details_screen/presentation/screens/view/movie_details_screen.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
 
 class HomeTab extends StatefulWidget {
@@ -26,6 +27,7 @@ class _HomeTabState extends State<HomeTab> {
           children: [
             MovieItem(
               imgName: AppImages.movieImages[currentIndex],
+              onTap: () {},
               height: 645.h,
               width: 1.sw,
               withGradient: true,
@@ -67,6 +69,7 @@ class _HomeTabState extends State<HomeTab> {
                   itemBuilder: (_, index, _) {
                     return MovieItem(
                       imgName: AppImages.movieImages[index],
+                      onTap: () {},
                       rating: 7.7,
                       width: 234.w,
                       height: 351.h,
@@ -122,6 +125,9 @@ class _HomeTabState extends State<HomeTab> {
                   itemBuilder:
                       (_, index) => MovieItem(
                         imgName: AppImages.movieImages[index],
+                        onTap: () {
+                          Navigator.pushNamed(context, MoveDetails.routeName);
+                        },
                         rating: 7.7,
                         width: 146.w,
                         height: 220.h,
