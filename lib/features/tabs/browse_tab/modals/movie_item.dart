@@ -5,12 +5,12 @@ import 'package:movie_app/core/app_theme.dart';
 class MovieItem extends StatelessWidget {
   final String imgName;
   final double rating;
-  final bool isCategories;
+  final String categoryId;
   const MovieItem({
     super.key,
     required this.imgName,
     required this.rating,
-    this.isCategories = false,
+  required  this.categoryId
   });
 
   @override
@@ -19,8 +19,8 @@ class MovieItem extends StatelessWidget {
       children: [
         Image.asset(
           imgName,
-          width: isCategories ? 146.w : 234.w,
-          height: isCategories ? 220.h : 351.h,
+          width:  189.w ,
+          height:279.h ,
           fit: BoxFit.fill,
         ),
         Container(

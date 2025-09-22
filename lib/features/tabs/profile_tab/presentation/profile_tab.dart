@@ -67,7 +67,7 @@ class _ProfileScreenState extends State<ProfileTab>
                           'assets/images/avatar$profile.png',
                         ),
                       ),
-                      SizedBox(width: screenWidth * 0.05),
+                      SizedBox(width: screenWidth * 0.1),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -78,7 +78,7 @@ class _ProfileScreenState extends State<ProfileTab>
                           ),
                         ],
                       ),
-                      SizedBox(width: screenWidth * 0.05),
+                      SizedBox(width: screenWidth * 0.1),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -115,7 +115,7 @@ class _ProfileScreenState extends State<ProfileTab>
                       SizedBox(
                         width: screenWidth * 0.25,
                         child: CustomElevatedButton(
-                          color: AppTheme.red,
+                          backgroundColor: AppTheme.red,
                           onTap: () {},
                           child: Row(
                             children: [

@@ -118,4 +118,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get watchList => 'قائمة المشاهدة';
+
+  @override
+  String get search => 'البحث';
+
+  @override
+  String get watch => 'شاهد';
+
+  @override
+  String get screenShots => 'Screen Shots';
+
+  @override
+  String get similar => 'متشابه';
+
+  @override
+  String get cast => 'الممثلون';
+
+  @override
+  String get summary => 'الملخص';
+
+  @override
+  String get genres => 'التصنيفات';
 }

@@ -35,5 +35,12 @@
     "exit":"Exit",
     "wishList":"Wish List",
     "history":"History",
-    "watchList":"Watch List"
+    "watchList":"Watch List",
+    "search":"Search",
+    "watch":"Watch",
+    "screenShots":"Screen Shots",
+    "similar":"Similar",
+    "cast":"Cast",
+    "summary":"Summary",
+    "genres":"Genres"
 }
