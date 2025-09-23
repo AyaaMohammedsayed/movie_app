@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/core/constants/constants.dart';
+
+
+import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
+
 import 'package:movie_app/core/utils/validator.dart';
 import 'package:movie_app/core/languages/view/change_language.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
