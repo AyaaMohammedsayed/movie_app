@@ -120,6 +120,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get watchList => 'Watch List';
 
   @override
+
   String get search => 'Search';
 
   @override
