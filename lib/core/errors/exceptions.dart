@@ -23,3 +23,7 @@ class LoginException extends AppException {
 class SearchException extends AppException {
   SearchException(super.message);
 }
+
+class BrowseException extends AppException {
+  BrowseException(super.message);
+}
