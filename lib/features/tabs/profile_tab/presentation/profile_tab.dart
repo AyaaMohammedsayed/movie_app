@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:movie_app/core/app_theme.dart';
-import 'package:movie_app/core/constants/constants.dart';
-import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
 
 class ProfileTab extends StatefulWidget {
@@ -92,7 +88,6 @@ class _ProfileScreenState extends State<ProfileTab>
                         ],
                       ),
                     ],
-                    
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   Text("John Safwat", style: textTheme.titleLarge),
