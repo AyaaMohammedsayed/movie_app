@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:movie_app/core/constants/constant_api.dart';
 import 'package:movie_app/core/errors/exceptions.dart';
-import 'package:movie_app/core/token_user/taken.dart';
+import 'package:movie_app/core/token_user/token.dart';
 import 'package:movie_app/features/auth/data/data_source/remote/auth_remote_data_source.dart';
 import 'package:movie_app/features/auth/data/model/login_request.dart';
 import 'package:movie_app/features/auth/data/model/login_response.dart';
