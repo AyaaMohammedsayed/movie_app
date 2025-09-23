@@ -15,6 +15,7 @@ import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:movie_app/features/auth/presentation/cubit/states.dart';
 import 'package:movie_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
+import 'package:movie_app/features/tabs/profile_tab/presentation/screens/update_profile.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -113,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         );
                         Navigator.of(
                           context,
-                        ).pushReplacementNamed(HomeScreen.routeName);
+                        ).pushReplacementNamed(UpdateProfile.routeName);
                       } else if (state is LoginError) {
                         UiUtils.hideLoading(context);
                         UiUtils.showErrorMessage(state.message);
