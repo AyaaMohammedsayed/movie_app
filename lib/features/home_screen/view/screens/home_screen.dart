@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/widgets/nav_bar_icon.dart';
+import 'package:movie_app/features/details_screen/presentation/cubit/details_cubit.dart';
 import 'package:movie_app/features/tabs/browse_tab/presentation/browse_tab.dart';
 import 'package:movie_app/features/tabs/home_tab/home_tab.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/screens/profile_tab.dart';
@@ -75,8 +76,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: BlocProvider(
-        create: (_) => SearchCubit()..search(null),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider<SearchCubit>(
+            create: (context) => SearchCubit()..search(null),
+          ),
+        ],
         child: PageView(
           controller: _pageController,
           children: tabs,

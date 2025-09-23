@@ -10,7 +10,7 @@ class MovieDetailsList {
   String? titleLong;
   String? slug;
   int? year;
-  int? rating;
+  num? rating;
   int? runtime;
   List<String>? genres;
   int? likeCount;
@@ -80,9 +80,12 @@ class MovieDetailsList {
         titleLong: json['title_long'] as String?,
         slug: json['slug'] as String?,
         year: json['year'] as int?,
-        rating: json['rating'] as int?,
+        rating: json['rating'] as num?,
         runtime: json['runtime'] as int?,
-        genres: json['genres'] as List<String>?,
+        genres:
+            (json['genres'] as List<dynamic>?)
+                ?.map((e) => e.toString())
+                .toList(),
         likeCount: json['like_count'] as int?,
         descriptionIntro: json['description_intro'] as String?,
         descriptionFull: json['description_full'] as String?,

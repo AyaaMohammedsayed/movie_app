@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/bloc_observer.dart';
+import 'package:movie_app/core/constants/constant_api.dart';
 import 'package:movie_app/core/languages/view_model/language_state.dart';
 import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
 import 'package:movie_app/core/utils/localize_app_localization.dart';
@@ -13,18 +14,21 @@ import 'package:movie_app/features/auth/presentation/screens/register_screen.dar
 import 'package:movie_app/features/details_screen/presentation/screens/view/movie_details_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/onboarding/view/onboarding.dart';
-import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/profile_cubit.dart';
-import 'package:movie_app/features/tabs/profile_tab/presentation/screens/update_profile.dart';
+import 'package:movie_app/features/tabs/profile_tab/presentation/update_profile.dart';
 import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Bloc.observer = AppBlocObserver();
+
   SystemChrome.setEnabledSystemUIMode(
     SystemUiMode.immersiveSticky,
     overlays: [],
   );
+  AppBlocObserver();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool onboardingComplete = prefs.getBool(CacheKey.onBoarding) ?? false;
   runApp(
     MultiBlocProvider(
       providers: [
@@ -32,13 +36,14 @@ void main() {
         BlocProvider(create: (_) => AuthCubit()),
         BlocProvider(create: (_) => ProfileCubit()),
       ],
-      child: MovieApp(),
+      child: MovieApp(onboardingComplete: onboardingComplete),
     ),
   );
 }
 
 class MovieApp extends StatefulWidget {
-  const MovieApp({super.key});
+  final bool onboardingComplete;
+  const MovieApp({super.key, required this.onboardingComplete});
 
   @override
   State<MovieApp> createState() => _MovieAppState();
@@ -67,15 +72,15 @@ class _MovieAppState extends State<MovieApp> {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 routes: {
-                  Onboarding.routeName: (_) => Onboarding(),
+                  OnboardingScreen.routeName: (_) => OnboardingScreen(),
                   LoginScreen.routeName: (_) => LoginScreen(),
                   RegisterScreen.routeName: (_) => RegisterScreen(),
                   UpdateProfile.routeName: (_) => UpdateProfile(),
                   ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
                   HomeScreen.routeName: (_) => HomeScreen(),
-                  MoveDetails.routeName: (_) => MoveDetails(),
+                  MoveDetails.routeName: (_) => const MoveDetails(),
                 },
-                initialRoute: LoginScreen.routeName,
+                initialRoute: MoveDetails.routeName,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,
                 themeMode: ThemeMode.dark,

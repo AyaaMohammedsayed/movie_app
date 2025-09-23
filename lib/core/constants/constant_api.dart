@@ -6,9 +6,16 @@ class ConstantAPI {
 
   static const String authBaseUrl = "https://route-movie-apis.vercel.app/";
   static const String registerEndPoint = "auth/register";
-  
+
   static const String loginEndPoint = "auth/login";
   static const String updateProfileEndPoint = "profile";
   static const String resetPasswordEndPoint = "auth/reset-password";
   
+  static const String tokenKey = "token";
+
+
+}
+
+class CacheKey {
+  static const String onBoarding = "onboarding";
 }

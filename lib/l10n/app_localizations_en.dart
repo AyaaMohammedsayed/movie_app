@@ -93,6 +93,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get seeMore => 'See More';
 
   @override
+  String get nameName => 'Name';
+
+  @override
+  String get confirmPassName => 'Confirm password';
+
+  @override
+  String get createAccount => 'Create Account';
+
+  @override
+  String get alreadyHaveAccount => 'Already Have Account ?';
+
+  @override
+  String get editProfile => 'Edit Profile';
+
+  @override
+  String get exit => 'Exit';
+
+  @override
+  String get wishList => 'Wish List';
+
+  @override
+  String get history => 'History';
+
+  @override
+  String get watchList => 'Watch List';
+
+  @override
   String get search => 'Search';
 
   @override

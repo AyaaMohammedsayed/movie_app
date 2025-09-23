@@ -28,11 +28,4 @@ class MovieSuggestionsResponse {
               : Meta.fromJson(json['@meta'] as Map<String, dynamic>),
     );
   }
-
-  Map<String, dynamic> toJson() => {
-    'status': status,
-    'status_message': statusMessage,
-    'data': data?.toJson(),
-    '@meta': meta?.toJson(),
-  };
 }
