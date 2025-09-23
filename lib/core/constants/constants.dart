@@ -31,6 +31,8 @@ class AppImages {
   static const googleIcon = '$_iconFolder/google_icon.svg';
   static const nameIcon = '$_iconFolder/name_icon.svg';
   static const phoneIcon = '$_iconFolder/phone.svg';
+  static const watchListIcon = '$_iconFolder/watch_list.svg';
+  static const historyIcon = '$_iconFolder/history.svg';
 
   static List<String> selectedNavBarIcons = List.generate(
     4,
