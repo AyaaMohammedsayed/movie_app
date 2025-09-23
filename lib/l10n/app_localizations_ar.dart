@@ -93,35 +93,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get seeMore => 'انظر للمزيد';
 
   @override
-
-  String get nameName => 'الاسم';
-
-  @override
-  String get confirmPassName => 'تأكيد كلمة المرور';
-
-  @override
-  String get createAccount => 'إنشاء حساب';
-
-  @override
-  String get alreadyHaveAccount => 'بالتأكيد لديك حساب ؟ ';
-
-  @override
-  String get editProfile => 'تعديل الحساب ';
-
-  @override
-  String get exit => 'مغادرة';
-
-  @override
-  String get wishList => 'قائمة الرغبات';
-
-  @override
-  String get history => 'السجل';
-
-  @override
-  String get watchList => 'قائمة المشاهدة';
-
-  @override
-
   String get search => 'البحث';
 
   @override
