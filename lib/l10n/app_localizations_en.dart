@@ -112,4 +112,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get genres => 'Genres';
+
+  @override
+  String get resetPassword => 'Reset Password';
+
+  @override
+  String get updateData => 'Update Data';
 }
