@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/core/constants/constants.dart';
 
+
 import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
+
 import 'package:movie_app/core/utils/validator.dart';
 import 'package:movie_app/core/languages/view/change_language.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
@@ -30,8 +32,6 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late AppLocalizations appLocalizations;
-
-
 
   @override
   void didChangeDependencies() {
@@ -98,11 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   SizedBox(height: screenHeight * 0.015),
-                
-                
-
-
-               BlocListener<AuthCubit, AuthState>(
+                  BlocListener<AuthCubit, AuthState>(
                     listener: (context, state) {
                       if (state is LoginLoading) {
                         UiUtils.showLoading(context);
@@ -124,10 +120,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (formKey.currentState!.validate()) {
                           context.read<AuthCubit>().login(
                             LoginRequest(
-                           
                               email: emailController.text,
                               password: passwordController.text,
-
                             ),
                           );
                         }
@@ -135,11 +129,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(appLocalizations.login),
                     ),
                   ),
-                  
-                  
-
-
-
                   SizedBox(height: screenHeight * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -192,9 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   SizedBox(height: screenHeight * 0.02),
-                 
-                 
-                 
+
                   CustomElevatedButton(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -213,13 +200,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       //code
                     },
                   ),
-                  
-                  
-                  
-                  
-                  
                   SizedBox(height: screenHeight * 0.02),
-                  ChangeLanguageWidget(context.watch<LanguagesViewModel>()),
+                  ChangeLanguageWidget(context.watch()),
                 ],
               ),
             ),
