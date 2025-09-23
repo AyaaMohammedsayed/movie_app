@@ -6,7 +6,7 @@ import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
 
 class ProfileTab extends StatefulWidget {
-  ProfileTab({Key? key}) : super(key: key);
+ const ProfileTab({Key? key}) : super(key: key);
 
   @override
   State<ProfileTab> createState() => _ProfileScreenState();
