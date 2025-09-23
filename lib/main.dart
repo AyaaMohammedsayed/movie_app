@@ -15,7 +15,7 @@ import 'package:movie_app/features/details_screen/presentation/screens/view/movi
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/onboarding/view/screens/onboarding_screen.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/profile_cubit.dart';
-import 'package:movie_app/features/tabs/profile_tab/presentation/update_profile.dart';
+import 'package:movie_app/features/tabs/profile_tab/presentation/screens/update_profile.dart';
 import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
