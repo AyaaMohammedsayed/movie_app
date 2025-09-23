@@ -307,6 +307,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Genres'**
   String get genres;
+
+  /// No description provided for @resetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get resetPassword;
+
+  /// No description provided for @updateData.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Data'**
+  String get updateData;
 }
 
 class _AppLocalizationsDelegate

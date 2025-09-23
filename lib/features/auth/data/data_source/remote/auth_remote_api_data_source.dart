@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:movie_app/core/constants/constant_api.dart';
 import 'package:movie_app/core/errors/exceptions.dart';
+import 'package:movie_app/core/token_user/token.dart';
 import 'package:movie_app/features/auth/data/data_source/remote/auth_remote_data_source.dart';
 import 'package:movie_app/features/auth/data/model/login_request.dart';
 import 'package:movie_app/features/auth/data/model/login_response.dart';
 import 'package:movie_app/features/auth/data/model/register_request.dart';
 import 'package:movie_app/features/auth/data/model/register_response.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRemoteAPIDataSource implements AuthRemoteDataSource {
   final Dio _dio = Dio(
@@ -44,8 +46,21 @@ class AuthRemoteAPIDataSource implements AuthRemoteDataSource {
         ConstantAPI.loginEndPoint,
         data: request.toJson(),
       );
-      print("LOGIN RESPONSE: ${response.data}");
-      return LoginResponse.fromJson(response.data);
+
+      print("Raw response: ${response.data}");
+
+      final loginResponse = LoginResponse.fromJson(response.data);
+
+      print("Message: ${loginResponse.message}");
+      print("Token: ${loginResponse.data}");
+
+      if (loginResponse.data != null) {
+
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString("user_token", loginResponse.data!);
+      }
+
+      return loginResponse;
     } catch (exception) {
       String? message;
       if (exception is DioException) {
