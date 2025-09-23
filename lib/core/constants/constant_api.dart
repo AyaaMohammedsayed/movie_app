@@ -10,9 +10,6 @@ class ConstantAPI {
   static const String loginEndPoint = "auth/login";
   static const String updateProfileEndPoint = "profile";
   static const String resetPasswordEndPoint = "auth/reset-password";
-
-
-
 }
 
 class CacheKey {

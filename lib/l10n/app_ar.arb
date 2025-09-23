@@ -27,17 +27,6 @@
     "restPass":"اعادة  تعيين كلمة المرور",
     "action":"أكشن",
     "seeMore":"انظر للمزيد",
-
-    "nameName":"الاسم",
-    "confirmPassName":"تأكيد كلمة المرور",
-    "createAccount":"إنشاء حساب",
-    "alreadyHaveAccount":"بالتأكيد لديك حساب ؟ ",
-    "editProfile":"تعديل الحساب ",
-    "exit":"مغادرة",
-    "wishList":"قائمة الرغبات",
-    "history":"السجل",
-    "watchList":"قائمة المشاهدة",
-
     "search":"البحث",
     "watch":"شاهد",
     "screen Shots":"لقطات مصورة",
