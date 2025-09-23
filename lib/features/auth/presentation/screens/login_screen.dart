@@ -13,6 +13,7 @@ import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/features/auth/data/model/login_request.dart';
 import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:movie_app/features/auth/presentation/cubit/states.dart';
+import 'package:movie_app/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:movie_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
@@ -30,8 +31,6 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late AppLocalizations appLocalizations;
-
-
 
   @override
   void didChangeDependencies() {
@@ -85,7 +84,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   Align(
                     alignment: AlignmentDirectional.centerEnd,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          ForgetPasswordScreen.routeName,
+                        );
+                      },
                       child: Text(
                         appLocalizations.forgetPass,
                         style: textTheme.titleMedium!.copyWith(
@@ -98,11 +102,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   SizedBox(height: screenHeight * 0.015),
-                
-                
 
-
-               BlocListener<AuthCubit, AuthState>(
+                  BlocListener<AuthCubit, AuthState>(
                     listener: (context, state) {
                       if (state is LoginLoading) {
                         UiUtils.showLoading(context);
@@ -124,10 +125,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (formKey.currentState!.validate()) {
                           context.read<AuthCubit>().login(
                             LoginRequest(
-                           
                               email: emailController.text,
                               password: passwordController.text,
-
                             ),
                           );
                         }
@@ -135,10 +134,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(appLocalizations.login),
                     ),
                   ),
-                  
-                  
-
-
 
                   SizedBox(height: screenHeight * 0.02),
                   Row(
@@ -192,9 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   SizedBox(height: screenHeight * 0.02),
-                 
-                 
-                 
+
                   CustomElevatedButton(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -213,11 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       //code
                     },
                   ),
-                  
-                  
-                  
-                  
-                  
+
                   SizedBox(height: screenHeight * 0.02),
                   ChangeLanguageWidget(context.watch<LanguagesViewModel>()),
                 ],
