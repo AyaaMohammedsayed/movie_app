@@ -92,6 +92,7 @@ class _ProfileScreenState extends State<ProfileTab>
                         ],
                       ),
                     ],
+                    
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   Text("John Safwat", style: textTheme.titleLarge),
