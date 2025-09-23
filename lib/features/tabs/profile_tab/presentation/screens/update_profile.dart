@@ -116,7 +116,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                   // ===== UserName =====
                   TextField(
                     controller: userName,
-                    style: TextStyle(fontSize: 20.sp, color: AppTheme.white),
+                    style: TextStyle(fontSize: 20.sp, color: const Color.fromARGB(255, 134, 12, 12)),
                     decoration: InputDecoration(
                       prefixIcon: Image.asset(AppImages.userImage, width: 30.w, height: 30.h, fit: BoxFit.scaleDown),
                     ),
