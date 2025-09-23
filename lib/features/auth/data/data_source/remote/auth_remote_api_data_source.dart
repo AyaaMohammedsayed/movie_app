@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:movie_app/core/constants/constant_api.dart';
 import 'package:movie_app/core/errors/exceptions.dart';
+import 'package:movie_app/core/token_user/taken.dart';
 import 'package:movie_app/features/auth/data/data_source/remote/auth_remote_data_source.dart';
 import 'package:movie_app/features/auth/data/model/login_request.dart';
 import 'package:movie_app/features/auth/data/model/login_response.dart';
@@ -36,14 +37,16 @@ class AuthRemoteAPIDataSource implements AuthRemoteDataSource {
       throw RegisterException(message ?? "Failed to register");
     }
   }
-  
+
   Future<LoginResponse> login(LoginRequest request) async {
     try {
       final response = await _dio.post(
         ConstantAPI.loginEndPoint,
         data: request.toJson(),
       );
-      print("LOGIN RESPONSE: ${response.data}");
+
+    // await  saveToken(response.data);
+
       return LoginResponse.fromJson(response.data);
     } catch (exception) {
       String? message;
@@ -58,6 +61,4 @@ class AuthRemoteAPIDataSource implements AuthRemoteDataSource {
       throw LoginException(message ?? "Failed to login");
     }
   }
-
-
 }

@@ -23,3 +23,15 @@ class LoginException extends AppException {
 class SearchException extends AppException {
   SearchException(super.message);
 }
+class UpdateProfileException extends AppException {
+  UpdateProfileException(super.message);
+}
+class DeleteProfileException extends AppException {
+  DeleteProfileException(super.message);
+}
+class ResetPasswordException extends AppException {
+  ResetPasswordException(super.message);
+}
+class GetProfileException extends AppException {
+  GetProfileException(super.message);
+}
