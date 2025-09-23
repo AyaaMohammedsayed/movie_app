@@ -320,7 +320,6 @@ abstract class AppLocalizations {
   /// **'Watch List'**
   String get watchList;
 
-
   /// No description provided for @search.
   ///
   /// In en, this message translates to:

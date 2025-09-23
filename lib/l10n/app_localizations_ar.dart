@@ -93,7 +93,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get seeMore => 'انظر للمزيد';
 
   @override
-
   String get nameName => 'الاسم';
 
   @override
@@ -121,7 +120,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get watchList => 'قائمة المشاهدة';
 
   @override
-
   String get search => 'البحث';
 
   @override
