@@ -148,7 +148,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                   CustomElevatedButton(
                     foregroundColor: AppTheme.white,
                     onTap: () => context.read<ProfileCubit>().deleteProfile(DeleteRequest(name: userName.text)),
-                    color: AppTheme.red,
+                    backgroundColor: AppTheme.red,
                     child: Text(appLocalizations.deleteAccount),
                   ),
                   SizedBox(height: 19.h),

@@ -96,7 +96,7 @@ Future<UpdateResponse> updateProfile(UpdateRequest request) async {
         },
               )
       );
-      print("LOGIN RESPONSE: ${response.data}");
+  
       return ResetResponse.fromJson(response.data);
     } catch (exception) {
       String? message;
@@ -108,7 +108,7 @@ Future<UpdateResponse> updateProfile(UpdateRequest request) async {
           message = resMessage;
         }
       }
-      throw LoginException(message ?? "Failed to update password");
+      throw ResetPasswordException(message ?? "Failed to update password");
     }
   }
  @override
@@ -137,7 +137,7 @@ Future<UpdateResponse> updateProfile(UpdateRequest request) async {
           message = resMessage;
         }
       }
-      throw LoginException(message ?? "Failed to get Data Profile");
+      throw GetProfileException(message ?? "Failed to get Data Profile");
     }
   }
 
