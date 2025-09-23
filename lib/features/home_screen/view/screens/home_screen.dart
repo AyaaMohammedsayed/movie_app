@@ -5,7 +5,7 @@ import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/widgets/nav_bar_icon.dart';
 import 'package:movie_app/features/tabs/browse_tab/presentation/browse_tab.dart';
 import 'package:movie_app/features/tabs/home_tab/home_tab.dart';
-import 'package:movie_app/features/tabs/profile_tab/presentation/profile_tab.dart';
+import 'package:movie_app/features/tabs/profile_tab/presentation/screens/profile_tab.dart';
 import 'package:movie_app/features/tabs/search_tab/presentation/cubit/search_cubit.dart';
 import 'package:movie_app/features/tabs/search_tab/presentation/screens/search_tab.dart';
 

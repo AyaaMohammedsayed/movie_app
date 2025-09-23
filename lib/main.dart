@@ -13,7 +13,8 @@ import 'package:movie_app/features/auth/presentation/screens/register_screen.dar
 import 'package:movie_app/features/details_screen/presentation/screens/view/movie_details_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/onboarding/view/onboarding.dart';
-import 'package:movie_app/features/tabs/profile_tab/presentation/update_profile.dart';
+import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/profile_cubit.dart';
+import 'package:movie_app/features/tabs/profile_tab/presentation/screens/update_profile.dart';
 import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
 
@@ -29,6 +30,7 @@ void main() {
       providers: [
         BlocProvider(create: (_) => LanguagesViewModel()..changeLanguage("en")),
         BlocProvider(create: (_) => AuthCubit()),
+        BlocProvider(create: (_) => ProfileCubit()),
       ],
       child: MovieApp(),
     ),
@@ -73,7 +75,7 @@ class _MovieAppState extends State<MovieApp> {
                   HomeScreen.routeName: (_) => HomeScreen(),
                   MoveDetails.routeName: (_) => MoveDetails(),
                 },
-                initialRoute: UpdateProfile.routeName,
+                initialRoute: LoginScreen.routeName,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,
                 themeMode: ThemeMode.dark,
