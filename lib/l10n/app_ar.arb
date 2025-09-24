@@ -29,18 +29,19 @@
     "seeMore":"انظر للمزيد",
     "search":"البحث",
     "watch":"شاهد",
-    "screen Shots":"لقطات مصورة",
+    "screenShots":"لقطات مصورة",
     "similar":"متشابه",
     "cast":"الممثلون",
     "summary":"الملخص",
     "genres":"التصنيفات",
     "resetPassword":"تغيير كلمة المرور",
-
-   
     "updateData":"تحديث  بيانات الحساب",
     "editProfile":"تعديل الصفحة",
     "history":"السجل",
     "watchList":"ٌائمة المشاهدة",
     "wishList": "قائمة الرغبات",
-    "exit":"مغادره"
+    "exit":"مغادره",
+        "download": "تحميل",
+    "cancel": "إلغاء",
+    "selectQuality" : "اختر الجودة"
 }

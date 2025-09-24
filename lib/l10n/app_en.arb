@@ -40,7 +40,8 @@
     "history":"History",
     "watchList":"Watch List ",
     "wishList": "Wish List ",
-    "exit":"Exit"
-
-   
+    "exit":"Exit",
+    "download": "Download",
+    "cancel": "Cancel",
+    "selectQuality" : "Select Quality"
 }

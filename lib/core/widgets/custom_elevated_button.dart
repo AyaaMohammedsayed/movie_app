@@ -7,6 +7,7 @@ class CustomElevatedButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? foregroundColor;
   final bool hasBorder;
+  final double? screenWidth;
 
   const CustomElevatedButton({
     super.key,
@@ -15,16 +16,20 @@ class CustomElevatedButton extends StatelessWidget {
     this.backgroundColor,
     this.foregroundColor,
     this.hasBorder = false,
+    this.screenWidth,
   });
 
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.sizeOf(context).height;
-    double screenWidth = MediaQuery.sizeOf(context).width;
+    double _screenWidth = MediaQuery.sizeOf(context).width;
 
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: Size(screenWidth, screenHeight * 0.07),
+        fixedSize:
+            screenWidth == null
+                ? Size(_screenWidth, screenHeight * 0.07)
+                : Size(screenWidth!, screenHeight * 0.07),
         backgroundColor: backgroundColor,
         foregroundColor: foregroundColor,
         shape: RoundedRectangleBorder(
