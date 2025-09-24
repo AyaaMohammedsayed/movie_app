@@ -82,13 +82,14 @@ class _MoveDetailsState extends State<MoveDetails> {
                 padding: EdgeInsets.zero,
                 children: [
                   MovieView(
+                    movieId: movie.id!,
                     imgName: movie.largeCoverImage!,
                     movieName: movie.title,
                     year: '${movie.year}',
                     rating: movie.rating!.toDouble(),
                     width: double.infinity,
                     height: 645.h,
-                    isImageNetwork: false,
+               
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
