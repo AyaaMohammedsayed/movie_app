@@ -1,9 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/features/auth/data/model/login_request.dart';
 
-import 'package:movie_app/features/auth/presentation/cubit/states.dart';
-import 'package:movie_app/features/tabs/profile_tab/data/model/delete_request.dart';
+import 'package:movie_app/features/tabs/profile_tab/data/model/add_request.dart';
+import 'package:movie_app/features/tabs/profile_tab/data/model/get_movie_request.dart';
 import 'package:movie_app/features/tabs/profile_tab/data/model/get_profile_request.dart';
+import 'package:movie_app/features/tabs/profile_tab/data/model/is_fav_request.dart';
+import 'package:movie_app/features/tabs/profile_tab/data/model/remove_movie_request.dart';
 import 'package:movie_app/features/tabs/profile_tab/data/model/reset_password_request.dart';
 import 'package:movie_app/features/tabs/profile_tab/data/model/update_request.dart';
 import 'package:movie_app/features/tabs/profile_tab/data/repository/profile_repository.dart';
@@ -30,20 +31,58 @@ class ProfileCubit extends Cubit<ProfileState> {
       (data) => emit(ResetPasswordProfileSuccess(data)),
     );
   }
-  Future<void> deleteProfile(DeleteRequest request) async {
+  Future<void> deleteProfile() async {
     emit(DeleteProfileLoading());
-    final user = await _repository.deleteProfile(request);
+    final user = await _repository.deleteProfile();
     user.fold(
       (exception) => emit(DeleteProfileError(exception.message)),
       (data) => emit(DeleteProfileSuccess(data)),
     );
   }
-  Future<void> getProfile(GetProfileRequest request) async {
+  Future<void> getProfile() async {
     emit(GetProfileLoading());
-    final user = await _repository.getProfile(request);
+    final user = await _repository.getProfile();
     user.fold(
       (exception) => emit(GetProfileError(exception.message)),
       (data) => emit(GetProfileSuccess(data)),
     );
   }
+
+  Future<void> addToWishList(AddRequest request) async {
+    emit(AddToWishLoading());
+    final user = await _repository.addToWishList(request);
+    user.fold(
+      (exception) => emit(AddToWishError(exception.message)),
+      (data) => emit(AddToWishSuccess(data)),
+    );
+  }
+
+  Future<void> getWishList(GetMovieRequest request) async {
+    emit(GetWishListLoading());
+    final user = await _repository.getAllWishList(request);
+    user.fold(
+      (exception) => emit(GetWishListError(exception.message)),
+      (data) => emit(GetWishListSuccess(data)),
+    );
+  }
+
+  Future<void> checkIsFav(int id) async {
+    emit(CheckFavLoading());
+    final user = await _repository.isFromWishList(id);
+    user.fold(
+      (exception) => emit(CheckFavError(exception.message)),
+      (data) => emit(CheckFavSuccess(data)),
+    );
+  }
+  Future<void> removeFromWishList(int movieId) async {
+    emit(RemoveMovieLoading());
+    final user = await _repository.removeFromWishList( movieId);
+    user.fold(
+      (exception) => emit(RemoveMovieError(exception.message)),
+      (data) => emit(RemoveMovieSuccess(data)),
+    );
+  }
+
+
+
 }
