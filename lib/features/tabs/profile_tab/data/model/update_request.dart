@@ -4,7 +4,7 @@ class UpdateRequest {
   String? phone;
   String? avaterId;
 
-  UpdateRequest({this.name, this.phone, this.avaterId});
+  UpdateRequest({this.name, this.phone, this.avaterId,this.email});
 
   Map<String, dynamic> toJson() => {
     "name": name,
