@@ -22,6 +22,9 @@ class RegisterException extends AppException {
 class LoginException extends AppException {
   LoginException(super.message);
 }
+class LoginWithGoogleException extends AppException {
+  LoginWithGoogleException(super.message);
+}
 
 class SearchException extends AppException {
   SearchException(super.message);

@@ -33,3 +33,4 @@ class LoginError extends AuthState {
 
   LoginError(this.message);
 }
+

@@ -10,6 +10,7 @@ import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
 import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/app_theme.dart';
+import 'package:movie_app/features/auth/data/data_source/remote/sign_in_google.dart';
 import 'package:movie_app/features/auth/data/model/login_request.dart';
 import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:movie_app/features/auth/presentation/cubit/states.dart';
@@ -115,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         );
                         Navigator.of(
                           context,
-                        ).pushReplacementNamed(UpdateProfile.routeName);
+                        ).pushReplacementNamed(HomeScreen.routeName);
                       } else if (state is LoginError) {
                         UiUtils.hideLoading(context);
                         UiUtils.showErrorMessage(state.message);
@@ -203,9 +204,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
-                    onTap: () {
-                      //code
-                    },
+                                  onTap: ()
+                         async{
+    final googleUser = await GoogleAuthService().signInWithGoogle();
+    if (googleUser != null) {
+      context.read<AuthCubit>().loginWithGoogle(googleUser.email,googleUser.id);
+     
+      
+    }
+  },
                   ),
 
                   SizedBox(height: screenHeight * 0.02),
