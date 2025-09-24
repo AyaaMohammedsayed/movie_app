@@ -25,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   final PageController _pageController = PageController();
 
-  // مؤشر الكاتيجوري
   int _categoryIndex = 0;
 
   final List<Widget> tabs = [
@@ -118,7 +117,6 @@ class _HomeScreenState extends State<HomeScreen> {
               _selectedIndex = index;
             });
 
-            // لو سحبنا ورجعنا للهوم
             if (index == 0) {
               _updateCategory();
             }

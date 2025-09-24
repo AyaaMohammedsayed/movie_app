@@ -68,10 +68,10 @@ class _BrowseTabState extends State<BrowseTab> {
                 mainAxisSpacing: 8,
               ),
               scrollDirection: Axis.vertical,
-              itemCount: AppImages.movieImagesTest.length,
+              itemCount: AppImages.movieImages.length,
               itemBuilder:
                   (_, index) => MovieItem(
-                    imgName: AppImages.movieImagesTest[index],
+                    imgName: AppImages.movieImages[index],
                     rating: 7.7,
                  categoryId: MovieCategory.movies[index].id,
                   ),
