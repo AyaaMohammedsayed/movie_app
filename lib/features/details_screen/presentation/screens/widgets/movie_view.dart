@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/core/utils/localize_app_localization.dart';
 import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/movie_item.dart';
+
 import 'package:movie_app/features/details_screen/data/model/movie_details_response/torrent.dart';
 import 'package:movie_app/features/tabs/profile_tab/data/model/add_request.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/profile_cubit.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/states.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 
 class MovieView extends StatefulWidget {
   final int movieId;
@@ -43,6 +44,7 @@ class MovieView extends StatefulWidget {
 }
 
 class _MovieViewState extends State<MovieView> {
+
   int currentIndex = 0;
   Future<void> onPlayButton() async {
     UiUtils.showLoading(
@@ -143,15 +145,18 @@ class _MovieViewState extends State<MovieView> {
   Future<void> _launchInBrowser(Uri url) async {
     if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
       UiUtils.showErrorMessage('Could not launch $url');
+
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+
     final cubit = context.read<ProfileCubit>();
 
     cubit.checkIsFav(widget.movieId);
+
 
     return Stack(
       alignment: Alignment.center,
@@ -219,6 +224,7 @@ class _MovieViewState extends State<MovieView> {
                 },
               );
             },
+
           ),
         ),
 
@@ -233,6 +239,7 @@ class _MovieViewState extends State<MovieView> {
           ),
         ),
 
+        // Movie info overlay
         Positioned(
           bottom: 0,
           left: 0,

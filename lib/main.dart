@@ -81,7 +81,7 @@ class _MovieAppState extends State<MovieApp> {
                   UpdateProfile.routeName: (_) => UpdateProfile(),
                   ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
                   HomeScreen.routeName: (_) => HomeScreen(),
-                  MoveDetails.routeName: (_) => const MoveDetails(),
+                  MovieDetails.routeName: (_) => const MovieDetails(),
                 },
                 initialRoute:
                     widget.onboardingComplete

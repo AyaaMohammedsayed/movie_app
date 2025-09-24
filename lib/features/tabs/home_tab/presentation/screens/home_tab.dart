@@ -62,7 +62,7 @@ class _HomeTabState extends State<HomeTab> {
                   onTap: () {
                     Navigator.pushNamed(
                       context,
-                      MoveDetails.routeName,
+                      MovieDetails.routeName,
                       arguments: movies[currentIndex].id,
                     );
                   },
@@ -120,7 +120,7 @@ class _HomeTabState extends State<HomeTab> {
                           onTap: () {
                             Navigator.pushNamed(
                               context,
-                              MoveDetails.routeName,
+                              MovieDetails.routeName,
                               arguments: movies[currentIndex].id,
                             );
                           },
@@ -216,7 +216,7 @@ class _HomeTabState extends State<HomeTab> {
                             if (filteredMovies.isNotEmpty) {
                               Navigator.pushNamed(
                                 context,
-                                MoveDetails.routeName,
+                                MovieDetails.routeName,
                                 arguments: filteredMovies[index].id,
                               );
                             }

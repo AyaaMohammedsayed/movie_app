@@ -106,7 +106,7 @@ class _SearchTabState extends State<SearchTab> {
                         onTap: () {
                           Navigator.pushNamed(
                             context,
-                            MoveDetails.routeName,
+                            MovieDetails.routeName,
                             arguments: state.moviesList[index].id,
                           );
                           print(state.moviesList[index].id);
