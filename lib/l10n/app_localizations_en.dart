@@ -133,4 +133,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get exit => 'Exit';
+
+  @override
+  String get download => 'Download';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get selectQuality => 'Select Quality';
 }

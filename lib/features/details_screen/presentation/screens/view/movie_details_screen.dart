@@ -49,7 +49,6 @@ class _MoveDetailsState extends State<MovieDetails> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final appLocalizations = AppLocalizations.of(context)!;
 
     return Scaffold(
@@ -87,9 +86,9 @@ class _MoveDetailsState extends State<MovieDetails> {
                     movieName: movie.title,
                     year: '${movie.year}',
                     rating: movie.rating!.toDouble(),
+                    movieTorrentsList: movie.torrents,
                     width: double.infinity,
                     height: 645.h,
-               
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),

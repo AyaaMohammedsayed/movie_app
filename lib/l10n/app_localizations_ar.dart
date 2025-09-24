@@ -99,7 +99,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get watch => 'شاهد';
 
   @override
-  String get screenShots => 'Screen Shots';
+  String get screenShots => 'لقطات مصورة';
 
   @override
   String get similar => 'متشابه';
@@ -133,4 +133,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get exit => 'مغادره';
+
+  @override
+  String get download => 'تحميل';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get selectQuality => 'اختر الجودة';
 }
