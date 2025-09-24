@@ -198,7 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(width: 5),
                         Text(
                           appLocalizations.googleLogin,
-                          style: textTheme.labelSmall!.copyWith(
+                          style: textTheme.titleMedium!.copyWith(
                             color: AppTheme.black,
                           ),
                         ),
@@ -208,7 +208,7 @@ class _LoginScreenState extends State<LoginScreen> {
                          async{
     final googleUser = await GoogleAuthService().signInWithGoogle();
     if (googleUser != null) {
-      context.read<AuthCubit>().loginWithGoogle(googleUser.email,googleUser.id);
+      context.read<AuthCubit>().loginWithGoogle(googleUser.email,googleUser.id,googleUser.email.split('@')[0].toString());
      
       
     }
