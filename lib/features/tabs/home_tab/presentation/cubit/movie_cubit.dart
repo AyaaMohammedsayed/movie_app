@@ -5,12 +5,13 @@ import 'package:movie_app/features/tabs/home_tab/data/repository/movie_repositor
 import 'package:movie_app/features/tabs/home_tab/presentation/cubit/states.dart';
 
 class MovieCubit extends Cubit<MovieState> {
-  final MovieRepository repository;
-  MovieCubit(this.repository) : super(MovieInit());
+
+    MovieCubit() : super(MovieInit());
+  final MovieRepository _repository = MovieRepository();
  String selectedCategory = 'Action';
   void getMovieList({String? genre}) async {
     emit(GetMovieLoading());
-    final result = await repository.getMovieList();
+    final result = await _repository.getMovieList();
     result.fold(
       (failure) => emit(GetMovieError(failure.message)),
       (movieResponse) => emit(GetMovieSuccess(movieResponse)),

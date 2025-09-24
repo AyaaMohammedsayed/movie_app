@@ -14,6 +14,7 @@ import 'package:movie_app/features/auth/presentation/screens/register_screen.dar
 import 'package:movie_app/features/details_screen/presentation/screens/view/movie_details_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/onboarding/view/screens/onboarding_screen.dart';
+import 'package:movie_app/features/tabs/home_tab/presentation/cubit/movie_cubit.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/profile_cubit.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/screens/update_profile.dart';
 import 'package:movie_app/core/app_theme.dart';
@@ -36,6 +37,7 @@ Future<void> main() async {
         BlocProvider(create: (_) => LanguagesViewModel()..changeLanguage("en")),
         BlocProvider(create: (_) => AuthCubit()),
         BlocProvider(create: (_) => ProfileCubit()),
+        BlocProvider(create: (_) => MovieCubit()),
       ],
       child: MovieApp(onboardingComplete: onboardingComplete),
     ),
