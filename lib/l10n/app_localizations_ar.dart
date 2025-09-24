@@ -93,40 +93,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get seeMore => 'انظر للمزيد';
 
   @override
-  String get nameName => 'الاسم';
-
-  @override
-  String get confirmPassName => 'تأكيد كلمة المرور';
-
-  @override
-  String get createAccount => 'إنشاء حساب';
-
-  @override
-  String get alreadyHaveAccount => 'بالتأكيد لديك حساب ؟ ';
-
-  @override
-  String get editProfile => 'تعديل الحساب ';
-
-  @override
-  String get exit => 'مغادرة';
-
-  @override
-  String get wishList => 'قائمة الرغبات';
-
-  @override
-  String get history => 'السجل';
-
-  @override
-  String get watchList => 'قائمة المشاهدة';
-
-  @override
   String get search => 'البحث';
 
   @override
   String get watch => 'شاهد';
 
   @override
-  String get screenShots => 'Screen Shots';
+  String get screenShots => 'لقطات مصورة';
 
   @override
   String get similar => 'متشابه';
@@ -139,4 +112,34 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get genres => 'التصنيفات';
+
+  @override
+  String get resetPassword => 'تغيير كلمة المرور';
+
+  @override
+  String get updateData => 'تحديث  بيانات الحساب';
+
+  @override
+  String get editProfile => 'تعديل الصفحة';
+
+  @override
+  String get history => 'السجل';
+
+  @override
+  String get watchList => 'ٌائمة المشاهدة';
+
+  @override
+  String get wishList => 'قائمة الرغبات';
+
+  @override
+  String get exit => 'مغادره';
+
+  @override
+  String get download => 'تحميل';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get selectQuality => 'اختر الجودة';
 }

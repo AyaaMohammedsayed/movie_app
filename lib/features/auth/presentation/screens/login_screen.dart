@@ -3,20 +3,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/core/constants/constants.dart';
 
-
 import 'package:movie_app/core/languages/view_model/languages_view_model.dart';
-
 import 'package:movie_app/core/utils/validator.dart';
 import 'package:movie_app/core/languages/view/change_language.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/custom_text_form_field.dart';
 import 'package:movie_app/core/utils/ui_utils.dart';
 import 'package:movie_app/core/app_theme.dart';
+import 'package:movie_app/features/auth/data/data_source/remote/sign_in_google.dart';
 import 'package:movie_app/features/auth/data/model/login_request.dart';
 import 'package:movie_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:movie_app/features/auth/presentation/cubit/states.dart';
+import 'package:movie_app/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:movie_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
+import 'package:movie_app/features/tabs/profile_tab/presentation/screens/update_profile.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -85,7 +86,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   Align(
                     alignment: AlignmentDirectional.centerEnd,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          ForgetPasswordScreen.routeName,
+                        );
+                      },
                       child: Text(
                         appLocalizations.forgetPass,
                         style: textTheme.titleMedium!.copyWith(
@@ -98,6 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   SizedBox(height: screenHeight * 0.015),
+
                   BlocListener<AuthCubit, AuthState>(
                     listener: (context, state) {
                       if (state is LoginLoading) {
@@ -129,6 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(appLocalizations.login),
                     ),
                   ),
+
                   SizedBox(height: screenHeight * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -190,18 +198,25 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(width: 5),
                         Text(
                           appLocalizations.googleLogin,
-                          style: textTheme.labelSmall!.copyWith(
+                          style: textTheme.titleMedium!.copyWith(
                             color: AppTheme.black,
                           ),
                         ),
                       ],
                     ),
-                    onTap: () {
-                      //code
-                    },
+                                  onTap: ()
+                         async{
+    final googleUser = await GoogleAuthService().signInWithGoogle();
+    if (googleUser != null) {
+      context.read<AuthCubit>().loginWithGoogle(googleUser.email,googleUser.id,googleUser.email.split('@')[0].toString());
+     
+      
+    }
+  },
                   ),
+
                   SizedBox(height: screenHeight * 0.02),
-                  ChangeLanguageWidget(context.watch()),
+                  ChangeLanguageWidget(context.watch<LanguagesViewModel>()),
                 ],
               ),
             ),

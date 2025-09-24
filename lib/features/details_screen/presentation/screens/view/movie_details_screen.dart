@@ -17,16 +17,16 @@ import 'package:movie_app/features/details_screen/presentation/screens/widgets/s
 import 'package:movie_app/l10n/app_localizations.dart';
 import 'package:readmore/readmore.dart';
 
-class MoveDetails extends StatefulWidget {
+class MovieDetails extends StatefulWidget {
   static const String routeName = '/movie_details_screen';
 
-  const MoveDetails({super.key});
+  const MovieDetails({super.key});
 
   @override
-  State<MoveDetails> createState() => _MoveDetailsState();
+  State<MovieDetails> createState() => _MoveDetailsState();
 }
 
-class _MoveDetailsState extends State<MoveDetails> {
+class _MoveDetailsState extends State<MovieDetails> {
   late DetailsCubit _detailsCubit;
   bool _isInitialized = false;
 
@@ -49,7 +49,6 @@ class _MoveDetailsState extends State<MoveDetails> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final appLocalizations = AppLocalizations.of(context)!;
 
     return Scaffold(
@@ -82,13 +81,14 @@ class _MoveDetailsState extends State<MoveDetails> {
                 padding: EdgeInsets.zero,
                 children: [
                   MovieView(
+                    movieId: movie.id!,
                     imgName: movie.largeCoverImage!,
                     movieName: movie.title,
                     year: '${movie.year}',
                     rating: movie.rating!.toDouble(),
+                    movieTorrentsList: movie.torrents,
                     width: double.infinity,
                     height: 645.h,
-                    isImageNetwork: false,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -140,7 +140,7 @@ class _MoveDetailsState extends State<MoveDetails> {
                               onTap: () {
                                 Navigator.pushNamed(
                                   context,
-                                  MoveDetails.routeName,
+                                  MovieDetails.routeName,
                                   arguments: suggestionsList[index].id,
                                 );
                               },

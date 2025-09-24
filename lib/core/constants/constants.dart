@@ -11,14 +11,12 @@ class AppImages {
   static const emptyImage = '$_imgFolder/empty_image.png';
   static const availableNow = '$_imgFolder/available_now.png';
   static const watchNow = '$_imgFolder/watch_now_text.png';
+  static const watchListIcon = '$_iconFolder/watch_list.svg';
+  static const historyIcon = '$_iconFolder/history.svg';
 
   static List<String> movieImages = List.generate(
     8,
     (index) => '$_imgFolder/movie_${index + 1}.png',
-  );
-  static List<String> movieImagesTest = List.filled(
-    10,
-     '$_imgFolder/movie_4.png',
   );
 
   static List<String> avatarList = List.generate(
@@ -31,8 +29,6 @@ class AppImages {
   static const googleIcon = '$_iconFolder/google_icon.svg';
   static const nameIcon = '$_iconFolder/name_icon.svg';
   static const phoneIcon = '$_iconFolder/phone.svg';
-  static const watchListIcon = '$_iconFolder/watch_list.svg';
-  static const historyIcon = '$_iconFolder/history.svg';
 
   static List<String> selectedNavBarIcons = List.generate(
     4,

@@ -266,60 +266,6 @@ abstract class AppLocalizations {
   /// **'See More'**
   String get seeMore;
 
-  /// No description provided for @nameName.
-  ///
-  /// In en, this message translates to:
-  /// **'Name'**
-  String get nameName;
-
-  /// No description provided for @confirmPassName.
-  ///
-  /// In en, this message translates to:
-  /// **'Confirm password'**
-  String get confirmPassName;
-
-  /// No description provided for @createAccount.
-  ///
-  /// In en, this message translates to:
-  /// **'Create Account'**
-  String get createAccount;
-
-  /// No description provided for @alreadyHaveAccount.
-  ///
-  /// In en, this message translates to:
-  /// **'Already Have Account ?'**
-  String get alreadyHaveAccount;
-
-  /// No description provided for @editProfile.
-  ///
-  /// In en, this message translates to:
-  /// **'Edit Profile'**
-  String get editProfile;
-
-  /// No description provided for @exit.
-  ///
-  /// In en, this message translates to:
-  /// **'Exit'**
-  String get exit;
-
-  /// No description provided for @wishList.
-  ///
-  /// In en, this message translates to:
-  /// **'Wish List'**
-  String get wishList;
-
-  /// No description provided for @history.
-  ///
-  /// In en, this message translates to:
-  /// **'History'**
-  String get history;
-
-  /// No description provided for @watchList.
-  ///
-  /// In en, this message translates to:
-  /// **'Watch List'**
-  String get watchList;
-
   /// No description provided for @search.
   ///
   /// In en, this message translates to:
@@ -361,6 +307,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Genres'**
   String get genres;
+
+  /// No description provided for @resetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get resetPassword;
+
+  /// No description provided for @updateData.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Data'**
+  String get updateData;
+
+  /// No description provided for @editProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get editProfile;
+
+  /// No description provided for @history.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get history;
+
+  /// No description provided for @watchList.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch List '**
+  String get watchList;
+
+  /// No description provided for @wishList.
+  ///
+  /// In en, this message translates to:
+  /// **'Wish List '**
+  String get wishList;
+
+  /// No description provided for @exit.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit'**
+  String get exit;
+
+  /// No description provided for @download.
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get download;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @selectQuality.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Quality'**
+  String get selectQuality;
 }
 
 class _AppLocalizationsDelegate

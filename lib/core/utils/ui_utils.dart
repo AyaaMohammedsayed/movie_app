@@ -4,19 +4,25 @@ import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/core/widgets/loading_indicator.dart';
 
 class UiUtils {
-  static void showLoading(BuildContext context) => showDialog(
+  static void showLoading(
+    BuildContext context, {
+    Widget? content,
+    bool? canPop,
+  }) => showDialog(
     context: context,
     barrierDismissible: false,
     builder:
         (_) => PopScope(
-          canPop: false,
+          canPop: canPop ?? false,
           child: AlertDialog(
             content: SizedBox(
               height: MediaQuery.sizeOf(context).height * 0.2,
-              child: const Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [LoadingIndicator()],
-              ),
+              child:
+                  content ??
+                  const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [LoadingIndicator()],
+                  ),
             ),
           ),
         ),

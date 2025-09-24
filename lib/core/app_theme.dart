@@ -80,7 +80,12 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         color: white,
       ),
-      labelSmall: TextStyle(
+      titleMedium: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: primary,
+      ),
+      headlineSmall: TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.w700,
         color: white,
@@ -90,12 +95,7 @@ class AppTheme {
         fontWeight: FontWeight.w700,
         color: white,
       ),
-      titleMedium: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-        color: primary,
-      ),
-      headlineSmall: TextStyle(
+      labelSmall: TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.w700,
         color: white,

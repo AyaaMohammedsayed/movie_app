@@ -41,11 +41,13 @@ dependencies:
   carousel_slider: ^5.1.1
   shared_preferences: ^2.5.3
   flutter_bloc: ^9.1.1
-  dio: ^5.9.0
+  dio: ^5.7.0
   dartz: ^0.10.1
   cached_network_image: ^3.4.1
   equatable: ^2.0.7
   readmore: ^3.0.0
+  google_sign_in: ^6.2.1
+  url_launcher: ^6.3.2
   flutter_localizations:
     sdk: flutter
 
@@ -76,8 +78,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-    - lib/features/details_screen/presentation/screens/widgets/test_screen.png
-    - lib/features/details_screen/presentation/screens/widgets/cast.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

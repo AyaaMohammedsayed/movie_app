@@ -8,9 +8,13 @@ class ConstantAPI {
   static const String registerEndPoint = "auth/register";
 
   static const String loginEndPoint = "auth/login";
-  static const String tokenKey = "token";
-
-
+  static const String updateProfileEndPoint = "profile";
+  static const String resetPasswordEndPoint = "auth/reset-password";
+  static const String addToWishListEndPoint = "favorites/add";
+  static const String getAllWishListEndPoint = "favorites/all";
+  static const String deleteMovieWishListEndPoint = "favorites/remove/";
+  static const String isFavMovieEndPoint = "favorites/is-favorite/";
+     static const googleDefaultPassword = "1234567***oopP";
 }
 
 class CacheKey {

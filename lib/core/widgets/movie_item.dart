@@ -8,6 +8,7 @@ class MovieItem extends StatelessWidget {
   final String? movieName;
   final bool isImageNetwork;
   final double? rating;
+  final int? movieID;
   final double width;
   final double height;
   final String year;
@@ -29,6 +30,7 @@ class MovieItem extends StatelessWidget {
     this.stopsBTT,
     this.gradientColors,
     this.year = '',
+    this.movieID
   });
 
   @override
@@ -42,7 +44,7 @@ class MovieItem extends StatelessWidget {
                 imageUrl: imgName ?? AppImages.placeholderErrorImage,
                 width: width,
                 height: height,
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
                 errorWidget:
                     (_, _, _) => Stack(
                       alignment: Alignment.bottomCenter,
@@ -51,10 +53,10 @@ class MovieItem extends StatelessWidget {
                           AppImages.placeholderErrorImage,
                           width: width,
                           height: height,
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                         ),
                         Text(
-                          movieName!,
+                          movieName??'',
                           style: Theme.of(context).textTheme.titleMedium!
                               .copyWith(fontWeight: FontWeight.w900),
                           textAlign: TextAlign.center,
@@ -71,7 +73,7 @@ class MovieItem extends StatelessWidget {
                 imgName,
                 width: width,
                 height: height,
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
           withGradient == false
               ? Container()
