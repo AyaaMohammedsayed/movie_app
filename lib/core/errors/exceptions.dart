@@ -11,6 +11,9 @@ class MovieDetailsException extends AppException {
 class MovieSuggestionsException extends AppException {
   MovieSuggestionsException(super.message);
 }
+class MovieListsException extends AppException {
+  MovieListsException(super.message);
+}
 
 class RegisterException extends AppException {
   RegisterException(super.message);
