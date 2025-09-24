@@ -42,7 +42,7 @@ class MovieItem extends StatelessWidget {
                 imageUrl: imgName ?? AppImages.placeholderErrorImage,
                 width: width,
                 height: height,
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
                 errorWidget:
                     (_, _, _) => Stack(
                       alignment: Alignment.bottomCenter,
@@ -51,10 +51,10 @@ class MovieItem extends StatelessWidget {
                           AppImages.placeholderErrorImage,
                           width: width,
                           height: height,
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                         ),
                         Text(
-                          movieName!,
+                          movieName??'',
                           style: Theme.of(context).textTheme.titleMedium!
                               .copyWith(fontWeight: FontWeight.w900),
                           textAlign: TextAlign.center,
@@ -71,7 +71,7 @@ class MovieItem extends StatelessWidget {
                 imgName,
                 width: width,
                 height: height,
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
           withGradient == false
               ? Container()
