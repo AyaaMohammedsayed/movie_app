@@ -21,7 +21,7 @@ class TabItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(20),
       onTap: onTap, 
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),

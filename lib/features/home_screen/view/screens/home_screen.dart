@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   final PageController _pageController = PageController();
 
-  final List<Widget> tabs = [HomeTab(), SearchTab(), BrowseTab(), ProfileTab()];
+  final List<Widget> tabs = [HomeTab(), SearchTab(), BrowseTab( ), ProfileTab()];
   void _onIconTapped(index) {
     if (_selectedIndex == index) return;
     _selectedIndex = index;
@@ -81,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
           BlocProvider<SearchCubit>(
             create: (context) => SearchCubit()..search(null),
           ),
-          BlocProvider<BrowseCubit>(create: (context)=>BrowseCubit()),
+          BlocProvider<BrowseCubit>(create: (context) => BrowseCubit()),
         ],
         child: PageView(
           controller: _pageController,
