@@ -118,4 +118,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get updateData => 'Update Data';
+
+  @override
+  String get editProfile => 'Edit Profile';
+
+  @override
+  String get history => 'History';
+
+  @override
+  String get watchList => 'Watch List ';
+
+  @override
+  String get wishList => 'Wish List ';
+
+  @override
+  String get exit => 'Exit';
 }

@@ -7,5 +7,5 @@ abstract class AuthRemoteDataSource {
   Future<RegisterResponse> register(RegisterRequest request);
   
   Future<LoginResponse> login(LoginRequest request);
-  Future<LoginResponse> loginWithGoogle(String email,String id);
+  Future<LoginResponse> loginWithGoogle(String email,String id,String name);
 }

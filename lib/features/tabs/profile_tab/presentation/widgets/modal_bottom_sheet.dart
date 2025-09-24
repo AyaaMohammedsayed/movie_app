@@ -42,15 +42,15 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
           crossAxisCount: 3,
         ),
         itemBuilder: (context, index) {
-          final currentImage = index == 11 ? 10 : index + 2;
+          final imageNumber = index + 1; 
           return BottomProfile(
-            imageName: currentImage,
-            isSelected: currentSelected == index,
+            imageName: imageNumber,
+            isSelected: currentSelected == index+1,
             onTap: () {
               setState(() {
-                currentSelected = index;
+                currentSelected = imageNumber;
               });
-              widget.onSelect(currentImage, index);
+              widget.onSelect(imageNumber, index);
             },
           );
         },

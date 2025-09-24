@@ -7,7 +7,6 @@ import 'package:movie_app/features/auth/data/model/login_request.dart';
 import 'package:movie_app/features/auth/data/model/login_response.dart';
 import 'package:movie_app/features/auth/data/model/register_request.dart';
 import 'package:movie_app/features/auth/data/model/register_response.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRemoteAPIDataSource implements AuthRemoteDataSource {
   final Dio _dio = Dio(
@@ -17,38 +16,39 @@ class AuthRemoteAPIDataSource implements AuthRemoteDataSource {
     ),
   );
 
-Future<RegisterResponse> register(RegisterRequest request) async {
-  try {
-    final response = await _dio.post(
-      ConstantAPI.registerEndPoint,
-      data: request.toJson(),
-    );
+  @override
+  Future<RegisterResponse> register(RegisterRequest request) async {
+    try {
+      final response = await _dio.post(
+        ConstantAPI.registerEndPoint,
+        data: request.toJson(),
+      );
 
-   
-    final loginRequest = LoginRequest(
-      email: request.email,
-      password: request.password,
-    );
-    final loginResponse = await login(loginRequest);
+     
+      final loginRequest = LoginRequest(
+        email: request.email,
+        password: request.password,
+      );
+      final loginResponse = await login(loginRequest);
 
-    if (loginResponse.data != null) {
-      await saveToken(loginResponse.data!);
-    }
-
-    return RegisterResponse.fromJson(response.data);
-  } catch (exception) {
-    String? message;
-    if (exception is DioException) {
-      dynamic resMessage = exception.response?.data["message"];
-      if (resMessage is List && resMessage.isNotEmpty) {
-        message = resMessage[0];
-      } else {
-        message = resMessage;
+      if (loginResponse.data != null) {
+        await saveToken(loginResponse.data!);
       }
+
+      return RegisterResponse.fromJson(response.data);
+    } catch (exception) {
+      String? message;
+      if (exception is DioException) {
+        dynamic resMessage = exception.response?.data["message"];
+        if (resMessage is List && resMessage.isNotEmpty) {
+          message = resMessage[0];
+        } else {
+          message = resMessage;
+        }
+      }
+      throw RegisterException(message ?? "Failed to register");
     }
-    throw RegisterException(message ?? "Failed to register");
   }
-}
 
   @override
   Future<LoginResponse> login(LoginRequest request) async {
@@ -71,7 +71,7 @@ Future<RegisterResponse> register(RegisterRequest request) async {
       print("Token: ${loginResponse.data}");
 
       if (loginResponse.data != null) {
-        saveToken(loginResponse.data!);
+        await saveToken(loginResponse.data!);
       }
 
       return loginResponse;
@@ -88,69 +88,77 @@ Future<RegisterResponse> register(RegisterRequest request) async {
       throw LoginException(message ?? "Failed to login");
     }
   }
-@override
-Future<LoginResponse> loginWithGoogle(String email, String id) async {
-  const googleDefaultPassword = "2832003***ayaA";
 
-  try {
-    print(" Trying Google Login for $email");
+  @override
+  Future<LoginResponse> loginWithGoogle(String email, String id,String name) async {
+    const googleDefaultPassword = "2832003***ayaA";
 
-  
-    final loginRequest = LoginRequest(
-      email: email,
-      password: googleDefaultPassword,
-    );
-    final response = await login(loginRequest);
+    try {
+      print("Trying Google Login for $email");
 
-    if (response.data != null) {
-      await saveToken(response.data!);
-      print(" Login success for $email");
-    }
-    return response;
-
-  } catch (e) {
-    print(" LoginWithGoogle error: $e");
-
-   
-    if (e is LoginException && e.message.toLowerCase().contains("not found")) {
-      print(" User not found, registering new account...");
-
-      final registerRequest = RegisterRequest(
+      final loginRequest = LoginRequest(
         email: email,
         password: googleDefaultPassword,
-        confirmPass: googleDefaultPassword,
-        phone: '+2012345678595',
-        avatarId: 1,
-        name: "Google User",
       );
 
-      try {
-        final regResponse = await register(registerRequest);
-        print(" Register success: ${regResponse.message}");
+      final response = await login(loginRequest);
 
-     
-        final loginRequest = LoginRequest(
+      if (response.data != null) {
+        await saveToken(response.data!);
+        print("Login success for $email");
+      }
+
+      return response;
+    } catch (e) {
+      print("LoginWithGoogle error type: ${e.runtimeType}");
+
+      if (e is LoginException &&
+          (e.message.toLowerCase().contains("not found") ||
+              e.message.toLowerCase().contains("does not exist"))) {
+        print("LoginWithGoogle error: ${e.message}");
+        print("User not found, registering new account...");
+
+        final registerRequest = RegisterRequest(
           email: email,
           password: googleDefaultPassword,
+          confirmPass: googleDefaultPassword,
+          phone: '+201226578094',
+          avatarId: 1,
+          name: name,
         );
-        final newLoginResponse = await login(loginRequest);
 
-        if (newLoginResponse.data != null) {
-          await saveToken(newLoginResponse.data!);
+        try {
+          final regResponse = await register(registerRequest);
+          print("Register success: ${regResponse.message}");
+
+          // تسجيل الدخول بعد التسجيل
+          final loginRequest = LoginRequest(
+            email: email,
+            password: googleDefaultPassword,
+          );
+          final newLoginResponse = await login(loginRequest);
+
+          if (newLoginResponse.data != null) {
+            await saveToken(newLoginResponse.data!);
+            print("Login after register success for $email");
+            print("Login after register success for $name");
+          }
+
+          return newLoginResponse;
+        } catch (regError) {
+          if (regError is RegisterException) {
+            print("Register failed message: ${regError.message}");
+            throw Exception("Register failed: ${regError.message}");
+          }
+          throw Exception("Unexpected Register error: $regError");
         }
-        return newLoginResponse;
-      } catch (regError) {
-        print(" Register failed: $regError");
-        throw Exception("Register failed: $regError");
       }
-    }
 
+      if (e is LoginException) {
+        throw Exception("LoginWithGoogle failed: ${e.message}");
+      }
 
-    if (e is LoginException) {
-      throw Exception("LoginWithGoogle failed: ${e.message}");
+      throw Exception("Unexpected error in Google login: $e");
     }
-    throw Exception("Unexpected error in Google login: $e");
   }
-}
-
 }

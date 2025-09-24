@@ -41,3 +41,15 @@ class ResetPasswordException extends AppException {
 class GetProfileException extends AppException {
   GetProfileException(super.message);
 }
+class GetWishListException extends AppException {
+    GetWishListException(super.message);
+}
+class CheckIsFavWishListException extends AppException {
+    CheckIsFavWishListException(super.message);
+}
+class AddToWishListException extends AppException {
+    AddToWishListException(super.message);
+}
+class DeleteFromWishListException extends AppException {
+    DeleteFromWishListException(super.message);
+}

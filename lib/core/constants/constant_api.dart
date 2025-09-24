@@ -10,6 +10,10 @@ class ConstantAPI {
   static const String loginEndPoint = "auth/login";
   static const String updateProfileEndPoint = "profile";
   static const String resetPasswordEndPoint = "auth/reset-password";
+  static const String addToWishListEndPoint = "favorites/add";
+  static const String getAllWishListEndPoint = "favorites/all";
+  static const String deleteMovieWishListEndPoint = "favorites/remove/";
+  static const String isFavMovieEndPoint = "favorites/is-favorite/";
 }
 
 class CacheKey {
