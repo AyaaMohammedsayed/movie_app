@@ -25,9 +25,18 @@ class AuthRepository {
   Future<Either<Failure, LoginResponse>> login(LoginRequest request) async {
     try {
       final response = await _authRemoteAPIDataSource.login(request);
-      print(" AyAaaaaaaa${response.message}");
+
       return Right(response);
     } on LoginException catch (exception) {
+      return Left(Failure(exception.message));
+    }
+  }
+  Future<Either<Failure, LoginResponse>> loginWithGoogle(String email,String id) async {
+    try {
+      final response = await _authRemoteAPIDataSource.loginWithGoogle(email,id);
+
+      return Right(response);
+    } on LoginWithGoogleException catch (exception) {
       return Left(Failure(exception.message));
     }
   }

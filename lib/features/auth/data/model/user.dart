@@ -32,4 +32,17 @@ class User {
     updatedAt: DateTime.parse(json['updatedAt'] as String),
     v: json['__v'],
   );
+
+	Map<String, dynamic> toJson() => {
+				'_id': id,
+				'email': email,
+				'password': password,
+				'name': name,
+				'phone': phone,
+				'avaterId': avaterId,
+				'createdAt': createdAt,
+				'updatedAt': updatedAt,
+				'__v': v,
+			};
+
 }

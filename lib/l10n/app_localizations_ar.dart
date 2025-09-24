@@ -112,4 +112,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get genres => 'التصنيفات';
+
+  @override
+  String get resetPassword => 'تغيير كلمة المرور';
+
+  @override
+  String get updateData => 'تحديث  بيانات الحساب';
 }
