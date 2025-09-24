@@ -91,14 +91,14 @@ class AuthRemoteAPIDataSource implements AuthRemoteDataSource {
 
   @override
   Future<LoginResponse> loginWithGoogle(String email, String id,String name) async {
-    const googleDefaultPassword = "2832003***ayaA";
+
 
     try {
       print("Trying Google Login for $email");
 
       final loginRequest = LoginRequest(
         email: email,
-        password: googleDefaultPassword,
+        password: ConstantAPI.googleDefaultPassword,
       );
 
       final response = await login(loginRequest);
@@ -120,8 +120,8 @@ class AuthRemoteAPIDataSource implements AuthRemoteDataSource {
 
         final registerRequest = RegisterRequest(
           email: email,
-          password: googleDefaultPassword,
-          confirmPass: googleDefaultPassword,
+          password:  ConstantAPI.googleDefaultPassword,
+          confirmPass:  ConstantAPI.googleDefaultPassword,
           phone: '+201226578094',
           avatarId: 1,
           name: name,
@@ -134,7 +134,7 @@ class AuthRemoteAPIDataSource implements AuthRemoteDataSource {
           // تسجيل الدخول بعد التسجيل
           final loginRequest = LoginRequest(
             email: email,
-            password: googleDefaultPassword,
+            password:  ConstantAPI.googleDefaultPassword,
           );
           final newLoginResponse = await login(loginRequest);
 

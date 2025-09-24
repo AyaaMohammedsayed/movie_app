@@ -14,6 +14,7 @@ class ConstantAPI {
   static const String getAllWishListEndPoint = "favorites/all";
   static const String deleteMovieWishListEndPoint = "favorites/remove/";
   static const String isFavMovieEndPoint = "favorites/is-favorite/";
+     static const googleDefaultPassword = "2832003***ayaA";
 }
 
 class CacheKey {
