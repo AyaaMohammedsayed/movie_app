@@ -8,6 +8,7 @@ class MovieItem extends StatelessWidget {
   final String? movieName;
   final bool isImageNetwork;
   final double? rating;
+  final int? movieID;
   final double width;
   final double height;
   final String year;
@@ -29,6 +30,7 @@ class MovieItem extends StatelessWidget {
     this.stopsBTT,
     this.gradientColors,
     this.year = '',
+    this.movieID
   });
 
   @override

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/app_theme.dart';
 import 'package:movie_app/core/widgets/movie_item.dart';
-import 'package:movie_app/features/tabs/profile_tab/data/model/add_request.dart';
-import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/profile_cubit.dart';
-import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/states.dart';
+import 'package:movie_app/features/tabs/profile_tab/presentation/screens/profile_tab.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class MovieView extends StatelessWidget {
+class MovieView extends StatefulWidget {
   final int movieId;
   final String imgName;
   final String? movieName;
@@ -32,22 +30,71 @@ class MovieView extends StatelessWidget {
   });
 
   @override
+  State<MovieView> createState() => _MovieViewState();
+}
+
+class _MovieViewState extends State<MovieView> {
+  bool isSaved = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedStatus();
+  }
+
+  Future<void> _loadSavedStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      isSaved = prefs.getBool('saved_${widget.movieId}') ?? false;
+    });
+  }
+
+  Future<void> _toggleSaved() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      isSaved = !isSaved;
+    });
+
+    await prefs.setBool('saved_${widget.movieId}', isSaved);
+
+    List<String> history = prefs.getStringList('history') ?? [];
+
+    final movieItem = MovieItem(
+      imgName: widget.imgName,
+      rating: widget.rating,
+      height: widget.height,
+      width: widget.width,
+      onTap: () {},
+      movieID: widget.movieId,
+      isImageNetwork: true,
+    );
+
+    if (isSaved) {
+      if (!history.contains(widget.movieId.toString())) {
+        history.add(widget.movieId.toString());
+        await prefs.setStringList('history', history);
+      }
+      ProfileTab.addToHistory(movieItem);
+    } else {
+      history.remove(widget.movieId.toString());
+      await prefs.setStringList('history', history);
+      ProfileTab.removeFromHistory(movieItem);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final cubit = context.read<ProfileCubit>();
-
-    
-    cubit.checkIsFav(movieId);
 
     return Stack(
       alignment: Alignment.center,
       children: [
         // Poster
         MovieItem(
-          imgName: imgName,
+          imgName: widget.imgName,
           onTap: () {},
-          height: height,
-          width: width,
+          height: widget.height,
+          width: widget.width,
           isImageNetwork: true,
         ),
 
@@ -61,52 +108,16 @@ class MovieView extends StatelessWidget {
           ),
         ),
 
-
+        // Bookmark button
         Positioned(
           top: 16.h,
           right: 16.w,
-          child: BlocConsumer<ProfileCubit, ProfileState>(
-            listener: (context, state) {
-       
-              if (state is AddToWishSuccess) {
-                print('Added to wishlist!');
-              } else if (state is RemoveMovieSuccess) {
-                print('Removed from wishlist!');
-              }
-            },
-            builder: (context, state) {
-              bool isSaved = false;
-
-              if (state is CheckFavSuccess) {
-                isSaved = state.isFavResponse.data ?? false;
-              } else if (state is AddToWishSuccess) {
-                isSaved = true;
-              } else if (state is RemoveMovieSuccess) {
-                isSaved = false;
-              }
-
-              return IconButton(
-                icon: Icon(
-                  isSaved ? Icons.bookmark : Icons.bookmark_outline,
-                  color: AppTheme.white,
-                ),
-                onPressed: () {
-                  if (isSaved) {
-                    cubit.removeFromWishList(movieId);
-                  } else {
-                    cubit.addToWishList(
-                      AddRequest(
-                        movieId: movieId,
-                        name: movieName,
-                        rating: rating,
-                        imageUrl: imgName,
-                        year: year,
-                      ),
-                    );
-                  }
-                },
-              );
-            },
+          child: IconButton(
+            icon: Icon(
+              isSaved ? Icons.bookmark : Icons.bookmark_outline,
+              color: AppTheme.white,
+            ),
+            onPressed: _toggleSaved,
           ),
         ),
 
@@ -121,6 +132,7 @@ class MovieView extends StatelessWidget {
           ),
         ),
 
+        // Movie info overlay
         Positioned(
           bottom: 0,
           left: 0,
@@ -136,9 +148,9 @@ class MovieView extends StatelessWidget {
             ),
             child: Column(
               children: [
-                if (movieName != null)
+                if (widget.movieName != null)
                   Text(
-                    movieName!,
+                    widget.movieName!,
                     textAlign: TextAlign.center,
                     style: textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
@@ -147,7 +159,7 @@ class MovieView extends StatelessWidget {
                   ),
                 SizedBox(height: 6.h),
                 Text(
-                  year,
+                  widget.year,
                   style: textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: const Color(0xffADADAD),

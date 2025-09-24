@@ -6,14 +6,28 @@ import 'package:movie_app/core/constants/constants.dart';
 import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/movie_item.dart';
 import 'package:movie_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:movie_app/features/details_screen/presentation/screens/view/movie_details_screen.dart';
 import 'package:movie_app/features/tabs/profile_tab/data/model/get_movie_request.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/profile_cubit.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/states.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/screens/update_profile.dart';
 import 'package:movie_app/l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({Key? key}) : super(key: key);
+
+  static final List<MovieItem> historyList = [];
+
+  static void addToHistory(MovieItem movie) {
+    if (!historyList.any((m) => m.movieID == movie.movieID)) {
+      historyList.add(movie);
+    }
+  }
+
+  static void removeFromHistory(MovieItem movie) {
+    historyList.removeWhere((m) => m.movieID == movie.movieID);
+  }
 
   @override
   State<ProfileTab> createState() => _ProfileScreenState();
@@ -26,7 +40,7 @@ class _ProfileScreenState extends State<ProfileTab>
   int profile = 1;
 
   List<MovieItem> watchList = [];
-  List<MovieItem> historyList = [];
+
   String userName = "User";
 
   @override
@@ -75,8 +89,6 @@ class _ProfileScreenState extends State<ProfileTab>
                     .toList();
           });
         }
-
-         
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,7 +99,7 @@ class _ProfileScreenState extends State<ProfileTab>
               controller: _tabController,
               children: [
                 _buildMovieGrid(watchList),
-                _buildMovieGrid(historyList),
+                _buildMovieGrid(ProfileTab.historyList),
               ],
             ),
           ),
@@ -123,7 +135,7 @@ class _ProfileScreenState extends State<ProfileTab>
               ),
               SizedBox(width: size.width * 0.01),
               _buildStatCard(
-                historyList.length.toString(),
+                ProfileTab.historyList.length.toString(),
                 appLocalizations.history,
                 textTheme,
                 bold: true,
@@ -140,7 +152,6 @@ class _ProfileScreenState extends State<ProfileTab>
                 child: CustomElevatedButton(
                   onTap: () {
                     Navigator.pushNamed(context, UpdateProfile.routeName);
-                         
                   },
                   child: Text(
                     appLocalizations.editProfile,
@@ -156,10 +167,10 @@ class _ProfileScreenState extends State<ProfileTab>
                 child: CustomElevatedButton(
                   backgroundColor: AppTheme.red,
                   onTap: () {
-                    Navigator.of(
-            context,
-          ).pushNamedAndRemoveUntil(LoginScreen.routeName, (route) => false);
-        
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      LoginScreen.routeName,
+                      (route) => false,
+                    );
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -238,22 +249,70 @@ class _ProfileScreenState extends State<ProfileTab>
     );
   }
 
-  Widget _buildMovieGrid(List<MovieItem> movies) {
-    if (movies.isEmpty) {
-      return Center(child: Image.asset('assets/images/empty1.png'));
-    }
-    return GridView.builder(
-      padding: const EdgeInsets.all(12),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 8,
-        childAspectRatio: 0.65,
-      ),
-      itemCount: movies.length,
-      itemBuilder: (context, index) {
-        return movies[index];
-      },
-    );
+Widget _buildMovieGrid(List<MovieItem> movies) {
+  if (movies.isEmpty) {
+    return Center(child: Image.asset('assets/images/empty1.png'));
   }
+
+  return GridView.builder(
+    padding: const EdgeInsets.all(12),
+    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      crossAxisCount: 3,
+      crossAxisSpacing: 8,
+      mainAxisSpacing: 8,
+      childAspectRatio: 0.65,
+    ),
+    itemCount: movies.length,
+    itemBuilder: (context, index) {
+      final movie = movies[index];
+
+      return MovieItem(
+        imgName: movie.imgName,
+        movieName: movie.movieName,
+        isImageNetwork: movie.isImageNetwork,
+        rating: movie.rating,
+        movieID: movie.movieID,
+        width: movie.width,
+        height: movie.height,
+        withGradient: movie.withGradient,
+        gradientColors: movie.gradientColors,
+        onTap: () async {
+        
+          if (movie.movieID != null) {
+            final prefs = await SharedPreferences.getInstance();
+            List<String> savedHistory = prefs.getStringList('history') ?? [];
+
+            if (!savedHistory.contains(movie.movieID.toString())) {
+              savedHistory.add(movie.movieID.toString());
+              await prefs.setStringList('history', savedHistory);
+
+             
+              ProfileTab.addToHistory(MovieItem(
+                imgName: movie.imgName,
+                movieName: movie.movieName,
+                isImageNetwork: movie.isImageNetwork,
+                rating: movie.rating,
+                movieID: movie.movieID,
+                width: movie.width,
+                height: movie.height,
+
+                onTap: movie.onTap,
+              ));
+              setState(() {}); 
+            }
+          }
+
+          // نفتح تفاصيل الفيلم
+          Navigator.pushNamed(
+            context,
+            MovieDetails.routeName,
+            arguments: movie.movieID,
+          );
+        },
+      );
+    },
+  );
+}
+
+
 }
