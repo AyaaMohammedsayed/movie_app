@@ -131,7 +131,6 @@ class AuthRemoteAPIDataSource implements AuthRemoteDataSource {
           final regResponse = await register(registerRequest);
           print("Register success: ${regResponse.message}");
 
-          // تسجيل الدخول بعد التسجيل
           final loginRequest = LoginRequest(
             email: email,
             password:  ConstantAPI.googleDefaultPassword,
