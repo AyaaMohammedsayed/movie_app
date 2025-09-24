@@ -11,6 +11,8 @@ import 'package:movie_app/features/details_screen/data/model/movie_details_respo
 import 'package:movie_app/features/tabs/profile_tab/data/model/add_request.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/profile_cubit.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/states.dart';
+import 'package:movie_app/features/tabs/profile_tab/presentation/screens/profile_tab.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -45,7 +47,51 @@ class MovieView extends StatefulWidget {
 }
 
 class _MovieViewState extends State<MovieView> {
+    bool isSaved = false;
+  void initState() {
+    super.initState();
+    _loadSavedStatus();
+  }
 
+  Future<void> _loadSavedStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      isSaved = prefs.getBool('saved_${widget.movieId}') ?? false;
+    });
+  }
+
+  Future<void> _toggleSaved() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      isSaved = !isSaved;
+    });
+
+    await prefs.setBool('saved_${widget.movieId}', isSaved);
+
+    List<String> history = prefs.getStringList('history') ?? [];
+
+    final movieItem = MovieItem(
+      imgName: widget.imgName,
+      rating: widget.rating,
+      height: widget.height,
+      width: widget.width,
+      onTap: () {},
+      movieID: widget.movieId,
+      isImageNetwork: true,
+    );
+
+    if (isSaved) {
+      if (!history.contains(widget.movieId.toString())) {
+        history.add(widget.movieId.toString());
+        await prefs.setStringList('history', history);
+      }
+      ProfileTab.addToHistory(movieItem);
+    } else {
+      history.remove(widget.movieId.toString());
+      await prefs.setStringList('history', history);
+      ProfileTab.removeFromHistory(movieItem);
+    }
+  }
   int currentIndex = 0;
   Future<void> onPlayButton() async {
     UiUtils.showLoading(
@@ -184,51 +230,14 @@ class _MovieViewState extends State<MovieView> {
         Positioned(
           top: 16.h,
           right: 16.w,
-          child: BlocConsumer<ProfileCubit, ProfileState>(
-            listener: (context, state) {
-              if (state is AddToWishSuccess) {
-                print('Added to wishlist!');
-              } else if (state is RemoveMovieSuccess) {
-                print('Removed from wishlist!');
-              }
-            },
-            builder: (context, state) {
-              bool isSaved = false;
-
-              if (state is CheckFavSuccess) {
-                isSaved = state.isFavResponse.data ?? false;
-              } else if (state is AddToWishSuccess) {
-                isSaved = true;
-              } else if (state is RemoveMovieSuccess) {
-                isSaved = false;
-              }
-
-              return IconButton(
-                icon: Icon(
-                  isSaved ? Icons.bookmark : Icons.bookmark_outline,
-                  color: AppTheme.white,
-                ),
-                onPressed: () {
-                  if (isSaved) {
-                    cubit.removeFromWishList(widget.movieId);
-                  } else {
-                    cubit.addToWishList(
-                      AddRequest(
-                        movieId: widget.movieId,
-                        name: widget.movieName,
-                        rating: widget.rating,
-                        imageUrl: widget.imgName,
-                        year: widget.year,
-                      ),
-                    );
-                  }
-                },
-              );
-            },
-
+          child: IconButton(
+            icon: Icon(
+              isSaved ? Icons.bookmark : Icons.bookmark_outline,
+              color: AppTheme.white,
+            ),
+            onPressed: _toggleSaved,
           ),
         ),
-
         // Play button
         InkWell(
           onTap: () => onPlayButton(),
