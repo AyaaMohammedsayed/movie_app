@@ -58,6 +58,11 @@ Future<RegisterResponse> register(RegisterRequest request) async {
         data: request.toJson(),
       );
 
+
+
+
+
+
       print("Raw response: ${response.data}");
 
       final loginResponse = LoginResponse.fromJson(response.data);
