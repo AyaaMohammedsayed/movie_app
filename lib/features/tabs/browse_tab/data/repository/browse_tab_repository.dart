@@ -28,7 +28,7 @@ class BrowseTabRepository {
     try {
       final moviesResponse = await _apiDataSource.getMoviesByCategory(null, 1);
       final _genres = <String>{};
-      for (var movie in moviesResponse.data?.movies??[]) {
+      for (var movie in moviesResponse.data?.movies ?? []) {
         _genres.addAll(movie.genres ?? []);
       }
       final genresData = GenresData(
@@ -42,4 +42,3 @@ class BrowseTabRepository {
     }
   }
 }
-

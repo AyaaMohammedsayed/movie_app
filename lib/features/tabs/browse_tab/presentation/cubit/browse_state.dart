@@ -26,14 +26,17 @@ class BrowseSuccess extends BrowseState {
   final bool isPaginating;
   final String categoryId;
   final List<MovieCategory> categories;
+  final bool isLoading;
 
   const BrowseSuccess({
     required this.moviesList,
     required this.categoryId,
     this.isPaginating = false,
-   required this.categories
+    required this.categories,
+    this.isLoading = false,
   });
 
   @override
-  List<Object?> get props => [moviesList, categoryId, isPaginating,categories];
+  List<Object?> get props => [moviesList, categoryId, isPaginating,
+   categories,isLoading];
 }

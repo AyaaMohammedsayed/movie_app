@@ -9,13 +9,13 @@ class BrowseCubit extends Cubit<BrowseState> {
 
   final BrowseTabRepository _repository = BrowseTabRepository();
 
-  String _currentCategoryId = '';
+  String _currentCategoryId = "Drama";
   int _currentPageNum = 1;
   bool hasMore = true;
   bool isLoadingMore = false;
 
   List<MovieCategory> _categories = [];
-  final List<MovieB> _currentMovies = [];
+  final Map<String, List<MovieB>> _moviesPerCategory = {};
 
   Future<void> getGenresAndMovies() async {
     emit(BrowseLoading());
@@ -27,40 +27,57 @@ class BrowseCubit extends Cubit<BrowseState> {
         emit(BrowseError(exception.message));
       },
       (data) {
+        print(data.data!.genres?[2].id);
         _categories =
             data.data?.genres
                 ?.map(
                   (genre) => MovieCategory(
                     name: genre.name ?? '',
-                    id: genre.id?.toString() ?? '',
-                    isSelected: false,
+                    id: genre.name?.toString()??'',
                   ),
                 )
                 .toList() ??
             [];
 
         if (_categories.isNotEmpty) {
-          _categories[0] = _categories[0].copyWith(isSelected: true);
-          getMoviesForCategory(_categories.first.id);
-        } else {
-          emit(
-            BrowseSuccess(
-              categories: _categories,
-              moviesList: [],
-              categoryId: '',
-            ),
-          );
+          print("object:$_currentCategoryId");
+          _currentCategoryId = _categories.first.name;
+          print(_categories.first);
+          print("object:$_currentCategoryId");
+        }
+
+        emit(
+          BrowseSuccess(
+            categories: _categories,
+            moviesList: [],
+            categoryId: _currentCategoryId,
+          ),
+        );
+
+        if (_categories.isNotEmpty) {
+          getMoviesForCategory(_currentCategoryId);
         }
       },
     );
   }
 
   Future<void> getMoviesForCategory(String categoryId) async {
-    _currentMovies.clear();
+    _moviesPerCategory.clear();
+    _currentCategoryId = categoryId;
     _currentPageNum = 1;
     hasMore = true;
-    _currentCategoryId = categoryId;
 
+    if (_moviesPerCategory.containsKey(categoryId) &&
+        _moviesPerCategory[categoryId]!.isNotEmpty) {
+      emit(
+        BrowseSuccess(
+          categories: _categories,
+          moviesList: _moviesPerCategory[categoryId]!,
+          categoryId: categoryId,
+        ),
+      );
+      return;
+    }
     emit(BrowseLoading());
 
     final response = await _repository.getMovies(
@@ -74,19 +91,15 @@ class BrowseCubit extends Cubit<BrowseState> {
       },
       (data) {
         final newMovies = data.data?.movies ?? [];
-        _currentMovies.addAll(newMovies);
+        _moviesPerCategory[categoryId] = newMovies;
 
         if (newMovies.length < 20) hasMore = false;
         _currentPageNum++;
-        _categories =
-            _categories.map((category) {
-              return category.copyWith(isSelected: category.id == categoryId);
-            }).toList();
 
         emit(
           BrowseSuccess(
             categories: _categories,
-            moviesList: _currentMovies,
+            moviesList: _moviesPerCategory[categoryId]!,
             categoryId: _currentCategoryId,
           ),
         );
@@ -111,7 +124,10 @@ class BrowseCubit extends Cubit<BrowseState> {
       },
       (data) {
         final newMovies = data.data?.movies ?? [];
-        _currentMovies.addAll(newMovies);
+        final currentList = _moviesPerCategory[_currentCategoryId] ?? [];
+        currentList.addAll(newMovies);
+
+        _moviesPerCategory[_currentCategoryId] = currentList;
 
         if (newMovies.length < 20) hasMore = false;
         _currentPageNum++;
@@ -120,7 +136,7 @@ class BrowseCubit extends Cubit<BrowseState> {
         emit(
           BrowseSuccess(
             categories: _categories,
-            moviesList: List.from(_currentMovies),
+            moviesList: List.from(currentList),
             categoryId: _currentCategoryId,
           ),
         );
