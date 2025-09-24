@@ -42,6 +42,12 @@ class _MovieViewState extends State<MovieView> {
     _loadSavedStatus();
   }
 
+
+
+
+
+
+
   Future<void> _loadSavedStatus() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
