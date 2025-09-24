@@ -65,6 +65,10 @@ class _MovieViewState extends State<MovieView> {
 
     List<String> history = prefs.getStringList('history') ?? [];
 
+
+
+
+
     final movieItem = MovieItem(
       imgName: widget.imgName,
       rating: widget.rating,
