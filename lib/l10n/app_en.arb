@@ -35,7 +35,12 @@
     "summary":"Summary",
     "genres":"Genres",
     "resetPassword":"Reset Password",
-    "updateData":"Update Data"
+    "updateData":"Update Data",
+    "editProfile":"Edit Profile",
+    "history":"History",
+    "watchList":"Watch List ",
+    "wishList": "Wish List ",
+    "exit":"Exit"
 
    
 }

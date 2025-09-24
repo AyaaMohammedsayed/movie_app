@@ -37,5 +37,10 @@
     "resetPassword":"تغيير كلمة المرور",
 
    
-    "updateData":"تحديث  بيانات الحساب"
+    "updateData":"تحديث  بيانات الحساب",
+    "editProfile":"تعديل الصفحة",
+    "history":"السجل",
+    "watchList":"ٌائمة المشاهدة",
+    "wishList": "قائمة الرغبات",
+    "exit":"مغادره"
 }
