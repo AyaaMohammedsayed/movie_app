@@ -8,6 +8,7 @@ import 'package:movie_app/core/widgets/movie_item.dart';
 import 'package:movie_app/features/details_screen/presentation/screens/view/movie_details_screen.dart';
 import 'package:movie_app/features/tabs/browse_tab/presentation/cubit/browse_cubit.dart';
 import 'package:movie_app/features/tabs/browse_tab/presentation/cubit/browse_state.dart';
+import 'package:movie_app/features/tabs/browse_tab/presentation/widgets/movie_category.dart';
 import 'package:movie_app/features/tabs/browse_tab/presentation/widgets/tab_item.dart';
 
 class BrowseTab extends StatefulWidget {
@@ -49,17 +50,23 @@ class _BrowseTabState extends State<BrowseTab> with TickerProviderStateMixin {
             ),
           );
         } else if (state is BrowseSuccess) {
-          final categories = state.categories;
-          _tabController = TabController(
-            length: categories.length,
-            vsync: this,
-          );
-          _tabController.addListener(() {
-            if (_tabController.indexIsChanging) return;
-            context.read<BrowseCubit>().getMoviesForCategory(
-              categories[_tabController.index].id,
+          final List<MovieCategory> categories = state.categories;
+
+          if (_tabController == null ||
+              _tabController!.length != categories.length) {
+            _tabController = TabController(
+              length: categories.length,
+              vsync: this,
             );
-          });
+          }
+
+          final currentIndex = categories.indexWhere(
+            (cat) => cat.id == state.categoryId,
+          );
+          if (currentIndex != -1 && _tabController!.index != currentIndex) {
+            _tabController!.animateTo(currentIndex);
+          }
+
           return Padding(
             padding: const EdgeInsets.only(left: 5, right: 5, top: 16),
             child: Column(

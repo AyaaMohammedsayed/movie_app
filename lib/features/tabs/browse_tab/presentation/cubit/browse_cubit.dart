@@ -100,7 +100,7 @@ class BrowseCubit extends Cubit<BrowseState> {
           BrowseSuccess(
             categories: _categories,
             moviesList: _moviesPerCategory[categoryId]!,
-            categoryId: categoryId,
+            categoryId: _currentCategoryId,
           ),
         );
       },
