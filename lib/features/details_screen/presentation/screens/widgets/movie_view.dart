@@ -8,9 +8,7 @@ import 'package:movie_app/core/widgets/custom_elevated_button.dart';
 import 'package:movie_app/core/widgets/movie_item.dart';
 
 import 'package:movie_app/features/details_screen/data/model/movie_details_response/torrent.dart';
-import 'package:movie_app/features/tabs/profile_tab/data/model/add_request.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/profile_cubit.dart';
-import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/states.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/screens/profile_tab.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
