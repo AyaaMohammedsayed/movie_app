@@ -11,6 +11,7 @@ class MovieDetailsException extends AppException {
 class MovieSuggestionsException extends AppException {
   MovieSuggestionsException(super.message);
 }
+
 class MovieListsException extends AppException {
   MovieListsException(super.message);
 }
@@ -22,6 +23,7 @@ class RegisterException extends AppException {
 class LoginException extends AppException {
   LoginException(super.message);
 }
+
 class LoginWithGoogleException extends AppException {
   LoginWithGoogleException(super.message);
 }
@@ -29,27 +31,39 @@ class LoginWithGoogleException extends AppException {
 class SearchException extends AppException {
   SearchException(super.message);
 }
+
+class BrowseException extends AppException {
+  BrowseException(super.message);
+}
+
 class UpdateProfileException extends AppException {
   UpdateProfileException(super.message);
 }
+
 class DeleteProfileException extends AppException {
   DeleteProfileException(super.message);
 }
+
 class ResetPasswordException extends AppException {
   ResetPasswordException(super.message);
 }
+
 class GetProfileException extends AppException {
   GetProfileException(super.message);
 }
+
 class GetWishListException extends AppException {
-    GetWishListException(super.message);
+  GetWishListException(super.message);
 }
+
 class CheckIsFavWishListException extends AppException {
-    CheckIsFavWishListException(super.message);
+  CheckIsFavWishListException(super.message);
 }
+
 class AddToWishListException extends AppException {
-    AddToWishListException(super.message);
+  AddToWishListException(super.message);
 }
+
 class DeleteFromWishListException extends AppException {
-    DeleteFromWishListException(super.message);
+  DeleteFromWishListException(super.message);
 }

@@ -14,6 +14,7 @@ import 'package:movie_app/features/auth/presentation/screens/register_screen.dar
 import 'package:movie_app/features/details_screen/presentation/screens/view/movie_details_screen.dart';
 import 'package:movie_app/features/home_screen/view/screens/home_screen.dart';
 import 'package:movie_app/features/onboarding/view/screens/onboarding_screen.dart';
+import 'package:movie_app/features/tabs/browse_tab/presentation/cubit/browse_cubit.dart';
 import 'package:movie_app/features/tabs/home_tab/presentation/cubit/movie_cubit.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/cubit/profile_cubit.dart';
 import 'package:movie_app/features/tabs/profile_tab/presentation/screens/update_profile.dart';
@@ -38,6 +39,7 @@ Future<void> main() async {
         BlocProvider(create: (_) => AuthCubit()),
         BlocProvider(create: (_) => ProfileCubit()),
         BlocProvider(create: (_) => MovieCubit()),
+        BlocProvider(create: (_)=>BrowseCubit())
       ],
       child: MovieApp(onboardingComplete: onboardingComplete),
     ),
@@ -85,7 +87,7 @@ class _MovieAppState extends State<MovieApp> {
                 },
                 initialRoute:
                     widget.onboardingComplete
-                        ? HomeScreen.routeName
+                        ? LoginScreen.routeName
                         : OnboardingScreen.routeName,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,
