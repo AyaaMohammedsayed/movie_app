@@ -62,7 +62,11 @@ movie_app/
 ## 🎨 Design
 - [Figma Design File](https://www.figma.com/design/O51USUdiAaw2ptWy60PTrz/Movies?node-id=52-641&t=plSMleRAGBNcAfd0-0)  
 - Fully responsive design with support for multiple screen sizes  
+---
 
+## 🎬 Demo Video
+You can watch the full demo here:  
+[▶️ Watch Demo ](https://drive.google.com/file/d/1P815JCgv_toQ4qrUH6ntI3qv2gma4pNf/view?usp=drivesdk)
 ---
 
 ## 🚀 Installation
